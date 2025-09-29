@@ -11,8 +11,10 @@ public class movement_player : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject cam;
     float xRotation = 0;
-
-
+    //variable pour le saut et la graviter 
+    float gravity = -9.81f;
+    [SerializeField]  float gravity_multiplier = 3f;
+    float velocity;
 
     // fonction pour pouvoir déplacer le joueur 
     void movement()
@@ -21,19 +23,34 @@ public class movement_player : MonoBehaviour
         float movement_y = Input.GetAxis("Vertical");
         Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
         controller.Move(player_movement);
+       
     }
     //fonction pour déplacer la caméra
     void cam_movement()
     {
         float cam_x = Input.GetAxis("Mouse X");
         float cam_y = Input.GetAxis("Mouse Y");
-        Vector3 cam_position_x = new Vector3(0, cam_x, 0) * speed_cam * Time.deltaTime;
+        Vector3 cam_position_y = new Vector3(0, cam_x, 0) * speed_cam * Time.deltaTime;
         xRotation -= cam_y;
-        player.transform.Rotate( cam_position_x);
-        xRotation = Mathf.Clamp(xRotation, -60f, 60f); // limite haut/bas
-        cam.transform.rotation = Quaternion.Euler(xRotation,0f,0f);
-      
+        player.transform.Rotate( cam_position_y);
+        xRotation = Mathf.Clamp(xRotation, -70f, 70f); // limite haut/bas
+        cam.transform.localRotation = Quaternion.Euler(xRotation,0f,0f);
+    }
 
+    //fonction pour la graviter du joueur 
+    void apply_gravity()
+    {
+       
+        Vector3 gravity_force = new Vector3(0, velocity, 0);
+        controller.Move(gravity_force);
+        if (controller.isGrounded && velocity < 0)
+        {
+            velocity = -1f;
+        }
+        else
+        {
+            velocity += gravity * Time.deltaTime;
+        }
     }
 
     private void Start()
@@ -45,5 +62,6 @@ public class movement_player : MonoBehaviour
     {
         movement();
         cam_movement();
+        apply_gravity();
     }
 }
