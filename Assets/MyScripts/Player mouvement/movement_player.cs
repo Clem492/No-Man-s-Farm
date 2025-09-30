@@ -15,6 +15,7 @@ public class movement_player : MonoBehaviour
     float gravity = -9.81f;
     [SerializeField]  float gravity_multiplier = 5f;
     float velocity;
+   [SerializeField] float jump_higt;
 
     // fonction pour pouvoir déplacer le joueur 
     void movement()
@@ -23,6 +24,12 @@ public class movement_player : MonoBehaviour
         float movement_y = Input.GetAxis("Vertical");
         Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
         controller.Move(player_movement);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Vector3 jump = (transform.up * jump_higt) * Time.deltaTime;
+            controller.Move(jump);
+        }
        
     }
     //fonction pour déplacer la caméra
@@ -45,13 +52,14 @@ public class movement_player : MonoBehaviour
         controller.SimpleMove(gravity_force);
         if (controller.isGrounded && velocity < 0)
         {
-            velocity = -500f;
+            velocity = -1f;
         }
         else
         {
-            velocity += gravity * gravity_multiplier * Time.deltaTime;
+            velocity = gravity * gravity_multiplier * Time.deltaTime;
         }
     }
+
 
     private void Start()
     {
