@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class mouvement_zombie: MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField]private GameObject cible;
     NavMeshAgent agent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +14,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(player.transform.position);
+        agent.SetDestination(cible.transform.position);
     }
 }
