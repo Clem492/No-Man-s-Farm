@@ -182,7 +182,7 @@ MonoBehaviour:
   speed_cam: 200
   player: {fileID: 106322674}
   cam: {fileID: 417192523}
-  gravity_multiplier: 3
+  gravity_multiplier: 500
 --- !u!136 &106322677
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class movement_player : MonoBehaviour
     float xRotation = 0;
     //variable pour le saut et la graviter 
     float gravity = -9.81f;
-    [SerializeField]  float gravity_multiplier = 3f;
+    [SerializeField]  float gravity_multiplier = 5f;
     float velocity;
 
     // fonction pour pouvoir déplacer le joueur 
@@ -42,14 +42,14 @@ public class movement_player : MonoBehaviour
     {
        
         Vector3 gravity_force = new Vector3(0, velocity, 0);
-        controller.Move(gravity_force);
+        controller.SimpleMove(gravity_force);
         if (controller.isGrounded && velocity < 0)
         {
-            velocity = -1f;
+            velocity = -500f;
         }
         else
         {
-            velocity += gravity * Time.deltaTime;
+            velocity += gravity * gravity_multiplier * Time.deltaTime;
         }
     }
 
