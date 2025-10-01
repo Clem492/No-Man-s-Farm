@@ -5,7 +5,7 @@ public class spawn_attaque_zombie : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject zombie_prefabs;
-    GameObject[] tab_zombie;
+    GameObject[] tab_zombie =new GameObject[1000];
     int nombre_zombie_spawn = 5;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
