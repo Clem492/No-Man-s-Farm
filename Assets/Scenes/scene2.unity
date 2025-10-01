@@ -180,6 +180,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb792a3cca0043544983991e04a4e442, type: 3}
+--- !u!1 &238167929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238167931}
+  - component: {fileID: 238167930}
+  m_Layer: 0
+  m_Name: spawn_zombie
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &238167930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238167929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369a6263cfcf16d40aa28e58072317f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 876798875}
+  zombie_prefabs: {fileID: 1770555887287524545, guid: 6bb267a766416e3469ccf58da64a9b39, type: 3}
+--- !u!4 &238167931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238167929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -229.8671, y: -503.67722, z: 515.0235}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485051722
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +357,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cb8fc797474561a4fad3a5d6d98aae56, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.10000001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb8fc797474561a4fad3a5d6d98aae56, type: 3}
       propertyPath: m_LocalScale.y
@@ -319,11 +365,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb8fc797474561a4fad3a5d6d98aae56, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 0.09999998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb8fc797474561a4fad3a5d6d98aae56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.497
+      value: 0.49699974
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb8fc797474561a4fad3a5d6d98aae56, type: 3}
       propertyPath: m_LocalPosition.y
@@ -390,7 +436,7 @@ GameObject:
   - component: {fileID: 876798880}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -531,6 +577,7 @@ MonoBehaviour:
   player: {fileID: 876798875}
   cam: {fileID: 1740613758}
   gravity_multiplier: 3
+  jump_higt: 0
 --- !u!1 &1082002750
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e20560c89f74f4ebcfa28bb04923c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 876798875}
 --- !u!1 &1661166846
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e20560c89f74f4ebcfa28bb04923c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 876798875}
 --- !u!1 &1740613758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,7 +1278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e20560c89f74f4ebcfa28bb04923c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 876798875}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1245,3 +1289,4 @@ SceneRoots:
   - {fileID: 1515242365}
   - {fileID: 876798879}
   - {fileID: 115050683}
+  - {fileID: 238167931}

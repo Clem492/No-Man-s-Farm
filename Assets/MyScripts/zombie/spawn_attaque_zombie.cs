@@ -26,18 +26,19 @@ public class spawn_attaque_zombie : MonoBehaviour
 
             // Attendre ... s avant de faire la suite de la fonction (jour)
             Debug.Log("jour");
-            yield return new WaitForSeconds(60f);
+            yield return new WaitForSeconds(10f);
 
 
             // Attendre ... s avant de faire la suite de la fonction (nuit)
             Debug.Log("nuit");
-            for (global::System.Int32 i = 0; i < nombre_zombie_spawn; i++)
+            for (int i = 0; i < nombre_zombie_spawn; i++)
             {
                 tab_zombie[i] = Instantiate(zombie_prefabs,new Vector3(Random.Range(10,100),0.5f, Random.Range(10, 100)), Quaternion.identity);
-                nombre_zombie_spawn += 2;
+                
             }
-            
-            yield return new WaitForSeconds(60f);
+            nombre_zombie_spawn += 2;
+
+            yield return new WaitForSeconds(10f);
             
 
           

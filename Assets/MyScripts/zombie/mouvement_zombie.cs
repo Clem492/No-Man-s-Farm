@@ -3,11 +3,12 @@ using UnityEngine.AI;
 
 public class mouvement_zombie: MonoBehaviour
 {
-    [SerializeField]private GameObject cible;
+    GameObject cible;
     NavMeshAgent agent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        cible = GameObject.FindWithTag("player");
         agent = GetComponent<NavMeshAgent>();
     }
 
