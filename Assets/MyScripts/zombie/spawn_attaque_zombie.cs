@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 
@@ -71,5 +71,4 @@ public class spawn_attaque_zombie : MonoBehaviour
             }
         }
     }
-}
-
+}*/
