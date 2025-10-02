@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 
@@ -58,7 +58,7 @@ public class spawn_attaque_zombie : MonoBehaviour
         
            
     }
-    void zombie_elliminer ()
+    /*void zombie_elliminer ()
     {
         for (int i = 0; i < tab_pv_zombie.length; i++)
         {
@@ -70,5 +70,5 @@ public class spawn_attaque_zombie : MonoBehaviour
                     depart -= 1;
             }
         }
-    }
-}*/
+    }*/
+}
