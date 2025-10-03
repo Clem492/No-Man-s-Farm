@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class player_attaque : MonoBehaviour
 {
+    //variable pour la hache
+    [SerializeField] GameObject axe;
 
 
 
@@ -10,7 +12,7 @@ public class player_attaque : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+           
         }
     }
     private void Update()
