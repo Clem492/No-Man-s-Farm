@@ -1,26 +1,26 @@
 using UnityEngine;
 
-public class pv_zombie : MonoBehaviour
+public class pv_player : MonoBehaviour
 {
-    float nb_pv_zombie;
+    float nb_pv_player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        nb_pv_zombie = 3;
+        nb_pv_player = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-        mort_zombie();
+        mort_player();
     }
-    void mort_zombie()
+    void mort_player()
     {
-        if (nb_pv_zombie <= 0) 
+        if (nb_pv_player <= 0)
             Destroy(gameObject);
     }
-    public void perte_pv_zombie(float degats)
+    public void perte_pv_player(float degats)
     {
-        nb_pv_zombie -= degats;
+        nb_pv_player -= degats;
     }
 }
