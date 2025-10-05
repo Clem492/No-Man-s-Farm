@@ -12,7 +12,7 @@ public class pv_zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        mort_zombie();
     }
     void mort_zombie()
     {
