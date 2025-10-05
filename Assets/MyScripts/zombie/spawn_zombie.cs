@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 
-public class spawn_attaque_zombie : MonoBehaviour
+public class spawn_zombie : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject zombie_prefabs;
