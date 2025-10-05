@@ -19,4 +19,8 @@ public class pv_zombie : MonoBehaviour
         if (nb_pv_zombie <= 0) 
             Destroy(gameObject);
     }
+    void perte_pv_zombie(float degats)
+    {
+        nb_pv_zombie -= degats;
+    }
 }
