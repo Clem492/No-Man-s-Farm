@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class weaponinstantiate : MonoBehaviour
@@ -6,11 +8,11 @@ public class weaponinstantiate : MonoBehaviour
  
 
     //variable pour connaitre savoir quelle arme le joueur a en main
-    bool left_hand;
-    bool right_hand;
+   public bool left_hand;
+   public bool right_hand;
     bool firs_hand;//utiliser pour mettre les armes dans la main droite en premier 
     bool double_hand;
-    int wepon_diff; //variable utile pour savoir si il y a un object différent dans chaque main 1 pour la hache et 2 pour la houe et d'autre chiffre pour les prochaines armes
+   public int weapon_diff; //variable utile pour savoir si il y a un object différent dans chaque main 1 pour la hache et 2 pour la houe et d'autre chiffre pour les prochaines armes
     [SerializeField] Transform left_hand_position;
     [SerializeField] Transform right_hand_position;
     [SerializeField] GameObject axe;
@@ -34,6 +36,8 @@ public class weaponinstantiate : MonoBehaviour
     }
 
 
+
+
     //fonction pour prendre une arme par terre
     void Take_weapon_right()
     {
@@ -48,7 +52,7 @@ public class weaponinstantiate : MonoBehaviour
                 hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
                 hand_right.transform.localRotation = Quaternion.Euler(90, 90, 0);
                 right_hand = true;
-                wepon_diff = 1;
+                weapon_diff = 1;
 
             }
         }
@@ -62,7 +66,7 @@ public class weaponinstantiate : MonoBehaviour
                 hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
                 hand_right.transform.localRotation = Quaternion.Euler(90, 0, 90);
                 right_hand = true;
-                wepon_diff = 2;
+                weapon_diff = 2;
 
             }
         }
@@ -79,6 +83,7 @@ public class weaponinstantiate : MonoBehaviour
                 hand_right.transform.localRotation = Quaternion.Euler(90, 0, 90);
                 right_hand = true;
                 double_hand = true;
+                weapon_diff = 3;
 
             }
         }
@@ -95,7 +100,7 @@ public class weaponinstantiate : MonoBehaviour
             Debug.Log("tu peux prendre la hache");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (wepon_diff == 1)
+                if (weapon_diff == 1)
                 {
                     hand_right = Instantiate(axe);
                     hand_right.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
@@ -112,7 +117,7 @@ public class weaponinstantiate : MonoBehaviour
             Debug.Log("tu peux prendre la houe");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (wepon_diff == 2)
+                if (weapon_diff == 2)
                 {
                     hand_right = Instantiate(sickle);
                     hand_right.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
@@ -125,19 +130,26 @@ public class weaponinstantiate : MonoBehaviour
             }
     }   }
 
-
+    void nothing_in_hand()
+    {
+        if (right_hand == false)
+        {
+            weapon_diff = 0;
+        }
+    }
     private void Start()
     {
-        
+        weapon_diff = 0;
         left_hand = false;
         right_hand = false;
         firs_hand = false;
         double_hand = false;
+        
     }
 
     private void Update()
     {
-        
+        nothing_in_hand();
         What_hand();
     }
 }
