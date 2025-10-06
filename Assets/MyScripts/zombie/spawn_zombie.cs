@@ -32,16 +32,21 @@ public class spawn_zombie : MonoBehaviour
         {
 
             numero_vague += 1;
-            // Attendre ... s avant de faire la suite de la fonction (jour)
-            Debug.Log("jour");
+            
+            
+            //affiche le jour
             jour_nuit.text = "jour";
+
+            // Attendre ... s avant de faire la suite de la fonction (jour)
             yield return new WaitForSeconds(10f);
 
 
-            // Attendre ... s avant de faire la suite de la fonction (nuit)
+            //affiche la nuit
             jour_nuit.text = "nuit";
-            Debug.Log("nuit");
+          
+            //affiche le numéro de la vague
             vague.text = "vague : " + numero_vague;
+            //ont instantie les zombie
             for (int i = depart; i < nombre_zombie_spawn+sauvgarde_depart; i++)
             {
                 tab_zombie[i] = Instantiate(zombie_prefabs,new Vector3(Random.Range(10,100),0.5f, Random.Range(10, 100)), Quaternion.identity);
@@ -49,8 +54,9 @@ public class spawn_zombie : MonoBehaviour
                 depart += 1;
             }
             sauvgarde_depart = depart;
+            //ont augmente le nombre de zombie qui va spawn
             nombre_zombie_spawn = nombre_zombie_spawn + 2;
-
+            // Attendre ... s avant de faire la suite de la fonction (nuit)
             yield return new WaitForSeconds(10f);
             
 

@@ -15,6 +15,7 @@ public class mouvement_zombie: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //ont défini la cible des zombie qu'il vont essayer d'atteindre
         agent.SetDestination(cible.transform.position);
     }
 }
