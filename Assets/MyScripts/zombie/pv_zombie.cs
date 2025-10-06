@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class pv_zombie : MonoBehaviour
 {
-    float nb_pv_zombie;
+    public float nb_pv_zombie;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //ont initialise les pv du du zombie
-        nb_pv_zombie = 3;
+        
+       
     }
 
     // Update is called once per frame
