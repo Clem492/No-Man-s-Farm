@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class pv_zombie : MonoBehaviour
 {
+
     public float nb_pv_zombie;
+
+    [SerializeField] TMPro.TextMeshProUGUI affichage_pv_zombie;
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,6 +19,7 @@ public class pv_zombie : MonoBehaviour
     void Update()
     {
         mort_zombie();
+        affichage_pv_zombie.text = "PV : " + nb_pv_zombie;
     }
     //ont verifie si le zombie est mort
     void mort_zombie()
