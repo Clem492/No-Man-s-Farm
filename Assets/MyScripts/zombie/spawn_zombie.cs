@@ -5,11 +5,11 @@ using Unity.VisualScripting;
 public class spawn_zombie : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    [SerializeField] GameObject zombie_prefabs;
+    [SerializeField] GameObject zombie_prefab;
     [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
-    GameObject[] tab_zombie =new GameObject[1000];
-    int[] tab_pv_zombie = new int[1000];
+    GameObject[] tab_zombie =new GameObject[100000];
+    int[] tab_pv_zombie = new int[100000];
     public int nombre_zombie_spawn = 5;
     int numero_vague;
     
@@ -49,7 +49,7 @@ public class spawn_zombie : MonoBehaviour
             //ont instantie les zombie
             for (int i = depart; i < nombre_zombie_spawn+sauvgarde_depart; i++)
             {
-                tab_zombie[i] = Instantiate(zombie_prefabs,new Vector3(Random.Range(10,100),0.5f, Random.Range(10, 100)), Quaternion.identity);
+                tab_zombie[i] = Instantiate(zombie_prefab,new Vector3(Random.Range(10,100),0.5f, Random.Range(10, 100)), Quaternion.identity);
                 
                 depart += 1;
             }
