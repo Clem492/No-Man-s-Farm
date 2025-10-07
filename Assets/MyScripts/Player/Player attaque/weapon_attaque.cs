@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 //ce sript utilise weapon instantiate
 public class weapon_attaque : MonoBehaviour
@@ -12,7 +13,12 @@ public class weapon_attaque : MonoBehaviour
     int weapon_diff;
     bool right_hand;
     bool left_hand;
+<<<<<<< HEAD
 
+=======
+    //variable pour la sphère cast
+    Collider[] enemies;
+>>>>>>> a8b4e69d90dbbec865c688f77175ecd915c2f946
    
 
     //dégat pour les différente arme
@@ -27,7 +33,7 @@ public class weapon_attaque : MonoBehaviour
     [SerializeField] pv_zombie zombie;
     void What_weapon()
     {
-
+        
         weapon_diff = weapons_created.GetComponent<weaponinstantiate>().weapon_diff;
         right_hand = hand_right.right_hand;
         left_hand = hand_left.left_hand;
@@ -39,6 +45,7 @@ public class weapon_attaque : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
                 {
+<<<<<<< HEAD
                     
                     if (zombie != null)
                     {
@@ -46,15 +53,34 @@ public class weapon_attaque : MonoBehaviour
                         hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= hand_dommage;
                     }
              
+=======
+                   
+                    hand_dommage = 2;
+                    zombie.nb_pv_zombie -= hand_dommage;
+>>>>>>> a8b4e69d90dbbec865c688f77175ecd915c2f946
                 }
             }
 
         }
+        
         if (weapon_diff == 1) //le 1 signfie la hache
         {
             //raycast en boule pour toucher plus d'enemie
             //il faut faire la hache
+            
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                enemies = Physics.OverlapSphere(cam.transform.position + cam.transform.forward * 2f, 2);
+                foreach (Collider col in enemies)
+                {
+                    if (col.transform.GetComponent<pv_zombie>())
+                    {
+                        axe_dommage = rarety * (double_hand_dammage * 7);
+                        zombie.nb_pv_zombie -= axe_dommage;
+                    }
+                }
 
+            }
 
 
         }
@@ -83,8 +109,13 @@ public class weapon_attaque : MonoBehaviour
                 {
                     if (hit.transform.GetComponent<pv_zombie>())//verification que le gameobject possède le script pv_zombie
                     {
+<<<<<<< HEAD
                         pitchfork_dommage = rarety * (double_hand_dammage * 8);
                         hit.transform.GetComponent<pv_zombie>().nb_pv_zombie  -= pitchfork_dommage;
+=======
+                        pitchfork_dommage = rarety * (double_hand_dammage * 10);
+                        zombie.nb_pv_zombie -= pitchfork_dommage;
+>>>>>>> a8b4e69d90dbbec865c688f77175ecd915c2f946
                     }
              
                 }
@@ -121,9 +152,9 @@ public class weapon_attaque : MonoBehaviour
     {
         if (weapon_diff == 1) //le 1 signfie la hache
         {
-            
-            Gizmos.DrawSphere(new Vector3(cam.transform.position.x + 2, cam.transform.position.y, cam.transform.position.z +2) , 4);
-            
+
+            Gizmos.DrawSphere(cam.transform.position + cam.transform.forward * 2f, 2);
+
         }
     }
 
@@ -138,6 +169,7 @@ public class weapon_attaque : MonoBehaviour
     private void Start()
     {
         rarety = 1;
+        
     }
 
 
