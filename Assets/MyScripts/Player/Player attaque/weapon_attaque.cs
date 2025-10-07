@@ -72,7 +72,7 @@ public class weapon_attaque : MonoBehaviour
                     if (col.transform.GetComponent<pv_zombie>())
                     {
                         axe_dommage = rarety * (double_hand_dammage * 7);
-                        hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= axe_dommage;
+                        col.transform.GetComponent<pv_zombie>().nb_pv_zombie -= axe_dommage;
                     }
                 }
 
