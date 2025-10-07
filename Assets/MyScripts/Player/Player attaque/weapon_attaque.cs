@@ -13,12 +13,12 @@ public class weapon_attaque : MonoBehaviour
     int weapon_diff;
     bool right_hand;
     bool left_hand;
-<<<<<<< HEAD
 
-=======
+
+
     //variable pour la sphère cast
     Collider[] enemies;
->>>>>>> a8b4e69d90dbbec865c688f77175ecd915c2f946
+
    
 
     //dégat pour les différente arme
@@ -45,19 +45,15 @@ public class weapon_attaque : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
                 {
-<<<<<<< HEAD
+
                     
                     if (zombie != null)
                     {
                         hand_dommage = 2;
                         hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= hand_dommage;
                     }
-             
-=======
-                   
-                    hand_dommage = 2;
-                    zombie.nb_pv_zombie -= hand_dommage;
->>>>>>> a8b4e69d90dbbec865c688f77175ecd915c2f946
+   
+
                 }
             }
 
@@ -76,7 +72,7 @@ public class weapon_attaque : MonoBehaviour
                     if (col.transform.GetComponent<pv_zombie>())
                     {
                         axe_dommage = rarety * (double_hand_dammage * 7);
-                        zombie.nb_pv_zombie -= axe_dommage;
+                        hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= axe_dommage;
                     }
                 }
 
@@ -109,13 +105,12 @@ public class weapon_attaque : MonoBehaviour
                 {
                     if (hit.transform.GetComponent<pv_zombie>())//verification que le gameobject possède le script pv_zombie
                     {
-<<<<<<< HEAD
+
                         pitchfork_dommage = rarety * (double_hand_dammage * 8);
                         hit.transform.GetComponent<pv_zombie>().nb_pv_zombie  -= pitchfork_dommage;
-=======
-                        pitchfork_dommage = rarety * (double_hand_dammage * 10);
-                        zombie.nb_pv_zombie -= pitchfork_dommage;
->>>>>>> a8b4e69d90dbbec865c688f77175ecd915c2f946
+
+                       
+
                     }
              
                 }
