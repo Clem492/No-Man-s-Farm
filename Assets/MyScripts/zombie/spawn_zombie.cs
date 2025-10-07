@@ -49,7 +49,7 @@ public class spawn_zombie : MonoBehaviour
             //ont instantie les zombie
             for (int i = depart; i < nombre_zombie_spawn+sauvgarde_depart; i++)
             {
-                tab_zombie[i] = Instantiate(zombie_prefab,new Vector3(Random.Range(10,100),0.5f, Random.Range(10, 100)), Quaternion.identity);
+                tab_zombie[i] = Instantiate(zombie_prefab,new Vector3(Random.Range(10,100),1.5f, Random.Range(10, 100)), Quaternion.identity);
                 
                 depart += 1;
             }

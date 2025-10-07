@@ -11,7 +11,7 @@ public class pv_zombie : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        nb_pv_zombie = 50; 
        
     }
 

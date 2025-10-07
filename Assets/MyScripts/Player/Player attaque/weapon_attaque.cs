@@ -12,7 +12,7 @@ public class weapon_attaque : MonoBehaviour
     int weapon_diff;
     bool right_hand;
     bool left_hand;
-    //variable pour connaître l'état des main (pleine ou vide)
+
    
 
     //dégat pour les différente arme
@@ -39,10 +39,11 @@ public class weapon_attaque : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
                 {
-                    if (hit.transform.GetComponent<pv_zombie>())
+                    
+                    if (zombie != null)
                     {
                         hand_dommage = 2;
-                        zombie.nb_pv_zombie -= hand_dommage;
+                        hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= hand_dommage;
                     }
              
                 }
@@ -67,7 +68,7 @@ public class weapon_attaque : MonoBehaviour
                     if (hit.transform.GetComponent<pv_zombie>())
                     {
                         sickle_dommage = rarety * (double_hand_dammage * 5);
-                        zombie.nb_pv_zombie -= sickle_dommage;
+                        hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= sickle_dommage;
                     }
                
                 }
@@ -83,7 +84,7 @@ public class weapon_attaque : MonoBehaviour
                     if (hit.transform.GetComponent<pv_zombie>())//verification que le gameobject possède le script pv_zombie
                     {
                         pitchfork_dommage = rarety * (double_hand_dammage * 8);
-                        zombie.nb_pv_zombie -= pitchfork_dommage;
+                        hit.transform.GetComponent<pv_zombie>().nb_pv_zombie  -= pitchfork_dommage;
                     }
              
                 }
