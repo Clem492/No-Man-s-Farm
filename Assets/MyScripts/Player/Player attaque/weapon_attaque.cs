@@ -47,7 +47,7 @@ public class weapon_attaque : MonoBehaviour
                 {
 
                     
-                    if (zombie != null)
+                    if (hit.transform.GetComponent<pv_zombie>())
                     {
                         hand_dommage = 2;
                         hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= hand_dommage;
@@ -148,7 +148,7 @@ public class weapon_attaque : MonoBehaviour
         if (weapon_diff == 1) //le 1 signfie la hache
         {
 
-            Gizmos.DrawSphere(cam.transform.position + cam.transform.forward * 2f, 2);
+           // Gizmos.DrawSphere(cam.transform.position + cam.transform.forward * 2f, 2);
 
         }
     }
