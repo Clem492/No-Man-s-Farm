@@ -9,7 +9,7 @@ public class spawn_arbre : MonoBehaviour
     {
         for (int i = 0; i < tab_arbre.Length; i++)
         {
-            tab_arbre[i] = Instantiate(arbre_prefab, new Vector3(Random.Range(20, 500), 2f, Random.Range(20, 500)), Quaternion.identity);
+            tab_arbre[i] = Instantiate(arbre_prefab, new Vector3(Random.Range(20, 500), 0f, Random.Range(20, 500)), Quaternion.identity);
 
         }
     }
