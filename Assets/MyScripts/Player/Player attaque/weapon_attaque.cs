@@ -10,7 +10,7 @@ public class weapon_attaque : MonoBehaviour
     [SerializeField] weaponinstantiate hand_left;
     [SerializeField] weaponinstantiate hand_right;
     [SerializeField] GameObject cam;
-    int weapon_diff;
+   public int weapon_diff;
     bool right_hand;
     bool left_hand;
 
@@ -31,6 +31,8 @@ public class weapon_attaque : MonoBehaviour
 
     //PV du zombie
     [SerializeField] pv_zombie zombie;
+
+    //fonction pour savoir quelle arme le joueur a en main
     void What_weapon()
     {
         
@@ -148,7 +150,7 @@ public class weapon_attaque : MonoBehaviour
         if (weapon_diff == 1) //le 1 signfie la hache
         {
 
-           // Gizmos.DrawSphere(cam.transform.position + cam.transform.forward * 2f, 2);
+           Gizmos.DrawSphere(cam.transform.position + cam.transform.forward * 2f, 2);
 
         }
     }
