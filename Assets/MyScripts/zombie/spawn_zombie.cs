@@ -9,7 +9,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
     GameObject[] tab_zombie =new GameObject[100000];
-   public int[] tab_pv_zombie = new int[100000];
+    public int[] tab_pv_zombie = new int[100000];
     public int nombre_zombie_spawn = 5;
     int numero_vague;
     
