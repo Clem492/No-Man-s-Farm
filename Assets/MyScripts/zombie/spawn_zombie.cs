@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class spawn_zombie : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] GameObject zombie_prefab;
     [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
+    [SerializeField] Light jour_nuit_lumière;
     GameObject[] tab_zombie =new GameObject[100000];
     public int[] tab_pv_zombie = new int[100000];
     public int nombre_zombie_spawn = 5;
@@ -15,10 +17,13 @@ public class spawn_zombie : MonoBehaviour
     
     int depart = 0;
     int sauvgarde_depart;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         StartCoroutine(spawn());
+        jour_nuit_lumière.transform.rotation = Quaternion.Euler(90,0,0);
+
     }
 
     // Update is called once per frame
@@ -38,8 +43,9 @@ public class spawn_zombie : MonoBehaviour
             jour_nuit.text = "jour";
 
             // Attendre ... s avant de faire la suite de la fonction (jour)
+            jour_nuit_lumière.transform.rotation = Quaternion.Euler(90, 0, 0);
             yield return new WaitForSeconds(10f);
-
+            jour_nuit_lumière.transform.rotation = Quaternion.Euler(-90, 0, 0);
 
             //affiche la nuit
             jour_nuit.text = "nuit";
