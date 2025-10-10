@@ -14,7 +14,9 @@ public class spawn_zombie : MonoBehaviour
     public int[] tab_pv_zombie = new int[100000];
     public int nombre_zombie_spawn = 5;
     int numero_vague;
-    
+    int temp_jour;
+    int temp_nuit;
+    int lumière_valeur;
     int depart = 0;
     int sauvgarde_depart;
     
@@ -23,7 +25,8 @@ public class spawn_zombie : MonoBehaviour
     {
         StartCoroutine(spawn());
         jour_nuit_lumière.transform.rotation = Quaternion.Euler(90,0,0);
-
+        temp_jour = 10;
+        temp_nuit = 10;
     }
 
     // Update is called once per frame
@@ -35,7 +38,7 @@ public class spawn_zombie : MonoBehaviour
     {
         while (true)
         {
-
+            lumière_valeur = 100;
             numero_vague += 1;
             
             
@@ -43,9 +46,21 @@ public class spawn_zombie : MonoBehaviour
             jour_nuit.text = "jour";
 
             // Attendre ... s avant de faire la suite de la fonction (jour)
-            jour_nuit_lumière.transform.rotation = Quaternion.Euler(90, 0, 0);
+            for (int i = 0; i < temp_jour; i++)
+            {
+                jour_nuit_lumière.transform.rotation = Quaternion.Euler(lumière_valeur, 0, 0);
+                lumière_valeur -= 10;
+                yield return new WaitForSeconds(1f);
+            }
+            lumière_valeur = -100;
+            for (int i = 0; i < temp_jour; i++)
+            {
+                jour_nuit_lumière.transform.rotation = Quaternion.Euler(lumière_valeur, 0, 0);
+                lumière_valeur += 10;
+                yield return new WaitForSeconds(1f);
+            }
             yield return new WaitForSeconds(10f);
-            jour_nuit_lumière.transform.rotation = Quaternion.Euler(-90, 0, 0);
+            
 
             //affiche la nuit
             jour_nuit.text = "nuit";
