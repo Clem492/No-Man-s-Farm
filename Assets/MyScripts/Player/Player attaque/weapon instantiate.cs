@@ -18,7 +18,7 @@ public class weaponinstantiate : MonoBehaviour
     [SerializeField] GameObject axe;
     [SerializeField] GameObject sickle;
     [SerializeField] GameObject pitchfork;
-
+    Animator animator;
     //fonction pour savoir quelle arme le joueur a en main
     void What_hand()
     {
@@ -42,6 +42,7 @@ public class weaponinstantiate : MonoBehaviour
     void Take_weapon_right()
     {
         GameObject hand_right;
+        
         if (Vector3.Distance(transform.position, axe.transform.position) < 2)
         {
             Debug.Log("tu peux prendre la hache");
@@ -76,14 +77,28 @@ public class weaponinstantiate : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                
-                hand_right = Instantiate(pitchfork);
-                hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hache en enfant
+
+                // Instanciation de la fourche
+                 hand_right = Instantiate(pitchfork);
+
+                // Récupération de l'Animator sur la fourche
+                Animator anim = hand_right.GetComponent<Animator>();
+                anim.enabled = false; // désactive pour placer correctement
+
+                // Parent à la main droite
+                hand_right.transform.SetParent(right_hand_position, false);
+
+                // Position et rotation locales
                 hand_right.transform.localPosition = new Vector3(0, 0, -0.5f);
                 hand_right.transform.localRotation = Quaternion.Euler(90, 0, 90);
+
+                // Mise à jour des états
                 right_hand = true;
                 double_hand = true;
                 weapon_diff = 3;
+
+                // Réactivation de l'Animator
+                anim.enabled = true;
 
             }
         }
@@ -144,7 +159,7 @@ public class weaponinstantiate : MonoBehaviour
         right_hand = false;
         firs_hand = false;
         double_hand = false;
-        
+        animator = pitchfork.GetComponent<Animator>();
     }
 
     private void Update()
