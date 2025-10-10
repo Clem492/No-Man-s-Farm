@@ -32,7 +32,7 @@ public class animation : MonoBehaviour
         }
         if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true)
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("pitchfork_attack");
             
         }
     }

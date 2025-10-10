@@ -93,7 +93,7 @@ public class weaponinstantiate : MonoBehaviour
                 // Position et rotation locales
                 hand_right.transform.localPosition = new Vector3(0, 0, -0.5f);
                 Debug.Log("bien instantier");
-                hand_right.transform.localRotation = Quaternion.Euler(90, 0, 90);
+                hand_right.transform.localRotation = Quaternion.Euler(0, -90, 0);
 
                 // Mise à jour des états
                 right_hand = true;
