@@ -28,7 +28,7 @@ public class animation : MonoBehaviour
         }
         if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+            animator.SetTrigger("sickle_attack");
         }
         if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true)
         {

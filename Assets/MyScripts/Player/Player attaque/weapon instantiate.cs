@@ -2,6 +2,7 @@ using System.Net;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class weaponinstantiate : MonoBehaviour
 
@@ -19,16 +20,18 @@ public class weaponinstantiate : MonoBehaviour
     [SerializeField] Transform left_hand_position;
     [SerializeField] Transform right_hand_position;
     [SerializeField] GameObject axe;
+    [SerializeField] GameObject axe_prefab;
     [SerializeField] GameObject sickle;
+    [SerializeField] GameObject sickle_prefab;
     [SerializeField] GameObject pitchfork_prefab;
     [SerializeField] GameObject pitchfork;
 
-    Animator animator;
+    
 
     //fonction pour savoir quelle arme le joueur a en main
     void What_hand()
     {
-
+        
         if (right_hand == false)
         {
             firs_hand = true;
@@ -54,7 +57,7 @@ public class weaponinstantiate : MonoBehaviour
             Debug.Log("tu peux prendre la hache");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                hand_right = Instantiate(axe);
+                hand_right = Instantiate(axe_prefab);
                 hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hache en enfant
                 hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
                 hand_right.transform.localRotation = Quaternion.Euler(90, 90, 0);
@@ -68,10 +71,10 @@ public class weaponinstantiate : MonoBehaviour
             Debug.Log("tu peux prendre la houe");
             if (Input.GetKeyDown(KeyCode.E))
             {
-                hand_right = Instantiate(sickle);
-                hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hache en enfant
+                hand_right = Instantiate(sickle_prefab);
+                hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hou en enfant
                 hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
-                hand_right.transform.localRotation = Quaternion.Euler(90, 0, 90);
+                hand_right.transform.localRotation = Quaternion.Euler(50, 0, 90);
                 right_hand = true;
                 weapon_diff = 2;
 
@@ -117,7 +120,7 @@ public class weaponinstantiate : MonoBehaviour
             {
                 if (weapon_diff == 1)
                 {
-                    hand_right = Instantiate(axe);
+                    hand_right = Instantiate(axe_prefab);
                     hand_right.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
                     hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
                     hand_right.transform.localRotation = Quaternion.Euler(90, 90, 0);
@@ -134,10 +137,10 @@ public class weaponinstantiate : MonoBehaviour
             {
                 if (weapon_diff == 2)
                 {
-                    hand_right = Instantiate(sickle);
+                    hand_right = Instantiate(sickle_prefab);
                     hand_right.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
                     hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
-                    hand_right.transform.localRotation = Quaternion.Euler(90, 0, 90);
+                    hand_right.transform.localRotation = Quaternion.Euler(50, 0, 90);
                     left_hand = true;
                 }
 
@@ -160,7 +163,7 @@ public class weaponinstantiate : MonoBehaviour
         right_hand = false;
         firs_hand = false;
         double_hand = false;
-        animator = pitchfork.GetComponent<Animator>();
+        
     }
 
     private void Update()

@@ -29,8 +29,7 @@ public class weapon_attaque : MonoBehaviour
     int rarety;
     float double_hand_dammage = 1.5f;
 
-    //PV du zombie
-    [SerializeField] pv_zombie zombie;
+ 
 
     //fonction pour savoir quelle arme le joueur a en main
     void What_weapon()

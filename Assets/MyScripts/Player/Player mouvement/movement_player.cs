@@ -25,7 +25,7 @@ public class movement_player : MonoBehaviour
     //variable pour le sauts du personnage
     [SerializeField] float jump_force;
     Vector3 jump;
-    bool floor_contact;
+   
 
 
     // fonction pour pouvoir déplacer le joueur 
