@@ -1,3 +1,4 @@
+using System.Net;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -5,11 +6,13 @@ using UnityEngine;
 public class weaponinstantiate : MonoBehaviour
 
 {
- 
+   public GameObject hand_right;
+
 
     //variable pour connaitre savoir quelle arme le joueur a en main
-   public bool left_hand;
+    public bool left_hand;
    public bool right_hand;
+    public bool weapon_hand;
     bool firs_hand;//utiliser pour mettre les armes dans la main droite en premier 
     bool double_hand;
    public int weapon_diff; //variable utile pour savoir si il y a un object différent dans chaque main 1 pour la hache et 2 pour la houe et d'autre chiffre pour les prochaines armes
@@ -17,8 +20,11 @@ public class weaponinstantiate : MonoBehaviour
     [SerializeField] Transform right_hand_position;
     [SerializeField] GameObject axe;
     [SerializeField] GameObject sickle;
+    [SerializeField] GameObject pitchfork_prefab;
     [SerializeField] GameObject pitchfork;
+
     Animator animator;
+
     //fonction pour savoir quelle arme le joueur a en main
     void What_hand()
     {
@@ -41,7 +47,7 @@ public class weaponinstantiate : MonoBehaviour
     //fonction pour prendre une arme par terre
     void Take_weapon_right()
     {
-        GameObject hand_right;
+        
         
         if (Vector3.Distance(transform.position, axe.transform.position) < 2)
         {
@@ -79,27 +85,21 @@ public class weaponinstantiate : MonoBehaviour
             {
 
                 // Instanciation de la fourche
-                 hand_right = Instantiate(pitchfork);
-
-                // Récupération de l'Animator sur la fourche
-                Animator anim = hand_right.GetComponent<Animator>();
-                anim.enabled = false; // désactive pour placer correctement
+                 hand_right = Instantiate(pitchfork_prefab);
 
                 // Parent à la main droite
                 hand_right.transform.SetParent(right_hand_position, false);
 
                 // Position et rotation locales
                 hand_right.transform.localPosition = new Vector3(0, 0, -0.5f);
+                Debug.Log("bien instantier");
                 hand_right.transform.localRotation = Quaternion.Euler(90, 0, 90);
 
                 // Mise à jour des états
                 right_hand = true;
                 double_hand = true;
                 weapon_diff = 3;
-
-                // Réactivation de l'Animator
-                anim.enabled = true;
-
+                weapon_hand = true;
             }
         }
     }
@@ -154,6 +154,7 @@ public class weaponinstantiate : MonoBehaviour
     }
     private void Start()
     {
+        weapon_hand = false;
         weapon_diff = 0;
         left_hand = false;
         right_hand = false;

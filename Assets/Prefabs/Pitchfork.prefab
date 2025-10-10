@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d8426311171f4325b64ad2b6c28a79f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.134
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d8426311171f4325b64ad2b6c28a79f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,7 +65,7 @@ PrefabInstance:
       addedObject: {fileID: 3348568127617642473}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d8426311171f4325b64ad2b6c28a79f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6998988905776864747}
+      addedObject: {fileID: 2143194595634893979}
   m_SourcePrefab: {fileID: 100100000, guid: 4d8426311171f4325b64ad2b6c28a79f, type: 3}
 --- !u!1 &1834891530365619866 stripped
 GameObject:
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon_diff: 0
---- !u!95 &6998988905776864747
+--- !u!95 &2143194595634893979
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
