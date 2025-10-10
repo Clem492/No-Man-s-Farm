@@ -18,21 +18,22 @@ public class animation : MonoBehaviour
     //fonction pour savoir quelle animation en fonction de quelle arme
     void animation_weapon()
     {
-        if (weapon_diff == 0 && Input.GetKey(KeyCode.Mouse0))
+        if (weapon_diff == 0 && Input.GetKeyDown(KeyCode.Mouse0))
         {
 
         }
-        if (weapon_diff == 1 && Input.GetKey(KeyCode.Mouse0))
+        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0))
         {
 
         }
-        if (weapon_diff == 2 && Input.GetKey(KeyCode.Mouse0))
+        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0))
         {
 
         }
-        if (weapon_diff == 3 && Input.GetKey(KeyCode.Mouse0))
+        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true)
         {
             animator.SetTrigger("Attack");
+            
         }
     }
     private void Start()
