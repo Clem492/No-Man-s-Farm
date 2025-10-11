@@ -40,8 +40,9 @@ public class spawn_zombie : MonoBehaviour
         {
             lumière_valeur = 100;
             numero_vague += 1;
-            
-            
+            temp_jour = 10;
+            temp_nuit = 10;
+
             //affiche le jour
             jour_nuit.text = "jour";
 
@@ -49,19 +50,12 @@ public class spawn_zombie : MonoBehaviour
             for (int i = 0; i < temp_jour; i++)
             {
                 jour_nuit_lumière.transform.rotation = Quaternion.Euler(lumière_valeur, 0, 0);
+                Debug.Log("light");
                 lumière_valeur -= 10;
                 yield return new WaitForSeconds(1f);
             }
-            lumière_valeur = -100;
-            for (int i = 0; i < temp_jour; i++)
-            {
-                jour_nuit_lumière.transform.rotation = Quaternion.Euler(lumière_valeur, 0, 0);
-                lumière_valeur += 10;
-                yield return new WaitForSeconds(1f);
-            }
-            yield return new WaitForSeconds(10f);
             
-
+            
             //affiche la nuit
             jour_nuit.text = "nuit";
           
@@ -78,11 +72,19 @@ public class spawn_zombie : MonoBehaviour
             //ont augmente le nombre de zombie qui va spawn
             nombre_zombie_spawn = nombre_zombie_spawn + 2;
             // Attendre ... s avant de faire la suite de la fonction (nuit)
-            yield return new WaitForSeconds(10f);
-            
 
-          
-           
+            lumière_valeur = -100;
+            for (int i = 0; i < temp_nuit; i++)
+            {
+                jour_nuit_lumière.transform.rotation = Quaternion.Euler(lumière_valeur, 0, 0);
+                Debug.Log("light2");
+                lumière_valeur += 10;
+                yield return new WaitForSeconds(1f);
+            }
+
+
+
+
         }
         
            
