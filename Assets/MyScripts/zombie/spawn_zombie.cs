@@ -10,6 +10,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
     [SerializeField] Light jour_nuit_lumière;
+    [SerializeField] GameObject girouette;
     GameObject[] tab_zombie =new GameObject[100000];
     public int[] tab_pv_zombie = new int[100000];
     public int nombre_zombie_spawn = 5;
@@ -19,6 +20,7 @@ public class spawn_zombie : MonoBehaviour
     int lumière_valeur;
     int depart = 0;
     int sauvgarde_depart;
+    int zone_spawn;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -61,14 +63,46 @@ public class spawn_zombie : MonoBehaviour
           
             //affiche le numéro de la vague
             vague.text = "vague : " + numero_vague;
+            zone_spawn = Random.Range(0, 4);
             //ont instantie les zombie
-            for (int i = depart; i < nombre_zombie_spawn+sauvgarde_depart; i++)
+
+            if(zone_spawn == 0)
             {
-                tab_zombie[i] = Instantiate(zombie_prefab,new Vector3(Random.Range(10,100),1.5f, Random.Range(10, 100)), Quaternion.identity);
-                
-                depart += 1;
+                for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                {
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(400, 500)), Quaternion.identity);
+                    girouette.transform.rotation = Quaternion.Euler(0, 44, 0);
+                    depart += 1;
+                }
             }
-            sauvgarde_depart = depart;
+            else if (zone_spawn == 1)
+            {
+                for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                {
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(400, 500), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    girouette.transform.rotation = Quaternion.Euler(0, 134, 0);
+                    depart += 1;
+                }
+            }
+            else if (zone_spawn == 2)
+            {
+                for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                {
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(0, 100)), Quaternion.identity);
+                    girouette.transform.rotation = Quaternion.Euler(0, 224, 0);
+                    depart += 1;
+                }
+            }
+            else
+            {
+                for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                {
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(0, 100), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    girouette.transform.rotation = Quaternion.Euler(0, 314, 0);
+                    depart += 1;
+                }
+            }
+                sauvgarde_depart = depart;
             //ont augmente le nombre de zombie qui va spawn
             nombre_zombie_spawn = nombre_zombie_spawn + 2;
             // Attendre ... s avant de faire la suite de la fonction (nuit)
