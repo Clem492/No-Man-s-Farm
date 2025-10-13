@@ -27,6 +27,7 @@ public class spawn_zombie : MonoBehaviour
     {
         StartCoroutine(spawn());
         jour_nuit_lumière.transform.rotation = Quaternion.Euler(90,0,0);
+        girouette.transform.rotation = Quaternion.Euler(0, 0, 0);
         temp_jour = 10;
         temp_nuit = 10;
     }
@@ -68,37 +69,45 @@ public class spawn_zombie : MonoBehaviour
 
             if(zone_spawn == 0)
             {
+                //Nord
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(400, 500)), Quaternion.identity);
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(350, 450)), Quaternion.identity);
                     girouette.transform.rotation = Quaternion.Euler(0, 44, 0);
+                    Debug.Log("Nord");
                     depart += 1;
                 }
             }
             else if (zone_spawn == 1)
             {
+                //Est
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(400, 500), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(350, 450), 1.5f, Random.Range(150, 350)), Quaternion.identity);
                     girouette.transform.rotation = Quaternion.Euler(0, 134, 0);
+                    Debug.Log("Est");
                     depart += 1;
                 }
             }
             else if (zone_spawn == 2)
             {
+                //Sud
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(0, 100)), Quaternion.identity);
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(50, 150)), Quaternion.identity);
                     girouette.transform.rotation = Quaternion.Euler(0, 224, 0);
+                    Debug.Log("Sud");
                     depart += 1;
                 }
             }
             else
             {
+                //Ouest
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(0, 100), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(50, 150), 1.5f, Random.Range(150, 350)), Quaternion.identity);
                     girouette.transform.rotation = Quaternion.Euler(0, 314, 0);
+                    Debug.Log("Ouest");
                     depart += 1;
                 }
             }
