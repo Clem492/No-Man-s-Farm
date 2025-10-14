@@ -24,7 +24,8 @@ public class animation : MonoBehaviour
         }
         if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+            animator.SetTrigger("axe_attack");
+            Debug.Log("la touche est appuyer");
         }
         if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0))
         {
