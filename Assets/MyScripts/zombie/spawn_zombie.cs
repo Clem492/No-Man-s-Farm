@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
-using UnityEngine.Experimental.GlobalIllumination;
+// using UnityEngine.Experimental.GlobalIllumination; // supprim√© car inutile et source potentielle d‚Äôerreurs
 
 public class spawn_zombie : MonoBehaviour
 {
@@ -9,15 +9,15 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] GameObject zombie_prefab;
     [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
-    [SerializeField] Light jour_nuit_lumiËre;
+    [SerializeField] Light jour_nuit_lumiere; // corrig√© (remplacement du caract√®re cass√©)
     [SerializeField] GameObject girouette;
-    GameObject[] tab_zombie =new GameObject[100000];
+    GameObject[] tab_zombie = new GameObject[100000];
     public int[] tab_pv_zombie = new int[100000];
     public int nombre_zombie_spawn = 5;
     int numero_vague;
     int temp_jour;
     int temp_nuit;
-    int lumiËre_valeur;
+    int lumiere_valeur; // corrig√© (remplacement du caract√®re cass√©)
     int depart = 0;
     int sauvgarde_depart;
     int zone_spawn;
@@ -26,7 +26,7 @@ public class spawn_zombie : MonoBehaviour
     void Start()
     {
         StartCoroutine(spawn());
-        jour_nuit_lumiËre.transform.rotation = Quaternion.Euler(90,0,0);
+        jour_nuit_lumiere.transform.rotation = Quaternion.Euler(90,0,0);
         girouette.transform.rotation = Quaternion.Euler(0, 0, 0);
         temp_jour = 10;
         temp_nuit = 10;
@@ -41,7 +41,7 @@ public class spawn_zombie : MonoBehaviour
     {
         while (true)
         {
-            lumiËre_valeur = 100;
+            lumiere_valeur = 100;
             numero_vague += 1;
             temp_jour = 10;
             temp_nuit = 10;
@@ -52,9 +52,9 @@ public class spawn_zombie : MonoBehaviour
             // Attendre ... s avant de faire la suite de la fonction (jour)
             for (int i = 0; i < temp_jour; i++)
             {
-                jour_nuit_lumiËre.transform.rotation = Quaternion.Euler(lumiËre_valeur, 0, 0);
+                jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
                 Debug.Log("light");
-                lumiËre_valeur -= 10;
+                lumiere_valeur -= 10;
                 yield return new WaitForSeconds(1f);
             }
             
@@ -62,7 +62,7 @@ public class spawn_zombie : MonoBehaviour
             //affiche la nuit
             jour_nuit.text = "nuit";
           
-            //affiche le numÈro de la vague
+            //affiche le num√©ro de la vague
             vague.text = "vague : " + numero_vague;
             zone_spawn = Random.Range(0, 4);
             //ont instantie les zombie
@@ -111,26 +111,19 @@ public class spawn_zombie : MonoBehaviour
                     depart += 1;
                 }
             }
-                sauvgarde_depart = depart;
+            sauvgarde_depart = depart;
             //ont augmente le nombre de zombie qui va spawn
             nombre_zombie_spawn = nombre_zombie_spawn + 2;
             // Attendre ... s avant de faire la suite de la fonction (nuit)
 
-            lumiËre_valeur = -100;
+            lumiere_valeur = -100;
             for (int i = 0; i < temp_nuit; i++)
             {
-                jour_nuit_lumiËre.transform.rotation = Quaternion.Euler(lumiËre_valeur, 0, 0);
+                jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
                 Debug.Log("light2");
-                lumiËre_valeur += 10;
+                lumiere_valeur += 10;
                 yield return new WaitForSeconds(1f);
             }
-
-
-
-
         }
-        
-           
     }
-    
 }
