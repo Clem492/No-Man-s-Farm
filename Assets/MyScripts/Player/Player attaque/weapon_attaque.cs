@@ -97,31 +97,32 @@ public class weapon_attaque : MonoBehaviour
                   }
               }
           }
-          if (weapon_diff == 3)// le 3 signifie la fouche
-          {
-              Debug.DrawRay(transform.position, cam.transform.forward * 4, Color.red);
-              if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))//creation d'un raycast
+        /*if (weapon_diff == 3)// le 3 signifie la fouche
+        {
+            Debug.DrawRay(transform.position, cam.transform.forward * 4, Color.red);
+            if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))//creation d'un raycast
+            {
+              if (Input.GetKeyDown(KeyCode.Mouse0))
               {
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    if (hit.transform.GetComponent<pv_zombie>())//verification que le gameobject possède le script pv_zombie
-                    {
+                  if (hit.transform.GetComponent<pv_zombie>())//verification que le gameobject possède le script pv_zombie
+                  {
 
-                        pitchfork_dommage = rarety * (double_hand_dammage * 8);
-                        hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= pitchfork_dommage;
+                      pitchfork_dommage = rarety * (double_hand_dammage * 8);
+                      hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= pitchfork_dommage;
 
 
 
-                    }
-                }
-                   
-
+                  }
               }
 
-          }
-      }
-   
 
+            }
+
+        }*/
+       
+    }
+   
+   
 
 
     //fonction pour savoir si les deux main sont utiliser pour le combat 
