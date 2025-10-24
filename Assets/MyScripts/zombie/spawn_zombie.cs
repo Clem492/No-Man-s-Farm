@@ -72,7 +72,8 @@ public class spawn_zombie : MonoBehaviour
                 //Nord
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(350, 450)), Quaternion.identity);
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(50, 150), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    
                     girouette.transform.rotation = Quaternion.Euler(0, 44, 0);
                     Debug.Log("Nord");
                     depart += 1;
@@ -83,7 +84,8 @@ public class spawn_zombie : MonoBehaviour
                 //Est
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(350, 450), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(350, 450)), Quaternion.identity);
+                    
                     girouette.transform.rotation = Quaternion.Euler(0, 134, 0);
                     Debug.Log("Est");
                     depart += 1;
@@ -94,7 +96,8 @@ public class spawn_zombie : MonoBehaviour
                 //Sud
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(50, 150)), Quaternion.identity);
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(350, 450), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    
                     girouette.transform.rotation = Quaternion.Euler(0, 224, 0);
                     Debug.Log("Sud");
                     depart += 1;
@@ -105,7 +108,8 @@ public class spawn_zombie : MonoBehaviour
                 //Ouest
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(50, 150), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(50, 150)), Quaternion.identity);
+                   
                     girouette.transform.rotation = Quaternion.Euler(0, 314, 0);
                     Debug.Log("Ouest");
                     depart += 1;

@@ -36,6 +36,7 @@ public class pv_zombie : MonoBehaviour
     public void perte_pv_zombie(float degats)
     {
         nb_pv_zombie -= degats;
+        
         animator.SetTrigger("degat_zombie");
     }
     IEnumerator anim_mort_zombie()
