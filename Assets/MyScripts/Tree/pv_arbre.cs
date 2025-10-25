@@ -5,12 +5,12 @@ public class pv_arbre : MonoBehaviour
 {
     public float nb_pv_arbre;
     [SerializeField] GameObject souche;
-    //Animator animator;
+    Animator animator;
 
     void Start()
     {
         nb_pv_arbre = 3;
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,12 +21,14 @@ public class pv_arbre : MonoBehaviour
     public void perte_pv_arbre(float degats)
     {
         nb_pv_arbre -= degats;
-        Debug.Log(nb_pv_arbre);
+        animator.SetTrigger("degat_arbre");
+        
     }
     void destruction_arbre()
     {
         if (nb_pv_arbre <= 0)
         {
+            
             StartCoroutine(anim_destruction_arbre());
         }
            
