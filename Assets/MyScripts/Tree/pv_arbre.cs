@@ -10,7 +10,7 @@ public class pv_arbre : MonoBehaviour
     void Start()
     {
         nb_pv_arbre = 3;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
