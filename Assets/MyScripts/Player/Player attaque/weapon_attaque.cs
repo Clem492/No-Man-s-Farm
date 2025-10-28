@@ -24,6 +24,7 @@ public class weapon_attaque : MonoBehaviour
     //dégat pour les différente arme
     float hand_dommage;
     float axe_dommage;
+    float axe_dommage_tree;
     float sickle_dommage;
     float pitchfork_dommage;
     int rarety;
@@ -51,7 +52,7 @@ public class weapon_attaque : MonoBehaviour
                       if (hit.transform.GetComponent<pv_zombie>())
                       {
                           hand_dommage = 2;
-                          hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= hand_dommage;
+                          hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
                       }
 
 
@@ -73,9 +74,15 @@ public class weapon_attaque : MonoBehaviour
                       if (col.transform.GetComponent<pv_zombie>())
                       {
                           axe_dommage = rarety * (double_hand_dammage * 7);
-                          col.transform.GetComponent<pv_zombie>().nb_pv_zombie -= axe_dommage;
+                          col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
                       }
-                  }
+                      if (col.transform.GetComponent<pv_arbre>())
+                      {
+                      
+                        axe_dommage_tree = 1;
+                        col.transform.GetComponent<pv_arbre>().perte_pv_arbre(axe_dommage_tree);
+                      }
+                }
 
               }
 
@@ -91,7 +98,7 @@ public class weapon_attaque : MonoBehaviour
                       if (hit.transform.GetComponent<pv_zombie>())
                       {
                           sickle_dommage = rarety * (double_hand_dammage * 5);
-                          hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= sickle_dommage;
+                          hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(sickle_dommage);
                       }
 
                   }
