@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class animation : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class animation : MonoBehaviour
     [SerializeField] int weapon_diff;
     //il faut aussi récupérer la main gauche ou droite du joueur
      Animator animator;
+    // il faut savoir si il est possible de jouer l'animation 
+    bool can_pitfork_animation;
     private void Update()
     {
         player = GameObject.FindWithTag("player");
@@ -31,14 +34,21 @@ public class animation : MonoBehaviour
         {
             animator.SetTrigger("sickle_attack");
         }
-        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true)
+        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_pitfork_animation == true)
         {
-            animator.SetTrigger("pitchfork_attack");
-            
+            can_pitfork_animation = false;
+            StartCoroutine(pitforck_anim());
         }
+    }
+    IEnumerator pitforck_anim()
+    {
+        animator.SetTrigger("pitchfork_attack");
+        yield return new WaitForSeconds(1.5f);
+        can_pitfork_animation = true;
     }
     private void Start()
     {
         animator = GetComponent<Animator>();
+        can_pitfork_animation = true;
     }
 }

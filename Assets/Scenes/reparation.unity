@@ -1013,8 +1013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 889083640}
   zombie_prefab: {fileID: 7397198928277762974, guid: 3ec912f9eaec02e488a79ab5c3667d95, type: 3}
-  cerf: {fileID: 0}
-  farm: {fileID: 0}
+  cerf: {fileID: 4131024657148194795, guid: aaac550b6f348464b92c7d573da7fbf1, type: 3}
+  farm: {fileID: 7717401577000014297, guid: be326a05abb8b0b48980adff317d1f4d, type: 3}
   jour_nuit: {fileID: 185047375}
   vague: {fileID: 349663493}
   jour_nuit_lumiere: {fileID: 1233420620}

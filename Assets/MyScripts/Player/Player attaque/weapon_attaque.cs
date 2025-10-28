@@ -124,21 +124,27 @@ public class weapon_attaque : MonoBehaviour
                 }
               }
           }
-        if (weapon_diff == 3 && can_attaque == true)// le 3 signifie la fouche
+       
+        if (weapon_diff == 3 && can_attaque == true)
         {
-            Debug.DrawRay(cam.transform.position, cam.transform.forward * 4, Color.red);
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4))
-           {
-                if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                can_attaque = false;
+                Debug.DrawRay(cam.transform.position, cam.transform.forward * 4, Color.red);
+                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4))
                 {
-                    can_attaque = false;
-                    StartCoroutine(anti_spam());
-                }
-                    
-            }
 
+                    StartCoroutine(anti_spam());
+
+                }
+                else
+                {
+                    StartCoroutine(reset_anim());
+                }
+            }
         }
 
+        
     }
 
     
@@ -146,13 +152,20 @@ public class weapon_attaque : MonoBehaviour
     IEnumerator anti_spam()
     {
         
-        if (hit.transform.GetComponent<pv_zombie>())
+        if (hit.transform.GetComponent<pv_zombie>() )
         {
             float pitchfork_dommage = 8;
             hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= pitchfork_dommage;
             Debug.Log("Zombie touché !");
             
         }
+        yield return new WaitForSeconds(1.5f);
+        can_attaque = true;
+        
+    }
+
+    IEnumerator reset_anim()
+    {
         yield return new WaitForSeconds(1.5f);
         can_attaque = true;
     }
