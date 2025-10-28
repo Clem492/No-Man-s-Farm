@@ -1,15 +1,18 @@
-using UnityEngine;
 using System.Collections;
+using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
+using UnityEngine;
 // using UnityEngine.Experimental.GlobalIllumination; // supprimé car inutile et source potentielle d’erreurs
 
 public class spawn_zombie : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject zombie_prefab;
+    [SerializeField] GameObject cerf;
+    [SerializeField] GameObject farm;
     [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
-    [SerializeField] Light jour_nuit_lumiere; // corrigé (remplacement du caractère cassé)
+    [SerializeField] Light jour_nuit_lumiere; 
     [SerializeField] GameObject girouette;
     GameObject[] tab_zombie = new GameObject[100000];
     public int[] tab_pv_zombie = new int[100000];
@@ -17,19 +20,23 @@ public class spawn_zombie : MonoBehaviour
     int numero_vague;
     int temp_jour;
     int temp_nuit;
-    int lumiere_valeur; // corrigé (remplacement du caractère cassé)
+    int lumiere_valeur; 
     int depart = 0;
     int sauvgarde_depart;
     int zone_spawn;
+    int nb_cerf_spawn;
+    GameObject cerf_actuelle;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(spawn());
+        nb_cerf_spawn = 10;
+        numero_vague = 0;
         jour_nuit_lumiere.transform.rotation = Quaternion.Euler(90,0,0);
         girouette.transform.rotation = Quaternion.Euler(0, 0, 0);
         temp_jour = 10;
         temp_nuit = 10;
+        StartCoroutine(spawn());
     }
 
     // Update is called once per frame
@@ -41,10 +48,21 @@ public class spawn_zombie : MonoBehaviour
     {
         while (true)
         {
+            if (numero_vague%5 ==0)
+            {
+                for (int i = 0; i < nb_cerf_spawn; i++)
+                {
+                    cerf_actuelle = Instantiate(cerf, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
+                    if (Vector3.Distance(cerf_actuelle.transform.position, farm.transform.position) < 30)
+                    {
+                        Destroy(cerf_actuelle);
+                    }
+                }
+                
+            }
             lumiere_valeur = 100;
             numero_vague += 1;
-            temp_jour = 10;
-            temp_nuit = 10;
+            
 
             //affiche le jour
             jour_nuit.text = "jour";
