@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class pv_arbre : MonoBehaviour
 {
     public float nb_pv_arbre;
     [SerializeField] GameObject souche;
+    [SerializeField] GameObject branche;
     Animator animator;
 
     void Start()
@@ -39,6 +41,10 @@ public class pv_arbre : MonoBehaviour
         
         yield return new WaitForSeconds(1f);
         Instantiate(souche, gameObject.transform.position, Quaternion.Euler(0, Random.Range(0, 360), 0));
+        for (int i = 0; i < Random.Range(1,4); i++)
+        {
+            Instantiate(branche,new Vector3(gameObject.transform.position.x,3,gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
+        }
         Destroy(gameObject);
     }
 }
