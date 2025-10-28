@@ -11,7 +11,7 @@ public class dommage : MonoBehaviour
     {
         RaycastHit hit;
 
-        
+        Debug.DrawRay(cam.transform.position, cam.transform.forward * 4, Color.red);
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4))
         {
             
@@ -26,7 +26,7 @@ public class dommage : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(cam.transform.position, cam.transform.forward * 4, Color.red);
+        
     }
 
 }
