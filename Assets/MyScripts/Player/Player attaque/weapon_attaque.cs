@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
 //ce sript utilise weapon instantiate
 public class weapon_attaque : MonoBehaviour
 {
@@ -30,17 +31,18 @@ public class weapon_attaque : MonoBehaviour
     int rarety;
     float double_hand_dammage = 1.5f;
 
-
+    //utile pour la coroutine anti_spam
+    bool can_attaque;
 
     //fonction pour savoir quelle arme le joueur a en main
-     public void What_weapon()
+    public void What_weapon()
       {
 
           weapon_diff = weapons_created.GetComponent<weaponinstantiate>().weapon_diff;
           right_hand = hand_right.right_hand;
           left_hand = hand_left.left_hand;
 
-          if (weapon_diff == 0 && right_hand == false ) //le 0 signifie main nue
+          /*if (weapon_diff == 0 && right_hand == false ) //le 0 signifie main nue
           {
               Debug.DrawRay(cam.transform.position, cam.transform.forward * 2, Color.red);
               if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -59,7 +61,7 @@ public class weapon_attaque : MonoBehaviour
                   }
               }
 
-          }
+          }*/
 
           if (weapon_diff == 1) //le 1 signfie la hache
           {
@@ -104,25 +106,38 @@ public class weapon_attaque : MonoBehaviour
                   }
               }
           }
-       /* if (weapon_diff == 3)// le 3 signifie la fouche
+        if (weapon_diff == 3 && can_attaque == true)// le 3 signifie la fouche
         {
             Debug.DrawRay(cam.transform.position, cam.transform.forward * 4, Color.red);
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4))
            {
-                if (hit.transform.GetComponent<pv_zombie>())
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    float pitchfork_dommage = 8;
-                    hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= pitchfork_dommage;
-                    Debug.Log("Zombie touché !");
+                    can_attaque = false;
+                    StartCoroutine(anti_spam());
                 }
+                    
             }
 
-        }*/
+        }
 
     }
 
+    
 
-
+    IEnumerator anti_spam()
+    {
+        
+        if (hit.transform.GetComponent<pv_zombie>())
+        {
+            float pitchfork_dommage = 8;
+            hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= pitchfork_dommage;
+            Debug.Log("Zombie touché !");
+            
+        }
+        yield return new WaitForSeconds(1.5f);
+        can_attaque = true;
+    }
 
     //fonction pour savoir si les deux main sont utiliser pour le combat 
     void Double_hand_active()
@@ -163,6 +178,7 @@ public class weapon_attaque : MonoBehaviour
     private void Start()
     {
         rarety = 1;
+        can_attaque = true;
         
     }
 

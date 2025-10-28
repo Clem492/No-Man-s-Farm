@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1314216066173408288}
   - component: {fileID: 3348568127617642473}
   - component: {fileID: 2143194595634893979}
-  - component: {fileID: 2308756220268711006}
   - component: {fileID: 4483615138615187247}
   m_Layer: 0
   m_Name: Pitchfork
@@ -72,19 +71,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2308756220268711006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834891530365619866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4946cd16bbdd384e905cb81b8102e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 7099769697083449595, guid: 9ea18376962de364ca6db52884cee48c, type: 3}
 --- !u!114 &4483615138615187247
 MonoBehaviour:
   m_ObjectHideFlags: 0
