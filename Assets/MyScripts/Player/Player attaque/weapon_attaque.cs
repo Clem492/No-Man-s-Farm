@@ -42,28 +42,34 @@ public class weapon_attaque : MonoBehaviour
           right_hand = hand_right.right_hand;
           left_hand = hand_left.left_hand;
 
-          /*if (weapon_diff == 0 && right_hand == false ) //le 0 signifie main nue
-          {
-              Debug.DrawRay(cam.transform.position, cam.transform.forward * 2, Color.red);
-              if (Input.GetKeyDown(KeyCode.Mouse0))
-              {
-                  if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
-                  {
+        /*if (weapon_diff == 0 && right_hand == false ) //le 0 signifie main nue
+        {
+            Debug.DrawRay(cam.transform.position, cam.transform.forward * 2, Color.red);
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
+                {
 
 
-                      if (hit.transform.GetComponent<pv_zombie>())
-                      {
-                          hand_dommage = 2;
-                          hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
-                      }
+                    if (hit.transform.GetComponent<pv_zombie>())
+                    {
+                        hand_dommage = 2;
+                        hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
+                    }
+                    if (hit.transform.GetComponent<pv_cerf>())
+                    {
+
+                      axe_dommage = rarety * (double_hand_dammage * 7); ;
+                      hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
+                    }
 
 
-                  }
-              }
+                }
+            }
 
-          }*/
+        }*/
 
-          if (weapon_diff == 1) //le 1 signfie la hache
+        if (weapon_diff == 1) //le 1 signfie la hache
           {
               //raycast en boule pour toucher plus d'enemie
               //il faut faire la hache
@@ -84,6 +90,12 @@ public class weapon_attaque : MonoBehaviour
                         axe_dommage_tree = 1;
                         col.transform.GetComponent<pv_arbre>().perte_pv_arbre(axe_dommage_tree);
                       }
+                      if (col.transform.GetComponent<pv_cerf>())
+                      {
+
+                        axe_dommage = rarety * (double_hand_dammage * 7); ;
+                        col.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
+                      }
                 }
 
               }
@@ -102,8 +114,14 @@ public class weapon_attaque : MonoBehaviour
                           sickle_dommage = rarety * (double_hand_dammage * 5);
                           hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(sickle_dommage);
                       }
+                      if (hit.transform.GetComponent<pv_cerf>())
+                      {
 
-                  }
+                        axe_dommage = rarety * (double_hand_dammage * 7); ;
+                        hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
+                      }
+
+                }
               }
           }
         if (weapon_diff == 3 && can_attaque == true)// le 3 signifie la fouche
