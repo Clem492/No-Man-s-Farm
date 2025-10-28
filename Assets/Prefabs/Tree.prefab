@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nb_pv_arbre: 0
   souche: {fileID: 898739633153018993, guid: 88903ac429c0a37408a91646536e3a69, type: 3}
+  branche: {fileID: 4308787965289420733, guid: f74adc08a4eb6564dad870dd027f215d, type: 3}
 --- !u!1 &4609209868763265684
 GameObject:
   m_ObjectHideFlags: 0
