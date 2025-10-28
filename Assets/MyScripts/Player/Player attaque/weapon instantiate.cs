@@ -8,7 +8,7 @@ public class weaponinstantiate : MonoBehaviour
 
 {
    public GameObject hand_right;
-
+    public Vector3 player_position;
 
     //variable pour connaitre savoir quelle arme le joueur a en main
     public bool left_hand;
@@ -170,6 +170,7 @@ public class weaponinstantiate : MonoBehaviour
     {
         nothing_in_hand();
         What_hand();
+        player_position = gameObject.transform.position;
     }
 }
 

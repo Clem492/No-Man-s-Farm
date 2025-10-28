@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5659300927474996215}
   - component: {fileID: 3323745748376128415}
   - component: {fileID: 7972873374294261791}
+  - component: {fileID: -3762588853490325150}
   m_Layer: 0
   m_Name: PLAYER
   m_TagString: Untagged
@@ -165,18 +166,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand_right: {fileID: 0}
+  player_position: {x: 0, y: 0, z: 0}
   left_hand: 0
   right_hand: 0
   weapon_hand: 0
   weapon_diff: 0
   left_hand_position: {fileID: 338160251508411408}
   right_hand_position: {fileID: 2481306415278894908}
-  axe: {fileID: 1518754538579831166, guid: ec43f6a0135486146be6e58162c4f56c, type: 3}
-  axe_prefab: {fileID: 0}
-  sickle: {fileID: 7910194157013283825, guid: 831a915fbc3b61844ae92fc8a3ff12c0, type: 3}
-  sickle_prefab: {fileID: 0}
-  pitchfork_prefab: {fileID: 0}
+  axe: {fileID: 0}
+  axe_prefab: {fileID: 6347378262544481127, guid: ec43f6a0135486146be6e58162c4f56c, type: 3}
+  sickle: {fileID: 0}
+  sickle_prefab: {fileID: 7910194157013283825, guid: 831a915fbc3b61844ae92fc8a3ff12c0, type: 3}
+  pitchfork_prefab: {fileID: 1834891530365619866, guid: 016790f3166f2ca46b5524a9e323319f, type: 3}
   pitchfork: {fileID: 3701960203087267583, guid: 016790f3166f2ca46b5524a9e323319f, type: 3}
+--- !u!114 &-3762588853490325150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132866994672002125}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4946cd16bbdd384e905cb81b8102e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 7099769697083449595, guid: 9ea18376962de364ca6db52884cee48c, type: 3}
 --- !u!1001 &5762481688097158852
 PrefabInstance:
   m_ObjectHideFlags: 0

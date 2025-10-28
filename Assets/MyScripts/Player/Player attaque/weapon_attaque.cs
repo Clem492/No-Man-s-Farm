@@ -42,7 +42,7 @@ public class weapon_attaque : MonoBehaviour
 
           if (weapon_diff == 0 && right_hand == false ) //le 0 signifie main nue
           {
-              Debug.DrawRay(transform.position, cam.transform.forward * 2, Color.red);
+              Debug.DrawRay(cam.transform.position, cam.transform.forward * 2, Color.red);
               if (Input.GetKeyDown(KeyCode.Mouse0))
               {
                   if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
@@ -104,32 +104,24 @@ public class weapon_attaque : MonoBehaviour
                   }
               }
           }
-        /*if (weapon_diff == 3)// le 3 signifie la fouche
+       /* if (weapon_diff == 3)// le 3 signifie la fouche
         {
-            Debug.DrawRay(transform.position, cam.transform.forward * 4, Color.red);
-            if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))//creation d'un raycast
-            {
-              if (Input.GetKeyDown(KeyCode.Mouse0))
-              {
-                  if (hit.transform.GetComponent<pv_zombie>())//verification que le gameobject possède le script pv_zombie
-                  {
-
-                      pitchfork_dommage = rarety * (double_hand_dammage * 8);
-                      hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= pitchfork_dommage;
-
-
-
-                  }
-              }
-
-
+            Debug.DrawRay(cam.transform.position, cam.transform.forward * 4, Color.red);
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4))
+           {
+                if (hit.transform.GetComponent<pv_zombie>())
+                {
+                    float pitchfork_dommage = 8;
+                    hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= pitchfork_dommage;
+                    Debug.Log("Zombie touché !");
+                }
             }
 
         }*/
-       
+
     }
-   
-   
+
+
 
 
     //fonction pour savoir si les deux main sont utiliser pour le combat 
