@@ -182,5 +182,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db54ba5148e72864891aa35296577e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nb_pv_arbre: 0
+  nb_pv_arbre_mort: 0
   branche: {fileID: 4308787965289420733, guid: f74adc08a4eb6564dad870dd027f215d, type: 3}
