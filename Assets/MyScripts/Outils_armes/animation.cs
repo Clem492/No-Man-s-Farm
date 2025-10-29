@@ -51,7 +51,7 @@ public class animation : MonoBehaviour
     IEnumerator sickle_anim()
     {
         animator.SetTrigger("sickle_attack");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1);
         can_attaque = true;
     }
     private void Start()
