@@ -102,7 +102,7 @@ public class weapon_attaque : MonoBehaviour
 
 
           }
-          if (weapon_diff == 2 && can_attaque == false) //le 2 signifie la faussile
+          if (weapon_diff == 2 && can_attaque == true) //le 2 signifie la faussile
           {
               Debug.DrawRay(transform.position, cam.transform.forward * 2, Color.red);
               if (Input.GetKeyDown(KeyCode.Mouse0))
