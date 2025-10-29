@@ -903,6 +903,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pitchfork (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2143194595634893979, guid: 016790f3166f2ca46b5524a9e323319f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
