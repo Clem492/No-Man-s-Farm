@@ -84,7 +84,7 @@ public class weapon_attaque : MonoBehaviour
                           axe_dommage = rarety * (double_hand_dammage * 7);
                           col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
                       }
-                      if (col.transform.GetComponent<pv_arbre>() || col.transform.GetComponent<pv_arbre_mort>())
+                      if (col.transform.GetComponent<pv_arbre>())
                       {
                       
                         axe_dommage_tree = 1;
@@ -96,6 +96,12 @@ public class weapon_attaque : MonoBehaviour
                         axe_dommage = rarety * (double_hand_dammage * 7); ;
                         col.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
                       }
+                    if (col.transform.GetComponent<pv_arbre_mort>())
+                    {
+                        axe_dommage_tree = 1;
+                        col.transform.GetComponent<pv_arbre_mort>().perte_pv_arbre(axe_dommage_tree);
+                    }
+                    
                 }
 
               }
