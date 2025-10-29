@@ -155,12 +155,12 @@ public class weapon_attaque : MonoBehaviour
             axe_dommage = rarety * (double_hand_dammage * 7); ;
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
         }
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(0.5f);
         can_attaque = true;
     }
     IEnumerator reset_anim_sickle()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(0.5f);
         can_attaque = true;
     }
 
