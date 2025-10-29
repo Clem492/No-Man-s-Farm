@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &174683025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1834891530365619866, guid: 016790f3166f2ca46b5524a9e323319f, type: 3}
+  m_PrefabInstance: {fileID: 967844446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &225230905
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479732058253204964, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 266.54
+      value: 267.6
       objectReference: {fileID: 0}
     - target: {fileID: 479732058253204964, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: m_LocalRotation.w
@@ -978,7 +983,7 @@ PrefabInstance:
     - target: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: pitchfork
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 174683025}
     - target: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: axe_prefab
       value: 
@@ -2556,7 +2561,7 @@ SceneRoots:
   - {fileID: 1194091467}
   - {fileID: 2940954718979035561}
   - {fileID: 203259195079710187}
-  - {fileID: 675827667}
   - {fileID: 967844446}
+  - {fileID: 675827667}
   - {fileID: 3577182693479161836}
   - {fileID: 1323647390}
