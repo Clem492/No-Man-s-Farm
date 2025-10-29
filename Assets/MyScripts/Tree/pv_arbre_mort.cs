@@ -4,13 +4,13 @@ using System.Collections;
 
 public class pv_arbre_mort : MonoBehaviour
 {
-    public float nb_pv_arbre;
+    public float nb_pv_arbre_mort;
     [SerializeField] GameObject branche;
     Animator animator;
 
     void Start()
     {
-        nb_pv_arbre = 3;
+        nb_pv_arbre_mort = 3;
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -21,13 +21,13 @@ public class pv_arbre_mort : MonoBehaviour
     }
     public void perte_pv_arbre(float degats)
     {
-        nb_pv_arbre -= degats;
+        nb_pv_arbre_mort -= degats;
         animator.SetTrigger("degat_arbre");
         
     }
     void destruction_arbre_mort()
     {
-        if (nb_pv_arbre <= 0)
+        if (nb_pv_arbre_mort <= 0)
         {
             
             for (int i = 0; i < Random.Range(2, 5); i++)
