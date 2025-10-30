@@ -132,6 +132,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 1d201bb98ff1d4742b3847e061e546df, type: 3}
       insertIndex: -1
       addedObject: {fileID: -685199817293812162}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 1d201bb98ff1d4742b3847e061e546df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -774694174196772968}
   m_SourcePrefab: {fileID: 100100000, guid: 1d201bb98ff1d4742b3847e061e546df, type: 3}
 --- !u!4 &977485678702699950 stripped
 Transform:
@@ -191,3 +194,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-774694174196772968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308787965289420733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536287b56948dc7418dabae60959ca35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item_data:
+    Items_name: "B\xE2ton"
+    max_Stack: 250
+    quantity: 0
