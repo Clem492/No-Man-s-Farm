@@ -42,7 +42,7 @@ public class weapon_attaque : MonoBehaviour
           right_hand = hand_right.right_hand;
           left_hand = hand_left.left_hand;
 
-        /*if (weapon_diff == 0 && right_hand == false ) //le 0 signifie main nue
+        if (weapon_diff == 0 && right_hand == false ) //le 0 signifie main nue
         {
             Debug.DrawRay(cam.transform.position, cam.transform.forward * 2, Color.red);
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -67,7 +67,7 @@ public class weapon_attaque : MonoBehaviour
                 }
             }
 
-        }*/
+        }
 
         if (weapon_diff == 1) //le 1 signfie la hache
           {
@@ -96,31 +96,32 @@ public class weapon_attaque : MonoBehaviour
                         axe_dommage = rarety * (double_hand_dammage * 7); ;
                         col.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
                       }
+                    if (col.transform.GetComponent<pv_arbre_mort>())
+                    {
+                        axe_dommage_tree = 1;
+                        col.transform.GetComponent<pv_arbre_mort>().perte_pv_arbre(axe_dommage_tree);
+                    }
+                    
                 }
 
               }
 
 
           }
-          if (weapon_diff == 2) //le 2 signifie la faussile
+          if (weapon_diff == 2 && can_attaque == true) //le 2 signifie la faussile
           {
               Debug.DrawRay(transform.position, cam.transform.forward * 2, Color.red);
               if (Input.GetKeyDown(KeyCode.Mouse0))
               {
+                can_attaque = false;
                   if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
                   {
-                      if (hit.transform.GetComponent<pv_zombie>())
-                      {
-                          sickle_dommage = rarety * (double_hand_dammage * 5);
-                          hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(sickle_dommage);
-                      }
-                      if (hit.transform.GetComponent<pv_cerf>())
-                      {
+                    StartCoroutine(anti_spam_sickle());
 
-                        axe_dommage = rarety * (double_hand_dammage * 7); ;
-                        hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
-                      }
-
+                  }
+                else
+                {
+                    StartCoroutine(reset_anim_sickle());
                 }
               }
           }
@@ -134,12 +135,12 @@ public class weapon_attaque : MonoBehaviour
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4))
                 {
 
-                    StartCoroutine(anti_spam());
+                    StartCoroutine(anti_spam_pitfork());
 
                 }
                 else
                 {
-                    StartCoroutine(reset_anim());
+                    StartCoroutine(reset_anim_pitchfork());
                 }
             }
         }
@@ -147,15 +148,41 @@ public class weapon_attaque : MonoBehaviour
         
     }
 
-    
+    IEnumerator anti_spam_sickle()
+    {
+        if (hit.transform.GetComponent<pv_zombie>())
+        {
+            sickle_dommage = rarety * (double_hand_dammage * 5);
+            hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(sickle_dommage);
+        }
+        if (hit.transform.GetComponent<pv_cerf>())
+        {
 
-    IEnumerator anti_spam()
+            axe_dommage = rarety * (double_hand_dammage * 7); ;
+            hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
+        }
+        yield return new WaitForSeconds(1f);
+        can_attaque = true;
+    }
+    IEnumerator reset_anim_sickle()
+    {
+        yield return new WaitForSeconds(1f);
+        can_attaque = true;
+    }
+
+
+
+
+
+
+
+    IEnumerator anti_spam_pitfork()
     {
         
         if (hit.transform.GetComponent<pv_zombie>() )
         {
             float pitchfork_dommage = 8;
-            hit.transform.GetComponent<pv_zombie>().nb_pv_zombie -= pitchfork_dommage;
+            hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(pitchfork_dommage);
             Debug.Log("Zombie touché !");
             
         }
@@ -164,7 +191,7 @@ public class weapon_attaque : MonoBehaviour
         
     }
 
-    IEnumerator reset_anim()
+    IEnumerator reset_anim_pitchfork()
     {
         yield return new WaitForSeconds(1.5f);
         can_attaque = true;

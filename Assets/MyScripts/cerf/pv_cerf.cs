@@ -3,6 +3,7 @@ using UnityEngine;
 public class pv_cerf : MonoBehaviour
 {
     public float nb_pv_cerf;
+    [SerializeField] GameObject viande;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,12 +19,16 @@ public class pv_cerf : MonoBehaviour
     {
         if(nb_pv_cerf <= 0)
         {
+            for (int i = 0; i < Random.Range(2, 4); i++)
+            {
+                Instantiate(viande, new Vector3(gameObject.transform.position.x, 2, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
+            }
             Destroy(gameObject);
         }
     }
     public void perte_pv_cerf(float degats)
     {
         nb_pv_cerf -= degats;
-        Debug.Log(nb_pv_cerf);
+        
     }
 }

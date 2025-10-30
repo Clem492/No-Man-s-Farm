@@ -10,7 +10,7 @@ public class animation : MonoBehaviour
     //il faut aussi récupérer la main gauche ou droite du joueur
      Animator animator;
     // il faut savoir si il est possible de jouer l'animation 
-    bool can_pitfork_animation;
+    bool can_attaque;
     private void Update()
     {
         player = GameObject.FindWithTag("player");
@@ -21,22 +21,23 @@ public class animation : MonoBehaviour
     //fonction pour savoir quelle animation en fonction de quelle arme
     void animation_weapon()
     {
-        if (weapon_diff == 0 && Input.GetKeyDown(KeyCode.Mouse0))
+        if (weapon_diff == 0 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true)
         {
 
         }
-        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0))
+        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true)
         {
             animator.SetTrigger("axe_attack");
             Debug.Log("la touche est appuyer");
         }
-        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0))
+        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true)
         {
-            animator.SetTrigger("sickle_attack");
+            can_attaque = false;
+            StartCoroutine(sickle_anim());
         }
-        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_pitfork_animation == true)
+        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_attaque == true)
         {
-            can_pitfork_animation = false;
+            can_attaque = false;
             StartCoroutine(pitforck_anim());
         }
     }
@@ -44,11 +45,18 @@ public class animation : MonoBehaviour
     {
         animator.SetTrigger("pitchfork_attack");
         yield return new WaitForSeconds(1.5f);
-        can_pitfork_animation = true;
+        can_attaque = true;
+    }
+
+    IEnumerator sickle_anim()
+    {
+        animator.SetTrigger("sickle_attack");
+        yield return new WaitForSeconds(1);
+        can_attaque = true;
     }
     private void Start()
     {
         animator = GetComponent<Animator>();
-        can_pitfork_animation = true;
+        can_attaque = true;
     }
 }
