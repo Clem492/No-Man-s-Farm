@@ -61,7 +61,7 @@ public class spawn_zombie : MonoBehaviour
                 }
                 
             }
-            poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
+            
             lumiere_valeur = 100;
             numero_vague += 1;
             
@@ -148,6 +148,7 @@ public class spawn_zombie : MonoBehaviour
                 lumiere_valeur += 10;
                 yield return new WaitForSeconds(1f);
             }
+            poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
         }
     }
 }
