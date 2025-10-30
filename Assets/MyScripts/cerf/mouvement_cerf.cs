@@ -4,7 +4,7 @@ using System.Collections;
 
 public class mouvement_cerf : MonoBehaviour
 {
-    [SerializeField] float vitesse_cerf = 3f;                
+    [SerializeField] float vitesse_cerf = 2f;                
     [SerializeField] float temps_entre_deplacements = 10f; 
 
     Vector3 cible; 

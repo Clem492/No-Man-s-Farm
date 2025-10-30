@@ -1,6 +1,8 @@
 using UnityEngine;
+using System.Collections;
 
 public class pv_cerf : MonoBehaviour
+
 {
     public float nb_pv_cerf;
     [SerializeField] GameObject viande;
@@ -19,16 +21,24 @@ public class pv_cerf : MonoBehaviour
     {
         if(nb_pv_cerf <= 0)
         {
-            for (int i = 0; i < Random.Range(2, 4); i++)
-            {
-                Instantiate(viande, new Vector3(gameObject.transform.position.x, 2.5f, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
-            }
-            Destroy(gameObject);
+            StartCoroutine(spawn_viande());
+          
+            
         }
     }
     public void perte_pv_cerf(float degats)
     {
         nb_pv_cerf -= degats;
+        
+    }
+    IEnumerator spawn_viande()
+    {
+        for (int i = 0; i < Random.Range(2, 4); i++)
+        {
+            Instantiate(viande, new Vector3(gameObject.transform.position.x, 2.5f, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
+            yield return new WaitForSeconds(0.1f);
+            Destroy(gameObject);
+        }
         
     }
 }
