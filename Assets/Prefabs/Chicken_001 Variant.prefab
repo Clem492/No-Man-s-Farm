@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken_001 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8881504610387854121, guid: 6b0b0b098177a3b439c80991ec9deacc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8881504610387854134, guid: 6b0b0b098177a3b439c80991ec9deacc, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -75,6 +79,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8073443194988779917, guid: 6b0b0b098177a3b439c80991ec9deacc, type: 3}
       insertIndex: -1
       addedObject: {fileID: -883502748764580179}
+    - targetCorrespondingSourceObject: {fileID: 8073443194988779917, guid: 6b0b0b098177a3b439c80991ec9deacc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 470153312436187943}
   m_SourcePrefab: {fileID: 100100000, guid: 6b0b0b098177a3b439c80991ec9deacc, type: 3}
 --- !u!1 &1759484273253765500 stripped
 GameObject:
@@ -94,3 +101,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   egg_prefab: {fileID: 6484608994722157927, guid: 343b9ca9440121e49a239e24b52ca709, type: 3}
+--- !u!114 &470153312436187943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759484273253765500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30037e2e87951a4983cd1170ee87ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitesse_poule: 2
+  temps_entre_deplacements: 3

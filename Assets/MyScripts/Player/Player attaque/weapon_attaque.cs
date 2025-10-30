@@ -170,8 +170,8 @@ public class weapon_attaque : MonoBehaviour
         if (hit.transform.GetComponent<pv_cerf>())
         {
 
-            axe_dommage = rarety * (double_hand_dammage * 7); ;
-            hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
+            sickle_dommage = rarety * (double_hand_dammage * 5);
+            hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(sickle_dommage);
         }
         yield return new WaitForSeconds(1.1f);
         can_attaque = true;
@@ -197,6 +197,12 @@ public class weapon_attaque : MonoBehaviour
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(pitchfork_dommage);
             Debug.Log("Zombie touché !");
             
+        }
+        if (hit.transform.GetComponent<pv_cerf>())
+        {
+
+            pitchfork_dommage = 8;
+            hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(pitchfork_dommage);
         }
         yield return new WaitForSeconds(1.5f);
         can_attaque = true;

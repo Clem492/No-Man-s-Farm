@@ -7,6 +7,8 @@ TagManager:
   - floor
   - player
   - item
+  - arme
+  - poule
   layers:
   - Default
   - TransparentFX
