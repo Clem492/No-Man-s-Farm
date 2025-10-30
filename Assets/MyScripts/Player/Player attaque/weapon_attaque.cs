@@ -19,6 +19,7 @@ public class weapon_attaque : MonoBehaviour
 
     //variable pour la sphère cast
     Collider[] enemies;
+    
 
    
 
@@ -69,45 +70,20 @@ public class weapon_attaque : MonoBehaviour
 
         }
 
-        if (weapon_diff == 1) //le 1 signfie la hache
+        if (weapon_diff == 1 && can_attaque == true) //le 1 signfie la hache
           {
-              //raycast en boule pour toucher plus d'enemie
-              //il faut faire la hache
-
-              if (Input.GetKeyDown(KeyCode.Mouse0))
-              {
-                  enemies = Physics.OverlapSphere(cam.transform.position + cam.transform.forward * 2f, 2);
-                  foreach (Collider col in enemies)
-                  {
-                      if (col.transform.GetComponent<pv_zombie>())
-                      {
-                          axe_dommage = rarety * (double_hand_dammage * 7);
-                          col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
-                      }
-                      if (col.transform.GetComponent<pv_arbre>())
-                      {
-                      
-                        axe_dommage_tree = 1;
-                        col.transform.GetComponent<pv_arbre>().perte_pv_arbre(axe_dommage_tree);
-                      }
-                      if (col.transform.GetComponent<pv_cerf>())
-                      {
-
-                        axe_dommage = rarety * (double_hand_dammage * 7); ;
-                        col.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
-                      }
-                    if (col.transform.GetComponent<pv_arbre_mort>())
-                    {
-                        axe_dommage_tree = 1;
-                        col.transform.GetComponent<pv_arbre_mort>().perte_pv_arbre(axe_dommage_tree);
-                    }
-                    
-                }
-
-              }
+            //raycast en boule pour toucher plus d'enemie
+            //il faut faire la hache
+            enemies = Physics.OverlapSphere(cam.transform.position + cam.transform.forward * 2f, 2);
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                can_attaque = false;
+                StartCoroutine(anti_spam_axe());
+              
+            }
 
 
-          }
+        }
           if (weapon_diff == 2 && can_attaque == true) //le 2 signifie la faussile
           {
               Debug.DrawRay(transform.position, cam.transform.forward * 2, Color.red);
@@ -147,6 +123,42 @@ public class weapon_attaque : MonoBehaviour
 
         
     }
+    IEnumerator anti_spam_axe()// permet de faire les dégat mais aussi d'avoir le temps d'attente
+    {
+        foreach (Collider col in enemies)
+        {
+            if (col.transform.GetComponent<pv_zombie>())
+            {
+                axe_dommage = rarety * (double_hand_dammage * 7);
+                col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
+            }
+            if (col.transform.GetComponent<pv_arbre>())
+            {
+
+                axe_dommage_tree = 1;
+                col.transform.GetComponent<pv_arbre>().perte_pv_arbre(axe_dommage_tree);
+            }
+            if (col.transform.GetComponent<pv_cerf>())
+            {
+
+                axe_dommage = rarety * (double_hand_dammage * 7); ;
+                col.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
+            }
+            if (col.transform.GetComponent<pv_arbre_mort>())
+            {
+                axe_dommage_tree = 1;
+                col.transform.GetComponent<pv_arbre_mort>().perte_pv_arbre(axe_dommage_tree);
+            }
+           
+
+        }
+        yield return new WaitForSeconds(1.7f);
+        can_attaque = true;
+  
+    }
+   
+
+
 
     IEnumerator anti_spam_sickle()
     {
@@ -161,12 +173,12 @@ public class weapon_attaque : MonoBehaviour
             axe_dommage = rarety * (double_hand_dammage * 7); ;
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.1f);
         can_attaque = true;
     }
     IEnumerator reset_anim_sickle()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.1f);
         can_attaque = true;
     }
 

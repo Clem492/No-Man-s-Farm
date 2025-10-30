@@ -27,8 +27,8 @@ public class animation : MonoBehaviour
         }
         if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true)
         {
-            animator.SetTrigger("axe_attack");
-            Debug.Log("la touche est appuyer");
+            can_attaque = false;
+            StartCoroutine(axe_anim());
         }
         if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true)
         {
@@ -41,6 +41,15 @@ public class animation : MonoBehaviour
             StartCoroutine(pitforck_anim());
         }
     }
+
+    IEnumerator axe_anim()
+    {
+        animator.SetTrigger("axe_attack");
+        Debug.Log("la touche est appuyer");
+        yield return new WaitForSeconds(1.7f);
+        can_attaque = true;
+    }
+
     IEnumerator pitforck_anim()
     {
         animator.SetTrigger("pitchfork_attack");
@@ -51,7 +60,7 @@ public class animation : MonoBehaviour
     IEnumerator sickle_anim()
     {
         animator.SetTrigger("sickle_attack");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         can_attaque = true;
     }
     private void Start()
