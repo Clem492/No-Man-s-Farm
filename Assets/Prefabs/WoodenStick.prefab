@@ -118,8 +118,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WoodenStick
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -5716681864270162303, guid: 1d201bb98ff1d4742b3847e061e546df, type: 3}
+    - target: {fileID: -927199367670048503, guid: 1d201bb98ff1d4742b3847e061e546df, type: 3}
+      propertyPath: m_TagString
+      value: item
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -4216859302048453862, guid: 1d201bb98ff1d4742b3847e061e546df, type: 3}
@@ -134,7 +137,7 @@ PrefabInstance:
       addedObject: {fileID: -685199817293812162}
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 1d201bb98ff1d4742b3847e061e546df, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -774694174196772968}
+      addedObject: {fileID: 7546943362400311067}
   m_SourcePrefab: {fileID: 100100000, guid: 1d201bb98ff1d4742b3847e061e546df, type: 3}
 --- !u!4 &977485678702699950 stripped
 Transform:
@@ -194,7 +197,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-774694174196772968
+--- !u!114 &7546943362400311067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,10 +206,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4308787965289420733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 536287b56948dc7418dabae60959ca35, type: 3}
+  m_Script: {fileID: 11500000, guid: 472df5a1b07929b46aba1a5ddc5e81db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item_data:
-    Items_name: "B\xE2ton"
-    max_Stack: 250
-    quantity: 0
+  item: {fileID: 11400000, guid: 4fd083e3e6a62ec4b8fbe573e2f31973, type: 2}

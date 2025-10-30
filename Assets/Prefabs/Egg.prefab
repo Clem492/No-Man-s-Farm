@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Egg
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eb792a3cca0043544983991e04a4e442, type: 3}
+      propertyPath: m_TagString
+      value: item
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb792a3cca0043544983991e04a4e442, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7363506193867563014}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb792a3cca0043544983991e04a4e442, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1945282180800323190}
   m_SourcePrefab: {fileID: 100100000, guid: eb792a3cca0043544983991e04a4e442, type: 3}
 --- !u!1 &6484608994722157927 stripped
 GameObject:
@@ -147,3 +154,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1945282180800323190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484608994722157927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 472df5a1b07929b46aba1a5ddc5e81db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 27b71726aff9a8d4f93a7f21d7c5b403, type: 2}

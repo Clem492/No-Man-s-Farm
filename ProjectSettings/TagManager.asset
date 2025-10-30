@@ -6,7 +6,7 @@ TagManager:
   tags:
   - floor
   - player
-  - arme
+  - item
   layers:
   - Default
   - TransparentFX
