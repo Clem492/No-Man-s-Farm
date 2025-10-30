@@ -14,6 +14,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI vague;
     [SerializeField] Light jour_nuit_lumiere; 
     [SerializeField] GameObject girouette;
+    [SerializeField] GameObject poule;
     GameObject[] tab_zombie = new GameObject[100000];
     public int[] tab_pv_zombie = new int[100000];
     public int nombre_zombie_spawn = 5;
@@ -60,6 +61,7 @@ public class spawn_zombie : MonoBehaviour
                 }
                 
             }
+            poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
             lumiere_valeur = 100;
             numero_vague += 1;
             
