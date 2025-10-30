@@ -31,7 +31,7 @@ public class spawn_zombie : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        nb_cerf_spawn = 10;
+        nb_cerf_spawn = 20;
         numero_vague = 0;
         jour_nuit_lumiere.transform.rotation = Quaternion.Euler(90,0,0);
         girouette.transform.rotation = Quaternion.Euler(0, 0, 0);

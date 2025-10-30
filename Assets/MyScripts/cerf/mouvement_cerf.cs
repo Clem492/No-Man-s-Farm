@@ -21,7 +21,7 @@ public class mouvement_cerf : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, cible, vitesse_cerf * Time.deltaTime);
         Vector3 direction = (cible - transform.position).normalized;
         if (direction != Vector3.zero)
-            transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * 2f);
+            transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * 5f);
     }
 
     IEnumerator ChangeDestination()
