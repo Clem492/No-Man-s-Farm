@@ -18,7 +18,7 @@ public class spawn_oeuf : MonoBehaviour
     public void spawn_oeuf_vague()
     {
         chicken = GameObject.FindWithTag("poule");
-        Debug.Log(chicken.transform.position);
+        
         Instantiate(egg_prefab, new Vector3(chicken.transform.position.x,2, chicken.transform.position.z), Quaternion.identity);
     }
 }
