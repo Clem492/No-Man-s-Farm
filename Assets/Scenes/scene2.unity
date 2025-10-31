@@ -984,7 +984,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320019212}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f751786fa1cddb47b07afa2e705d6a7, type: 3}
   m_Name: 
@@ -2619,8 +2619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: []
-  Inventory_ui: {fileID: 0}
-  crosshaire: {fileID: 0}
+  Inventory_ui: {fileID: 315889118}
+  crosshaire: {fileID: 838553067}
 --- !u!4 &891743939
 Transform:
   m_ObjectHideFlags: 0
