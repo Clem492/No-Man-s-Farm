@@ -977,6 +977,21 @@ MonoBehaviour:
   food_vide_9: {fileID: 1207998111}
   food_vide_10: {fileID: 1580043083}
   food_player_actuelle: 0
+--- !u!114 &320019240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320019212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f751786fa1cddb47b07afa2e705d6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: []
+  Inventory_ui: {fileID: 315889118}
+  crosshaire: {fileID: 838553067}
 --- !u!1001 &344186215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3429,6 +3444,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 132866994672002125, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       insertIndex: -1
       addedObject: {fileID: 320019234}
+    - targetCorrespondingSourceObject: {fileID: 132866994672002125, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 320019240}
   m_SourcePrefab: {fileID: 100100000, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
 --- !u!1 &1056636753
 GameObject:

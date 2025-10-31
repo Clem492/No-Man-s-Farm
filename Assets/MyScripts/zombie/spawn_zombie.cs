@@ -36,7 +36,7 @@ public class spawn_zombie : MonoBehaviour
         numero_vague = 0;
         jour_nuit_lumiere.transform.rotation = Quaternion.Euler(90,0,0);
         girouette.transform.rotation = Quaternion.Euler(0, 0, 0);
-        temp_jour = 90;
+        temp_jour = 105;
         temp_nuit = 90;
         StartCoroutine(spawn());
     }
@@ -63,7 +63,7 @@ public class spawn_zombie : MonoBehaviour
                 
             }
             
-            lumiere_valeur = 90;
+            lumiere_valeur = 105;
             numero_vague += 1;
             
 
