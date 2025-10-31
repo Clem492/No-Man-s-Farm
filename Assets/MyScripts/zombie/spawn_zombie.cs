@@ -37,7 +37,7 @@ public class spawn_zombie : MonoBehaviour
         jour_nuit_lumiere.transform.rotation = Quaternion.Euler(90,0,0);
         girouette.transform.rotation = Quaternion.Euler(0, 0, 0);
         temp_jour = 105;
-        temp_nuit = 90;
+        temp_nuit = 105;
         StartCoroutine(spawn());
     }
 
@@ -50,6 +50,8 @@ public class spawn_zombie : MonoBehaviour
     {
         while (true)
         {
+            jour.GetComponent<AudioSource>().enabled = true;
+            nuit.GetComponent<AudioSource>().enabled = false;
             if (numero_vague%5 ==0)
             {
                 for (int i = 0; i < nb_cerf_spawn; i++)
@@ -78,8 +80,9 @@ public class spawn_zombie : MonoBehaviour
                 lumiere_valeur -= 1;
                 yield return new WaitForSeconds(1f);
             }
-            
-            
+            jour.GetComponent<AudioSource>().enabled = false;
+            nuit.GetComponent<AudioSource>().enabled = true;
+
             //affiche la nuit
             jour_nuit.text = "nuit";
           
@@ -141,7 +144,7 @@ public class spawn_zombie : MonoBehaviour
             nombre_zombie_spawn = nombre_zombie_spawn + 2;
             // Attendre ... s avant de faire la suite de la fonction (nuit)
 
-            lumiere_valeur = -90;
+            lumiere_valeur = -105;
             for (int i = 0; i < temp_nuit; i++)
             {
                 jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
