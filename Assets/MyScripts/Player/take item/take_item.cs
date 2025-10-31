@@ -17,7 +17,7 @@ public class take_item : MonoBehaviour
         Debug.DrawRay(cam.transform.position, cam.transform.forward * ray_range, Color.blue);
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, ray_range))
         {
-            if (hit.transform.CompareTag("item"))
+            if (hit.transform.CompareTag("item") || hit.transform.CompareTag("arme"))
             {
                 Debug.Log("ceci est un item");
                 if (Input.GetKeyDown(KeyCode.E))
