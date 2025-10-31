@@ -1,4 +1,6 @@
 using UnityEngine;
+using static UnityEditor.Progress;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class take_item : MonoBehaviour
 {
@@ -20,7 +22,7 @@ public class take_item : MonoBehaviour
                 Debug.Log("ceci est un item");
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    inventory.content.Add(hit.transform.GetComponent<Item>().item);
+                    inventory.Add_Item(hit.transform.GetComponent<Item>().item);
                     Destroy(hit.transform.gameObject);
                 }
             }
