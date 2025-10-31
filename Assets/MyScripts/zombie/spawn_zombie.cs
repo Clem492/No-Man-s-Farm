@@ -73,7 +73,7 @@ public class spawn_zombie : MonoBehaviour
             for (int i = 0; i < temp_jour; i++)
             {
                 jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
-                Debug.Log("light");
+                
                 lumiere_valeur -= 10;
                 yield return new WaitForSeconds(1f);
             }
@@ -95,7 +95,7 @@ public class spawn_zombie : MonoBehaviour
                     tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(50, 150), 1.5f, Random.Range(150, 350)), Quaternion.identity);
                     
                     girouette.transform.rotation = Quaternion.Euler(0, 44, 0);
-                    Debug.Log("Nord");
+                    
                     depart += 1;
                 }
             }
@@ -107,7 +107,7 @@ public class spawn_zombie : MonoBehaviour
                     tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(350, 450)), Quaternion.identity);
                     
                     girouette.transform.rotation = Quaternion.Euler(0, 134, 0);
-                    Debug.Log("Est");
+                   
                     depart += 1;
                 }
             }
@@ -119,7 +119,7 @@ public class spawn_zombie : MonoBehaviour
                     tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(350, 450), 1.5f, Random.Range(150, 350)), Quaternion.identity);
                     
                     girouette.transform.rotation = Quaternion.Euler(0, 224, 0);
-                    Debug.Log("Sud");
+                   
                     depart += 1;
                 }
             }
@@ -131,7 +131,7 @@ public class spawn_zombie : MonoBehaviour
                     tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(50, 150)), Quaternion.identity);
                    
                     girouette.transform.rotation = Quaternion.Euler(0, 314, 0);
-                    Debug.Log("Ouest");
+                   
                     depart += 1;
                 }
             }
@@ -144,7 +144,7 @@ public class spawn_zombie : MonoBehaviour
             for (int i = 0; i < temp_nuit; i++)
             {
                 jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
-                Debug.Log("light2");
+               
                 lumiere_valeur += 10;
                 yield return new WaitForSeconds(1f);
             }
