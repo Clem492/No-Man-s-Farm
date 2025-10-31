@@ -12,6 +12,7 @@ public class pv_arbre_mort : MonoBehaviour
     {
         nb_pv_arbre_mort = 3;
         animator = GetComponentInChildren<Animator>();
+        gameObject.GetComponent<AudioSource>().enabled = false;
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class pv_arbre_mort : MonoBehaviour
     {
         nb_pv_arbre_mort -= degats;
         animator.SetTrigger("degat_arbre");
-        
+        StartCoroutine(audio_arbre_mort());
     }
     void destruction_arbre_mort()
     {
@@ -38,5 +39,10 @@ public class pv_arbre_mort : MonoBehaviour
         }
            
     }
-    
+    IEnumerator audio_arbre_mort()
+    {
+        gameObject.GetComponent<AudioSource>().enabled = true;
+        yield return new WaitForSeconds(1);
+        gameObject.GetComponent<AudioSource>().enabled = false;
+    }
 }

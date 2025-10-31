@@ -10,6 +10,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] GameObject zombie_prefab;
     [SerializeField] GameObject cerf;
     [SerializeField] GameObject farm;
+    [SerializeField] GameObject jour, nuit;
     [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
     [SerializeField] Light jour_nuit_lumiere; 
@@ -35,8 +36,8 @@ public class spawn_zombie : MonoBehaviour
         numero_vague = 0;
         jour_nuit_lumiere.transform.rotation = Quaternion.Euler(90,0,0);
         girouette.transform.rotation = Quaternion.Euler(0, 0, 0);
-        temp_jour = 10;
-        temp_nuit = 10;
+        temp_jour = 90;
+        temp_nuit = 90;
         StartCoroutine(spawn());
     }
 
@@ -62,7 +63,7 @@ public class spawn_zombie : MonoBehaviour
                 
             }
             
-            lumiere_valeur = 100;
+            lumiere_valeur = 90;
             numero_vague += 1;
             
 
@@ -74,7 +75,7 @@ public class spawn_zombie : MonoBehaviour
             {
                 jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
                 
-                lumiere_valeur -= 10;
+                lumiere_valeur -= 1;
                 yield return new WaitForSeconds(1f);
             }
             
@@ -140,12 +141,12 @@ public class spawn_zombie : MonoBehaviour
             nombre_zombie_spawn = nombre_zombie_spawn + 2;
             // Attendre ... s avant de faire la suite de la fonction (nuit)
 
-            lumiere_valeur = -100;
+            lumiere_valeur = -90;
             for (int i = 0; i < temp_nuit; i++)
             {
                 jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
                
-                lumiere_valeur += 10;
+                lumiere_valeur += 1;
                 yield return new WaitForSeconds(1f);
             }
             poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
