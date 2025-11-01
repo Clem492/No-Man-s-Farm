@@ -2068,6 +2068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nb_pv_zombie: 50
+  nails_prefab: {fileID: 3767517178294465950, guid: c8b6306abc1909b4881a3a7139a8fc30, type: 3}
   affichage_pv_zombie: {fileID: 2316480364010146157}
 --- !u!65 &9032461353187412247
 BoxCollider:
