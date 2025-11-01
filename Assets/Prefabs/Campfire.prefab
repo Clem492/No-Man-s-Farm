@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1389154881696701641}
   - component: {fileID: 929106065036094844}
   - component: {fileID: 929161632464380053}
+  - component: {fileID: -2316360840988178626}
   m_Layer: 0
   m_Name: Campfire
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 267.57468, y: -0.028, z: 261.3468}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -131,3 +132,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.90532273, y: 0.24322827, z: 0.8357444}
   m_Center: {x: -0.032645285, y: 0.11499324, z: 0.006556511}
+--- !u!114 &-2316360840988178626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8637368903012823096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09fa03b3fe633a4ca235927fb70b539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

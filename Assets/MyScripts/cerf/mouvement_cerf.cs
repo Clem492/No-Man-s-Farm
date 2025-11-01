@@ -5,7 +5,7 @@ using System.Collections;
 public class mouvement_cerf : MonoBehaviour
 {
     [SerializeField] float vitesse_cerf = 2f;                
-    [SerializeField] float temps_entre_deplacements = 10f; 
+    [SerializeField] float temps_entre_deplacements = 3f; 
 
     Vector3 cible; 
 
@@ -21,7 +21,7 @@ public class mouvement_cerf : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, cible, vitesse_cerf * Time.deltaTime);
         Vector3 direction = (cible - transform.position).normalized;
         if (direction != Vector3.zero)
-            transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * 5f);
+            transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * 10f);
     }
 
     IEnumerator ChangeDestination()

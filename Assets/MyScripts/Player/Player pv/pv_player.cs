@@ -18,6 +18,8 @@ public class pv_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //affiche pv joueur
+        txt_pv_player.text = "PV : " + nb_pv_player;
         mort_player();
     }
     //ont verifie si le joueur est mort
@@ -49,7 +51,7 @@ public class pv_player : MonoBehaviour
     public void perte_pv_player(float degats)
     {
         nb_pv_player -= degats;
-        //affiche pv joueur
-        txt_pv_player.text = "PV : " + nb_pv_player;
+        
+        
     }
 }

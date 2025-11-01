@@ -50,8 +50,8 @@ public class spawn_zombie : MonoBehaviour
     {
         while (true)
         {
-            jour.GetComponent<AudioSource>().enabled = true;
-            nuit.GetComponent<AudioSource>().enabled = false;
+            jour.GetComponent<AudioSource>().enabled = true; //musique jour
+            nuit.GetComponent<AudioSource>().enabled = false;//musique nuit desactiver
             if (numero_vague%5 ==0)
             {
                 for (int i = 0; i < nb_cerf_spawn; i++)
