@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour
         content.Add(item);
     }
 
+    //ouverture et fermeture de l'inventaire 
+
     [SerializeField] Canvas Inventory_ui;//Canva utiliser pour l'ui de l'inventaire
     [SerializeField] RawImage crosshaire;// récupération du crossaire pour le désactiver
     bool inventory_in_screen;//variable utiliser pour vérifier si le canva est bien afficher a l'écran
@@ -49,9 +51,10 @@ public class Inventory : MonoBehaviour
     {
         open_inventory();
         close_inventory();
+        Refresh_content();
     }
 
-    IEnumerator cooldown_open_inventory()
+    IEnumerator cooldown_open_inventory()//cette coroutine empêche que les fonction close et open se joue toute les deux en meme temps 
     {
         yield return new WaitForSeconds(0.1f);
         inventory_in_screen = true;
@@ -61,5 +64,15 @@ public class Inventory : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         inventory_in_screen = false;
+    }
+
+    //affichage des élément de notre inventaire dans l'ui inventaire 
+    [SerializeField] private Transform inventory_slot_parent;
+    private void Refresh_content()
+    {
+        for (int i = 0; i < content.Count; i++)
+        {
+            inventory_slot_parent.GetChild(i).GetComponent<Image>().sprite = content[i].Item_Image;
+        }
     }
 }
