@@ -2606,6 +2606,7 @@ MonoBehaviour:
   content: []
   Inventory_ui: {fileID: 315889118}
   crosshaire: {fileID: 838553067}
+  inventory_slot_parent: {fileID: 465634329}
 --- !u!4 &891743939
 Transform:
   m_ObjectHideFlags: 0
