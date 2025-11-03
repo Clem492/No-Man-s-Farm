@@ -7,11 +7,13 @@ public class ScriptDemmarrage : MonoBehaviour
 {
     private bool okForFade;
     [SerializeField] private RawImage imageNoire;
+    [SerializeField] private GameObject image;
     [SerializeField] private float duration = 3f;
 
     void Start()
     {
         StartCoroutine(FadeFromBlack());
+        image.SetActive(true);
     }
 
     IEnumerator FadeFromBlack()
