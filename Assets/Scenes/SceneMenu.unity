@@ -4919,7 +4919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageNoire: {fileID: 706019571}
-  duration: 5
+  duration: 3
   sceneToLoad: scene1
 --- !u!4 &1500943105
 Transform:

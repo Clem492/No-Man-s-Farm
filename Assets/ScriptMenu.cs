@@ -13,6 +13,7 @@ public class ScriptMenu : MonoBehaviour
     void Start()
     {
         okForFade = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
