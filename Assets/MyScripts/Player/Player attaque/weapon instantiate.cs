@@ -8,6 +8,7 @@ public class weaponinstantiate : MonoBehaviour
 
 {
    public GameObject hand_right;
+    public GameObject hand_left;
     public Vector3 player_position;
 
     //variable pour connaitre savoir quelle arme le joueur a en main
@@ -120,10 +121,10 @@ public class weaponinstantiate : MonoBehaviour
             {
                 if (weapon_diff == 1)
                 {
-                    hand_right = Instantiate(axe_prefab);
-                    hand_right.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
-                    hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
-                    hand_right.transform.localRotation = Quaternion.Euler(90, 90, 0);
+                    hand_left = Instantiate(axe_prefab);
+                    hand_left.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
+                    hand_left.transform.localPosition = new Vector3(0, 0.6f, 0);
+                    hand_left.transform.localRotation = Quaternion.Euler(90, 90, 0);
                     left_hand = true;
                 }
 
@@ -137,16 +138,31 @@ public class weaponinstantiate : MonoBehaviour
             {
                 if (weapon_diff == 2)
                 {
-                    hand_right = Instantiate(sickle_prefab);
-                    hand_right.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
-                    hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
-                    hand_right.transform.localRotation = Quaternion.Euler(50, 0, 90);
+                    hand_left = Instantiate(sickle_prefab);
+                    hand_left.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
+                    hand_left.transform.localPosition = new Vector3(0, 0.6f, 0);
+                    hand_left.transform.localRotation = Quaternion.Euler(50, 0, 90);
                     left_hand = true;
                 }
 
-
             }
     }   }
+
+    //méthode pour lacher une arme qui a été prise 
+    private void drop_weapon()
+    {
+        if (Input.GetKeyDown(KeyCode.X) && (right_hand == true || right_hand == true && left_hand == true))
+        {
+            Destroy(hand_right);
+            Destroy(hand_left);
+            left_hand = false;
+            right_hand = false;
+            double_hand = false;
+        }
+        
+    }
+
+
 
     void nothing_in_hand()
     {
@@ -171,6 +187,7 @@ public class weaponinstantiate : MonoBehaviour
         nothing_in_hand();
         What_hand();
         player_position = gameObject.transform.position;
+        drop_weapon();
     }
 }
 
