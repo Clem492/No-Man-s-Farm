@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 // using UnityEngine.Experimental.GlobalIllumination; // supprimé car inutile et source potentielle d’erreurs
 
 public class spawn_zombie : MonoBehaviour
@@ -11,7 +12,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] GameObject cerf;
     [SerializeField] GameObject farm;
     [SerializeField] GameObject jour, nuit;
-    [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
+   // [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
     [SerializeField] Light jour_nuit_lumiere; 
     [SerializeField] GameObject girouette;
@@ -39,12 +40,20 @@ public class spawn_zombie : MonoBehaviour
         temp_jour = 105;
         temp_nuit = 105;
         StartCoroutine(spawn());
+        soleil.enabled = false;
+        soleil_quart.enabled = false;
+        soleil_demi.enabled = false;
+        soleil_trois_quart.enabled = false;
+        lune.enabled = false;
+        lune_quart.enabled = false;
+        lune_demi.enabled = false;
+        lune_trois_quart.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch_ui_cycle();
     }
     IEnumerator spawn()
     {
@@ -70,7 +79,7 @@ public class spawn_zombie : MonoBehaviour
             
 
             //affiche le jour
-            jour_nuit.text = "jour";
+           // jour_nuit.text = "jour";
 
             // Attendre ... s avant de faire la suite de la fonction (jour)
             for (int i = 0; i < temp_jour; i++)
@@ -84,7 +93,7 @@ public class spawn_zombie : MonoBehaviour
             nuit.GetComponent<AudioSource>().enabled = true;
 
             //affiche la nuit
-            jour_nuit.text = "nuit";
+           // jour_nuit.text = "nuit";
           
             //affiche le numéro de la vague
             vague.text = "vague : " + numero_vague;
@@ -153,6 +162,101 @@ public class spawn_zombie : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
             poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
+        }
+    }
+
+    //affichage du soleil/lune
+    [SerializeField] RawImage soleil, soleil_quart, soleil_demi, soleil_trois_quart;
+    [SerializeField] RawImage lune, lune_quart, lune_demi, lune_trois_quart;
+    private void switch_ui_cycle()
+    {
+        if(lumiere_valeur ==  104)
+        {
+            soleil.enabled = true;
+            soleil_quart.enabled = false;
+            soleil_demi.enabled = false;
+            soleil_trois_quart.enabled = false;
+            lune.enabled = false;
+            lune_quart.enabled = false;
+            lune_demi.enabled = false;
+            lune_trois_quart.enabled = false;
+        }
+        if (lumiere_valeur == 79)
+        {
+            soleil.enabled = false;
+            soleil_quart.enabled = true;
+            soleil_demi.enabled = false;
+            soleil_trois_quart.enabled = false;
+            lune.enabled = false;
+            lune_quart.enabled = false;
+            lune_demi.enabled = false;
+            lune_trois_quart.enabled = false;
+        }
+        if (lumiere_valeur == 53)
+        {
+            soleil.enabled = false;
+            soleil_quart.enabled = false;
+            soleil_demi.enabled = true;
+            soleil_trois_quart.enabled = false;
+            lune.enabled = false;
+            lune_quart.enabled = false;
+            lune_demi.enabled = false;
+            lune_trois_quart.enabled = false;
+        }
+        if (lumiere_valeur == 27)
+        {
+            soleil.enabled = false;
+            soleil_quart.enabled = false;
+            soleil_demi.enabled = false;
+            soleil_trois_quart.enabled = true;
+            lune.enabled = false;
+            lune_quart.enabled = false;
+            lune_demi.enabled = false;
+            lune_trois_quart.enabled = false;
+        }
+        if (lumiere_valeur == -104)
+        {
+            soleil.enabled = false;
+            soleil_quart.enabled = false;
+            soleil_demi.enabled = false;
+            soleil_trois_quart.enabled = false;
+            lune.enabled = true;
+            lune_quart.enabled = false;
+            lune_demi.enabled = false;
+            lune_trois_quart.enabled = false;
+        }
+        if( lumiere_valeur == -79)
+        {
+            soleil.enabled = false;
+            soleil_quart.enabled = false;
+            soleil_demi.enabled = false;
+            soleil_trois_quart.enabled = false;
+            lune.enabled = false;
+            lune_quart.enabled = true;
+            lune_demi.enabled = false;
+            lune_trois_quart.enabled = false;
+        }
+        if (lumiere_valeur == -53)
+        {
+            soleil.enabled = false;
+            soleil_quart.enabled = false;
+            soleil_demi.enabled = false;
+            soleil_trois_quart.enabled = false;
+            lune.enabled = false;
+            lune_quart.enabled = false;
+            lune_demi.enabled = true;
+            lune_trois_quart.enabled = false;
+        }
+        if (lumiere_valeur == -27)
+        {
+            soleil.enabled = false;
+            soleil_quart.enabled = false;
+            soleil_demi.enabled = false;
+            soleil_trois_quart.enabled = false;
+            lune.enabled = false;
+            lune_quart.enabled = false;
+            lune_demi.enabled = false;
+            lune_trois_quart.enabled = true;
         }
     }
 }
