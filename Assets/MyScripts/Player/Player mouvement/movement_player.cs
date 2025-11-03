@@ -25,14 +25,40 @@ public class movement_player : MonoBehaviour
     //variable pour le sauts du personnage
     [SerializeField] float jump_force;
     Vector3 jump;
-   
 
-
+    //variable pour le tuto
+    public int tutorial_move;
+    bool can_move_forward;
+    bool can_move_right;
+    float movement_y;
+    float movement_x;
+    public bool tutorial_cam;
+    float cam_x;
+    float cam_y;
     // fonction pour pouvoir déplacer le joueur 
     void movement()
     {
-        float movement_x = Input.GetAxis("Horizontal");
-        float movement_y = Input.GetAxis("Vertical");
+        if (tutorial_move == 1)
+        {
+            movement_y = Input.GetAxis("Vertical");
+            can_move_forward = true;
+            Debug.Log("entrer");
+        }
+        if (tutorial_move ==2)
+        {
+            movement_x = Input.GetAxis("Horizontal");
+            can_move_right = true;
+        }
+        if (can_move_forward)
+        {
+            movement_y = Input.GetAxis("Vertical");
+        }
+        if (can_move_right)
+        {
+            movement_x = Input.GetAxis("Horizontal");
+        }
+        
+        
         Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
         controller.Move(player_movement);
     }
@@ -64,8 +90,11 @@ public class movement_player : MonoBehaviour
     //fonction pour déplacer la caméra
     void cam_movement()
     {
-        float cam_x = Input.GetAxis("Mouse X");
-        float cam_y = Input.GetAxis("Mouse Y");
+        if (tutorial_cam)
+        {
+            cam_x = Input.GetAxis("Mouse X");
+            cam_y = Input.GetAxis("Mouse Y");
+        }
         Vector3 cam_position_y = new Vector3(0, cam_x, 0) * speed_cam * Time.deltaTime;
         xRotation -= cam_y;
         player.transform.Rotate( cam_position_y);
@@ -90,6 +119,10 @@ public class movement_player : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        tutorial_move = 0;
+        can_move_forward = false;
+        can_move_right = false;
+        tutorial_cam = false;
     }
 
     private void Update()

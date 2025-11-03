@@ -53,7 +53,7 @@ public class weaponinstantiate : MonoBehaviour
     {
         
         
-        if (Vector3.Distance(transform.position, axe.transform.position) < 2)
+        if (Vector3.Distance(transform.position, axe.transform.position) < 5)
         {
             Debug.Log("tu peux prendre la hache");
             if (Input.GetKeyDown(KeyCode.E))
@@ -67,7 +67,7 @@ public class weaponinstantiate : MonoBehaviour
 
             }
         }
-        if (Vector3.Distance(transform.position, sickle.transform.position) < 2)
+        if (Vector3.Distance(transform.position, sickle.transform.position) < 5)
         {
             Debug.Log("tu peux prendre la houe");
             if (Input.GetKeyDown(KeyCode.E))
@@ -81,7 +81,7 @@ public class weaponinstantiate : MonoBehaviour
 
             }
         }
-        if (Vector3.Distance(transform.position, pitchfork.transform.position) < 2)
+        if (Vector3.Distance(transform.position, pitchfork.transform.position) < 5)
         {
             Debug.Log("tu peux prendre la fourche");
 
@@ -114,7 +114,7 @@ public class weaponinstantiate : MonoBehaviour
     void Take_weapon_left()
     {
         GameObject hand_right;
-        if (Vector3.Distance(transform.position, axe.transform.position) < 2)
+        if (Vector3.Distance(transform.position, axe.transform.position) < 5)
         {
             Debug.Log("tu peux prendre la hache");
             if (Input.GetKeyDown(KeyCode.E))
@@ -131,7 +131,7 @@ public class weaponinstantiate : MonoBehaviour
             }
 
         }
-        if (Vector3.Distance(transform.position, sickle.transform.position) < 2)
+        if (Vector3.Distance(transform.position, sickle.transform.position) < 5)
         {
             Debug.Log("tu peux prendre la houe");
             if (Input.GetKeyDown(KeyCode.E))
