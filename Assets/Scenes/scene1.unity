@@ -129,6 +129,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1759484273253765500, guid: bc4c069f99fa97c4a8aa2e5eb178ba91, type: 3}
   m_PrefabInstance: {fileID: 218349413}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &65123079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6710364370049124869, guid: 1db10de273eb32d4b8fbad03631599bc, type: 3}
+  m_PrefabInstance: {fileID: 1274483079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &174683025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1834891530365619866, guid: 016790f3166f2ca46b5524a9e323319f, type: 3}
@@ -3907,6 +3912,18 @@ PrefabInstance:
     - target: {fileID: 551102979928908642, guid: 1db10de273eb32d4b8fbad03631599bc, type: 3}
       propertyPath: m_Name
       value: Fade Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 551102979928908642, guid: 1db10de273eb32d4b8fbad03631599bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471418571213092088, guid: 1db10de273eb32d4b8fbad03631599bc, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 65123079}
+    - target: {fileID: 6710364370049124869, guid: 1db10de273eb32d4b8fbad03631599bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8701840788308058185, guid: 1db10de273eb32d4b8fbad03631599bc, type: 3}
       propertyPath: m_Pivot.x
