@@ -8,6 +8,7 @@ public class pv_zombie : MonoBehaviour
     Animator animator;
     [SerializeField] GameObject nails_prefab;
     [SerializeField] TMPro.TextMeshProUGUI affichage_pv_zombie;
+    [SerializeField] AudioSource son_degats;
     int luck_nail;
     bool mort;
 
@@ -39,8 +40,9 @@ public class pv_zombie : MonoBehaviour
     public void perte_pv_zombie(float degats)
     {
         nb_pv_zombie -= degats;
-        
+        StartCoroutine(son_zombie());
         animator.SetTrigger("degat_zombie");
+        
     }
     IEnumerator anim_mort_zombie()
     {
@@ -57,5 +59,11 @@ public class pv_zombie : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
+    }
+    IEnumerator son_zombie()
+    {
+        son_degats.enabled = true;
+        yield return new WaitForSeconds(1);
+        son_degats.enabled = false;
     }
 }
