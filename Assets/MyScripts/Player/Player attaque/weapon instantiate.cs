@@ -113,7 +113,7 @@ public class weaponinstantiate : MonoBehaviour
 
     void Take_weapon_left()
     {
-        GameObject hand_right;
+        
         if (Vector3.Distance(transform.position, axe.transform.position) < 5)
         {
             Debug.Log("tu peux prendre la hache");

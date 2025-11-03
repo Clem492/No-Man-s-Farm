@@ -60,8 +60,8 @@ public class weapon_attaque : MonoBehaviour
                     if (hit.transform.GetComponent<pv_cerf>())
                     {
 
-                      axe_dommage = rarety * (double_hand_dammage * 7); ;
-                      hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
+                      hand_dommage = rarety * (double_hand_dammage * 7); ;
+                      hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
                     }
 
 
