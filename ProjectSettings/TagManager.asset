@@ -9,6 +9,7 @@ TagManager:
   - item
   - arme
   - poule
+  - anti_arbre
   layers:
   - Default
   - TransparentFX

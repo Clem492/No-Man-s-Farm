@@ -29,6 +29,10 @@ public class spawn_arbre : MonoBehaviour
             {
                 Destroy(tab_arbre[i]);
             }
+            if (Vector3.Distance(tab_arbre[i].transform.position, GameObject.FindWithTag("anti_arbre").transform.position) < 20)
+            {
+                Destroy(tab_arbre[i]);
+            }
         }
     }
     void spawn_arbre_mort_fonction()
