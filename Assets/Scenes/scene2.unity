@@ -992,6 +992,7 @@ MonoBehaviour:
   content: []
   Inventory_ui: {fileID: 315889118}
   crosshaire: {fileID: 838553067}
+  inventory_slot_parent: {fileID: 0}
 --- !u!1001 &344186215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2621,6 +2622,7 @@ MonoBehaviour:
   content: []
   Inventory_ui: {fileID: 315889118}
   crosshaire: {fileID: 838553067}
+  inventory_slot_parent: {fileID: 465634329}
 --- !u!4 &891743939
 Transform:
   m_ObjectHideFlags: 0
@@ -3908,9 +3910,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 9f9a03e4599fcd240aeffaebe518509a, type: 3}
+  m_Resource: {fileID: 8300000, guid: a8232f30ce47ec648b953042a0ffe2e1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5820,7 +5822,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5d88f2d1e241ffc46868892293d4ec63, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
