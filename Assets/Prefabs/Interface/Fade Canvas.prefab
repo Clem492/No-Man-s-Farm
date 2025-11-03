@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageNoire: {fileID: 2146279295824473759}
+  image: {fileID: 0}
   duration: 3
 --- !u!1 &6710364370049124869
 GameObject:
