@@ -64,11 +64,14 @@ public class movement_player : MonoBehaviour
 
         if(movement_x !=0 || movement_y != 0)
         {
-            son_pas.Play();
+
+            son_pas.enabled = true;
         }
         if(movement_x == 0 && movement_y == 0)
         {
-            son_pas.Stop();
+
+
+            son_pas.enabled = false;
         }
         Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
 
