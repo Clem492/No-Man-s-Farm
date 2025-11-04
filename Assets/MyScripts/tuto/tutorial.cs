@@ -9,9 +9,10 @@ public class tutorial : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI dialogue;
     [SerializeField] AudioSource zombie_sond;
     [SerializeField] GameObject Player;
+    [SerializeField] GameObject cam;
     [SerializeField] GameObject Zombie;
     [SerializeField] GameObject Axe, pitchfork, sickle;
-    [SerializeField] GameObject mur_tuto_move;
+    [SerializeField] GameObject mur_tuto_move, mur_porte1, mur_porte2;
     bool can_attaque;
     bool next_step;
     bool mid_step_part2;
@@ -28,17 +29,22 @@ public class tutorial : MonoBehaviour
             dialogue.text = "press E to talk (Start tutorial)";
             if (Input.GetKeyDown(KeyCode.E))
             {
+                Player.transform.position = new Vector3(250, 1, 239);
+                Player.transform.rotation = Quaternion.Euler(0, 0, 0);
+                cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 Player.GetComponent<movement_player>().movement_x = 0;
                 Player.GetComponent<movement_player>().movement_y = 0;
+                Player.GetComponent<movement_player>().xRotation = 0;
                 Player.GetComponent<movement_player>().cam_x = 0;
                 Player.GetComponent<movement_player>().cam_y = 0;
                 Player.GetComponent<weaponinstantiate>().touche_x_unclock = false;
+                Player.GetComponent<weaponinstantiate>().double_hand_unlock = false;
                 Player.GetComponent<movement_player>().can_move_forward = false;
                 Player.GetComponent<movement_player>().can_move_right = false;
                 Player.GetComponent<movement_player>().tutorial_cam = false;
                 mur_tuto_move.SetActive(true);
-                Player.transform.position = new Vector3(250, 1, 239);
-                Player.transform.rotation = Quaternion.Euler(0, 0, 0);
+                mur_porte1.SetActive(true);
+                mur_porte2.SetActive(true);
                 next_step = false;
                 StartCoroutine(debut_dialogue());
                 can_attaque = false;
@@ -46,6 +52,8 @@ public class tutorial : MonoBehaviour
                 mid_step_part2 = false;
                 mid_step_part3 = false;
                 tutoriel = true;
+                crosshair = true;
+
             }
         }
         else if (Vector3.Distance(Player.transform.position, Zombie.transform.position) > 4 && tutoriel == false)
@@ -100,6 +108,12 @@ public class tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         zombie_sond.Play();
+        dialogue.text = "toi pouvoir sauter quand toi appuyer espace";
+        yield return new WaitForSeconds(2);
+        zombie_sond.Stop();
+
+        yield return new WaitForSeconds(2);
+        zombie_sond.Play();
         dialogue.text = "Tu peux également regarder au alentour avec la souris, tu ne trouve pas qu'il fait beau dehors ajourd'hui ?";
         Player.GetComponent<movement_player>().tutorial_cam = true;
         yield return new WaitForSeconds(2);
@@ -137,7 +151,7 @@ public class tutorial : MonoBehaviour
         else if (next_step && (Vector3.Distance(Player.transform.position, Axe.transform.position) > 5 || Vector3.Distance(Player.transform.position, pitchfork.transform.position) > 5 || Vector3.Distance(Player.transform.position, sickle.transform.position) > 5) && can_attaque == false)
         {
             Debug.Log("je suis trop loin");
-            dialogue.text = "";
+            dialogue.text = "Prend une arme";
         }
         
 
@@ -183,6 +197,7 @@ public class tutorial : MonoBehaviour
         dialogue.text = "Prend une arme à deux main";
         yield return new WaitForSeconds(2);
         zombie_sond.Stop();
+        Player.GetComponent<weaponinstantiate>().double_hand_unlock = true;
         mid_step_part3 = true;
         StopCoroutine (mid_dialogue_part2());
 
@@ -239,6 +254,7 @@ public class tutorial : MonoBehaviour
         yield return new WaitForSeconds(2);
         zombie_sond.Stop();
         Zombie.GetComponent<pv_zombie>().enabled = true;
+        crosshair = false;
         StopCoroutine(fin_dialogue_part3());
     }
 
@@ -278,6 +294,16 @@ public class tutorial : MonoBehaviour
        
     }
 
+    void final_dialogue()
+    {
+        if (Zombie.GetComponent<pv_zombie>().nb_pv_zombie < 0)
+        {
+            mur_porte1.SetActive(false);
+            mur_porte2.SetActive(false);
+            dialogue.enabled = false;
+        }
+    }
+
     void visual_crossair()
     {
         if (crosshair)
@@ -300,12 +326,14 @@ public class tutorial : MonoBehaviour
         take_double_hand_weapon();
         visual_crossair();
         lancment_tuto_move();
+        final_dialogue();
         
     }
 
     private void Start()
     {
         Player.GetComponent<weaponinstantiate>().touche_x_unclock = true;
+        Player.GetComponent<weaponinstantiate>().double_hand_unlock = true;
         Player.GetComponent<movement_player>().can_move_forward = true;
         Player.GetComponent<movement_player>().can_move_right = true;
         Player.GetComponent<movement_player>().tutorial_cam = true;
@@ -313,7 +341,8 @@ public class tutorial : MonoBehaviour
         crosshair = false;
         zombie_sond.enabled = false;
         mur_tuto_move.SetActive(false);
-
+        mur_porte1.SetActive(false);
+        mur_porte2.SetActive(false);
 
     }
 }

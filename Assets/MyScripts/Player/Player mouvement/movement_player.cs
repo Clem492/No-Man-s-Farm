@@ -14,7 +14,7 @@ public class movement_player : MonoBehaviour
     [SerializeField] float speed_cam;
     [SerializeField] GameObject player;
     [SerializeField] GameObject cam;
-    float xRotation = 0;
+   public float xRotation = 0;
 
 
     //variable pour  la graviter 
