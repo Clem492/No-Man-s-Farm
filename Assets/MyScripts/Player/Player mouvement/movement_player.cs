@@ -7,6 +7,7 @@ public class movement_player : MonoBehaviour
     [SerializeField]  float player_speed;
     [SerializeField] float sprint_speed;
     [SerializeField] CharacterController controller;
+    Vector3 player_movement;
 
 
     //variable utiliser pour le mouvemen de la caméra
@@ -28,13 +29,13 @@ public class movement_player : MonoBehaviour
 
     //variable pour le tuto
     public int tutorial_move;
-    bool can_move_forward;
-    bool can_move_right;
-    float movement_y;
-    float movement_x;
+   public bool can_move_forward;
+   public bool can_move_right;
+   public float movement_y;
+   public float movement_x;
     public bool tutorial_cam;
-    float cam_x;
-    float cam_y;
+   public float cam_x;
+   public float cam_y;
     // fonction pour pouvoir déplacer le joueur 
     void movement()
     {
@@ -42,7 +43,6 @@ public class movement_player : MonoBehaviour
         {
             movement_y = Input.GetAxis("Vertical");
             can_move_forward = true;
-            Debug.Log("entrer");
         }
         if (tutorial_move ==2)
         {
@@ -59,8 +59,9 @@ public class movement_player : MonoBehaviour
         }
         
         
-        Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
+        player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
         controller.Move(player_movement);
+        
     }
     //fonction pour le sprint 
     void apply_sprint()

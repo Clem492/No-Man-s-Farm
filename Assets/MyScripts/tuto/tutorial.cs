@@ -11,12 +11,50 @@ public class tutorial : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] GameObject Zombie;
     [SerializeField] GameObject Axe, pitchfork, sickle;
+    [SerializeField] GameObject mur_tuto_move;
     bool can_attaque;
     bool next_step;
     bool mid_step_part2;
     bool mid_step_part3;
     [SerializeField] RawImage viseur;
     bool tutoriel;
+    bool crosshair;
+
+
+    void lancment_tuto_move()
+    {
+        if (Vector3.Distance(Player.transform.position, Zombie.transform.position) < 4 && tutoriel == false)
+        {
+            dialogue.text = "press E to talk (Start tutorial)";
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Player.GetComponent<movement_player>().movement_x = 0;
+                Player.GetComponent<movement_player>().movement_y = 0;
+                Player.GetComponent<movement_player>().cam_x = 0;
+                Player.GetComponent<movement_player>().cam_y = 0;
+                Player.GetComponent<weaponinstantiate>().touche_x_unclock = false;
+                Player.GetComponent<movement_player>().can_move_forward = false;
+                Player.GetComponent<movement_player>().can_move_right = false;
+                Player.GetComponent<movement_player>().tutorial_cam = false;
+                mur_tuto_move.SetActive(true);
+                Player.transform.position = new Vector3(250, 1, 239);
+                Player.transform.rotation = Quaternion.Euler(0, 0, 0);
+                next_step = false;
+                StartCoroutine(debut_dialogue());
+                can_attaque = false;
+                Zombie.GetComponent<pv_zombie>().enabled = false;
+                mid_step_part2 = false;
+                mid_step_part3 = false;
+                tutoriel = true;
+            }
+        }
+        else if (Vector3.Distance(Player.transform.position, Zombie.transform.position) > 4 && tutoriel == false)
+        {
+            dialogue.text = "";
+        }
+    }
+
+
     
 
     IEnumerator debut_dialogue()
@@ -70,16 +108,17 @@ public class tutorial : MonoBehaviour
         yield return new WaitForSeconds(2);
         zombie_sond.Play();
         dialogue.text = "Maintenant que tu sais te déplacer, tu peux interagire avec une des arme derrière moi en appuyant sur E";
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
         zombie_sond.Stop();
         next_step = true;
+        mur_tuto_move.SetActive(false);
 
         yield return new WaitForSeconds(2);
         zombie_sond.Play();
         dialogue.text = "Prend une arme";
         yield return new WaitForSeconds(2.5f);
         zombie_sond.Stop();
-        next_step = true;
+        
 
     }
 
@@ -92,7 +131,7 @@ public class tutorial : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && (Vector3.Distance(Player.transform.position, Axe.transform.position) < 5 || Vector3.Distance(Player.transform.position, pitchfork.transform.position) < 5 || Vector3.Distance(Player.transform.position, sickle.transform.position) < 5))
             {
                 can_attaque = true;
-                StartCoroutine(fin_dialogue_part1());
+                StartCoroutine(debut_dialogue_part1());
             }
         }
         else if (next_step && (Vector3.Distance(Player.transform.position, Axe.transform.position) > 5 || Vector3.Distance(Player.transform.position, pitchfork.transform.position) > 5 || Vector3.Distance(Player.transform.position, sickle.transform.position) > 5) && can_attaque == false)
@@ -105,26 +144,27 @@ public class tutorial : MonoBehaviour
 
     }
 
-    IEnumerator fin_dialogue_part1()
+    IEnumerator debut_dialogue_part1()
     {
         yield return new WaitForSeconds(2);
         zombie_sond.Play();
-        dialogue.text = "tu peux aussi jeter tes armes pour en prendre de nouvelle en appuyan sur la touche X";
+        dialogue.text = "tu peux aussi jeter tes armes pour en prendre de nouvelle";
         yield return new WaitForSeconds(2);
         zombie_sond.Stop();
 
         yield return new WaitForSeconds(2);
         zombie_sond.Play();
-        dialogue.text = "lache une arme par terre";
+        dialogue.text = "lache une arme par terre en appuyan sur la touche X";
+        Player.GetComponent<weaponinstantiate>().touche_x_unclock = true;
         yield return new WaitForSeconds(2);
         zombie_sond.Stop();
         mid_step_part2 = true;
-        StopCoroutine(fin_dialogue_part1());
+        StopCoroutine(debut_dialogue_part1());
         
 
     }
 
-    IEnumerator fin_dialogue_part2()
+    IEnumerator mid_dialogue_part2()
     {
         yield return new WaitForSeconds(2);
         zombie_sond.Play();
@@ -144,7 +184,7 @@ public class tutorial : MonoBehaviour
         yield return new WaitForSeconds(2);
         zombie_sond.Stop();
         mid_step_part3 = true;
-        StopCoroutine (fin_dialogue_part2());
+        StopCoroutine (mid_dialogue_part2());
 
        
     }
@@ -198,9 +238,7 @@ public class tutorial : MonoBehaviour
         dialogue.text = "tu peux me tuer... je ne suis pas l'un de vous ! et tu sais comment te défendre.";
         yield return new WaitForSeconds(2);
         zombie_sond.Stop();
-        
         Zombie.GetComponent<pv_zombie>().enabled = true;
-        tutoriel = false;
         StopCoroutine(fin_dialogue_part3());
     }
 
@@ -213,8 +251,8 @@ public class tutorial : MonoBehaviour
             {
                 
                 Debug.Log("je lance la part2");
-                StartCoroutine(fin_dialogue_part2());
-                
+                StartCoroutine(mid_dialogue_part2());
+                mid_step_part2 = false;
             }
         }
         
@@ -230,8 +268,8 @@ public class tutorial : MonoBehaviour
             
             if (mid_step_part3 && (Vector3.Distance(Player.transform.position, Axe.transform.position) < 5 || Vector3.Distance(Player.transform.position, pitchfork.transform.position) < 5 || Vector3.Distance(Player.transform.position, sickle.transform.position) < 5) && Input.GetKeyDown(KeyCode.E))
             {
-                bool double_hant = true;
-                if (double_hant && Input.GetKeyDown(KeyCode.E) && (Vector3.Distance(Player.transform.position, Axe.transform.position) < 5 || Vector3.Distance(Player.transform.position, pitchfork.transform.position) < 5 || Vector3.Distance(Player.transform.position, sickle.transform.position) < 5))
+                
+                if (Player.GetComponent<weaponinstantiate>().left_hand == true && Player.GetComponent<weaponinstantiate>().right_hand == true && Input.GetKeyDown(KeyCode.E) && (Vector3.Distance(Player.transform.position, Axe.transform.position) < 5 || Vector3.Distance(Player.transform.position, pitchfork.transform.position) < 5 || Vector3.Distance(Player.transform.position, sickle.transform.position) < 5))
                 {
                     StartCoroutine(fin_dialogue_part3());
                 }
@@ -242,7 +280,7 @@ public class tutorial : MonoBehaviour
 
     void visual_crossair()
     {
-        if (tutoriel)
+        if (crosshair)
         {
             viseur.gameObject.SetActive(false);
         }
@@ -261,19 +299,21 @@ public class tutorial : MonoBehaviour
         press_x_to_continue();
         take_double_hand_weapon();
         visual_crossair();
+        lancment_tuto_move();
         
     }
 
     private void Start()
     {
-        next_step = false;
-        StartCoroutine(debut_dialogue());
+        Player.GetComponent<weaponinstantiate>().touche_x_unclock = true;
+        Player.GetComponent<movement_player>().can_move_forward = true;
+        Player.GetComponent<movement_player>().can_move_right = true;
+        Player.GetComponent<movement_player>().tutorial_cam = true;
+        Zombie.GetComponent<pv_zombie>().enabled = true;
+        crosshair = false;
         zombie_sond.enabled = false;
-        can_attaque = false;
-        Zombie.GetComponent<pv_zombie>().enabled = false;
-        mid_step_part2 = false;
-        mid_step_part3 = false;
-        tutoriel = true;
-        
+        mur_tuto_move.SetActive(false);
+
+
     }
 }
