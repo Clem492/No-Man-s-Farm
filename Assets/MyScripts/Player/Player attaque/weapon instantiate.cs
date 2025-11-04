@@ -27,6 +27,8 @@ public class weaponinstantiate : MonoBehaviour
     [SerializeField] GameObject pitchfork_prefab;
     [SerializeField] GameObject pitchfork;
 
+    //variable utiliser pour unlok la touche x au tuto
+    public bool touche_x_unclock;
     
 
     //fonction pour savoir quelle arme le joueur a en main
@@ -151,15 +153,17 @@ public class weaponinstantiate : MonoBehaviour
     //méthode pour lacher une arme qui a été prise 
     private void drop_weapon()
     {
-        if (Input.GetKeyDown(KeyCode.X) && (right_hand == true || right_hand == true && left_hand == true))
+        if (touche_x_unclock)
         {
-            Destroy(hand_right);
-            Destroy(hand_left);
-            left_hand = false;
-            right_hand = false;
-            double_hand = false;
-        }
-        
+            if (Input.GetKeyDown(KeyCode.X) && (right_hand == true || right_hand == true && left_hand == true))
+            {
+                Destroy(hand_right);
+                Destroy(hand_left);
+                left_hand = false;
+                right_hand = false;
+                double_hand = false;
+            }
+        } 
     }
 
 
