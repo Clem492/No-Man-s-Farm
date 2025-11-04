@@ -29,7 +29,7 @@ public class weaponinstantiate : MonoBehaviour
 
     //variable utiliser pour unlok la touche x au tuto
     public bool touche_x_unclock;
-    
+    public bool double_hand_unlock;
 
     //fonction pour savoir quelle arme le joueur a en main
     void What_hand()
@@ -40,7 +40,7 @@ public class weaponinstantiate : MonoBehaviour
             firs_hand = true;
             Take_weapon_right();
         }
-        if (left_hand == false && right_hand == true && firs_hand == false && double_hand == false)
+        if (left_hand == false && right_hand == true && firs_hand == false && double_hand == false && double_hand_unlock)
         {
             Take_weapon_left();
         }
