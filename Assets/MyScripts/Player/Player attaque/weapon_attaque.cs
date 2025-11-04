@@ -11,6 +11,7 @@ public class weapon_attaque : MonoBehaviour
     [SerializeField] weaponinstantiate hand_left;
     [SerializeField] weaponinstantiate hand_right;
     [SerializeField] GameObject cam;
+    [SerializeField] AudioSource son_weapon;
    public int weapon_diff;
     bool right_hand;
     bool left_hand;
@@ -77,6 +78,7 @@ public class weapon_attaque : MonoBehaviour
             enemies = Physics.OverlapSphere(cam.transform.position + cam.transform.forward * 2f, 2);
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                son_weapon.Play();
                 can_attaque = false;
                 StartCoroutine(anti_spam_axe());
               
@@ -89,6 +91,7 @@ public class weapon_attaque : MonoBehaviour
               Debug.DrawRay(transform.position, cam.transform.forward * 2, Color.red);
               if (Input.GetKeyDown(KeyCode.Mouse0))
               {
+                son_weapon.Play();
                 can_attaque = false;
                   if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
                   {
@@ -106,6 +109,7 @@ public class weapon_attaque : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+                son_weapon.Play();
                 can_attaque = false;
                 Debug.DrawRay(cam.transform.position, cam.transform.forward * 4, Color.red);
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 4))
