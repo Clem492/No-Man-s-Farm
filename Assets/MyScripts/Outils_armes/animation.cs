@@ -25,17 +25,17 @@ public class animation : MonoBehaviour
         {
 
         }
-        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true)
+        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
         {
             can_attaque = false;
             StartCoroutine(axe_anim());
         }
-        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true)
+        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
         {
             can_attaque = false;
             StartCoroutine(sickle_anim());
         }
-        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_attaque == true)
+        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
         {
             can_attaque = false;
             StartCoroutine(pitforck_anim());

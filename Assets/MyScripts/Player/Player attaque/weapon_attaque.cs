@@ -35,6 +35,8 @@ public class weapon_attaque : MonoBehaviour
 
     //utile pour la coroutine anti_spam
     bool can_attaque;
+    //variable pour le tuto
+    public bool clique_unlock;
 
     //fonction pour savoir quelle arme le joueur a en main
     public void What_weapon()
@@ -44,7 +46,7 @@ public class weapon_attaque : MonoBehaviour
           right_hand = hand_right.right_hand;
           left_hand = hand_left.left_hand;
 
-        if (weapon_diff == 0 && right_hand == false ) //le 0 signifie main nue
+        if (weapon_diff == 0 && right_hand == false && clique_unlock == true ) //le 0 signifie main nue
         {
             Debug.DrawRay(cam.transform.position, cam.transform.forward * 2, Color.red);
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -71,7 +73,7 @@ public class weapon_attaque : MonoBehaviour
 
         }
 
-        if (weapon_diff == 1 && can_attaque == true) //le 1 signfie la hache
+        if (weapon_diff == 1 && can_attaque == true && clique_unlock == true) //le 1 signfie la hache
           {
             //raycast en boule pour toucher plus d'enemie
             //il faut faire la hache
@@ -86,7 +88,7 @@ public class weapon_attaque : MonoBehaviour
 
 
         }
-          if (weapon_diff == 2 && can_attaque == true) //le 2 signifie la faussile
+          if (weapon_diff == 2 && can_attaque == true && clique_unlock == true) //le 2 signifie la faussile
           {
               Debug.DrawRay(transform.position, cam.transform.forward * 2, Color.red);
               if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -105,7 +107,7 @@ public class weapon_attaque : MonoBehaviour
               }
           }
        
-        if (weapon_diff == 3 && can_attaque == true)
+        if (weapon_diff == 3 && can_attaque == true && clique_unlock == true)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {

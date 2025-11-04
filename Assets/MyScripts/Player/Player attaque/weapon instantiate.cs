@@ -31,6 +31,9 @@ public class weaponinstantiate : MonoBehaviour
     public bool touche_x_unclock;
     public bool double_hand_unlock;
 
+    //feedback utilisateur
+    [SerializeField] TMPro.TextMeshProUGUI feedback_take_weapon;
+
     //fonction pour savoir quelle arme le joueur a en main
     void What_hand()
     {
@@ -57,7 +60,7 @@ public class weaponinstantiate : MonoBehaviour
         
         if (Vector3.Distance(transform.position, axe.transform.position) < 5)
         {
-            Debug.Log("tu peux prendre la hache");
+         
             if (Input.GetKeyDown(KeyCode.E))
             {
                 hand_right = Instantiate(axe_prefab);
@@ -69,9 +72,11 @@ public class weaponinstantiate : MonoBehaviour
 
             }
         }
+    
+
         if (Vector3.Distance(transform.position, sickle.transform.position) < 5)
         {
-            Debug.Log("tu peux prendre la houe");
+         
             if (Input.GetKeyDown(KeyCode.E))
             {
                 hand_right = Instantiate(sickle_prefab);
@@ -83,9 +88,11 @@ public class weaponinstantiate : MonoBehaviour
 
             }
         }
+    
+
         if (Vector3.Distance(transform.position, pitchfork.transform.position) < 5)
         {
-            Debug.Log("tu peux prendre la fourche");
+         
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -108,17 +115,18 @@ public class weaponinstantiate : MonoBehaviour
                 weapon_hand = true;
             }
         }
+     
     }
 
     //fonction pour instantiate une arme
-   
+
 
     void Take_weapon_left()
     {
-        
+
         if (Vector3.Distance(transform.position, axe.transform.position) < 5)
         {
-            Debug.Log("tu peux prendre la hache");
+    
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (weapon_diff == 1)
@@ -133,9 +141,9 @@ public class weaponinstantiate : MonoBehaviour
             }
 
         }
+      
         if (Vector3.Distance(transform.position, sickle.transform.position) < 5)
         {
-            Debug.Log("tu peux prendre la houe");
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (weapon_diff == 2)
@@ -147,8 +155,27 @@ public class weaponinstantiate : MonoBehaviour
                     left_hand = true;
                 }
 
+
             }
-    }   }
+
+        }
+    
+    }
+    //feedback
+    void ui_in_screen()
+    {
+        if ((Vector3.Distance(gameObject.transform.position, sickle.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, axe.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) < 5))
+        {
+            feedback_take_weapon.text = "press E to pick up";
+            Debug.Log("je peux prendre");
+        }
+         else if (Vector3.Distance(gameObject.transform.position, sickle.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, axe.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) > 5)
+          {
+              Debug.Log("je peux  pas prendre");
+              feedback_take_weapon.text = "";
+          }
+    }
+
 
     //méthode pour lacher une arme qui a été prise 
     private void drop_weapon()
@@ -192,6 +219,7 @@ public class weaponinstantiate : MonoBehaviour
         What_hand();
         player_position = gameObject.transform.position;
         drop_weapon();
+        ui_in_screen();
     }
 }
 

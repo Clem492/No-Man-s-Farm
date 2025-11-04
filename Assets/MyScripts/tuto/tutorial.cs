@@ -11,6 +11,7 @@ public class tutorial : MonoBehaviour
     [SerializeField] GameObject Player;
     [SerializeField] GameObject cam;
     [SerializeField] GameObject Zombie;
+    [SerializeField] GameObject world;
     [SerializeField] GameObject Axe, pitchfork, sickle;
     [SerializeField] GameObject mur_tuto_move, mur_porte1, mur_porte2;
     bool can_attaque;
@@ -29,6 +30,7 @@ public class tutorial : MonoBehaviour
             dialogue.text = "press E to talk (Start tutorial)";
             if (Input.GetKeyDown(KeyCode.E))
             {
+                world.GetComponent<spawn_zombie>().StopSpawn();
                 Player.transform.position = new Vector3(250, 1, 239);
                 Player.transform.rotation = Quaternion.Euler(0, 0, 0);
                 cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -39,9 +41,11 @@ public class tutorial : MonoBehaviour
                 Player.GetComponent<movement_player>().cam_y = 0;
                 Player.GetComponent<weaponinstantiate>().touche_x_unclock = false;
                 Player.GetComponent<weaponinstantiate>().double_hand_unlock = false;
+                Player.GetComponent<weapon_attaque>().clique_unlock = false;
                 Player.GetComponent<movement_player>().can_move_forward = false;
                 Player.GetComponent<movement_player>().can_move_right = false;
                 Player.GetComponent<movement_player>().tutorial_cam = false;
+                world.GetComponent<spawn_zombie>().cycle_unlock = false;
                 mur_tuto_move.SetActive(true);
                 mur_porte1.SetActive(true);
                 mur_porte2.SetActive(true);
@@ -253,6 +257,7 @@ public class tutorial : MonoBehaviour
         dialogue.text = "tu peux me tuer... je ne suis pas l'un de vous ! et tu sais comment te défendre.";
         yield return new WaitForSeconds(2);
         zombie_sond.Stop();
+        Player.GetComponent<weapon_attaque>().clique_unlock = true;
         Zombie.GetComponent<pv_zombie>().enabled = true;
         crosshair = false;
         StopCoroutine(fin_dialogue_part3());
@@ -296,11 +301,12 @@ public class tutorial : MonoBehaviour
 
     void final_dialogue()
     {
-        if (Zombie.GetComponent<pv_zombie>().nb_pv_zombie < 0)
+        if (Zombie.GetComponent<pv_zombie>().nb_pv_zombie <= 0)
         {
             mur_porte1.SetActive(false);
             mur_porte2.SetActive(false);
             dialogue.enabled = false;
+            world.GetComponent<spawn_zombie>().StartSpawn();
         }
     }
 
@@ -332,11 +338,15 @@ public class tutorial : MonoBehaviour
 
     private void Start()
     {
+        
+        world.GetComponent<spawn_zombie>().cycle_unlock = true;
+        world.GetComponent<spawn_zombie>().StartSpawn();
         Player.GetComponent<weaponinstantiate>().touche_x_unclock = true;
         Player.GetComponent<weaponinstantiate>().double_hand_unlock = true;
         Player.GetComponent<movement_player>().can_move_forward = true;
         Player.GetComponent<movement_player>().can_move_right = true;
         Player.GetComponent<movement_player>().tutorial_cam = true;
+        Player.GetComponent<weapon_attaque>().clique_unlock = true;
         Zombie.GetComponent<pv_zombie>().enabled = true;
         crosshair = false;
         zombie_sond.enabled = false;

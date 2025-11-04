@@ -29,7 +29,9 @@ public class spawn_zombie : MonoBehaviour
     int zone_spawn;
     int nb_cerf_spawn;
     GameObject cerf_actuelle;
-    
+    //tutoriel
+    public bool cycle_unlock;
+    Coroutine spawnCoroutine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,7 +41,6 @@ public class spawn_zombie : MonoBehaviour
         girouette.transform.rotation = Quaternion.Euler(0, 0, 0);
         temp_jour = 105;
         temp_nuit = 105;
-        StartCoroutine(spawn());
         soleil.enabled = false;
         soleil_quart.enabled = false;
         soleil_demi.enabled = false;
@@ -55,114 +56,118 @@ public class spawn_zombie : MonoBehaviour
     {
         switch_ui_cycle();
     }
-    IEnumerator spawn()
+   public IEnumerator spawn()
     {
-        while (true)
+        if (cycle_unlock)
         {
-            jour.GetComponent<AudioSource>().enabled = true; //musique jour
-            nuit.GetComponent<AudioSource>().enabled = false;//musique nuit desactiver
-            if (numero_vague%5 ==0)
+            while (true)
             {
-                for (int i = 0; i < nb_cerf_spawn; i++)
+                jour.GetComponent<AudioSource>().enabled = true; //musique jour
+                nuit.GetComponent<AudioSource>().enabled = false;//musique nuit desactiver
+                if (numero_vague % 5 == 0)
                 {
-                    cerf_actuelle = Instantiate(cerf, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
-                    if (Vector3.Distance(cerf_actuelle.transform.position, farm.transform.position) < 30)
+                    for (int i = 0; i < nb_cerf_spawn; i++)
                     {
-                        Destroy(cerf_actuelle);
+                        cerf_actuelle = Instantiate(cerf, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
+                        if (Vector3.Distance(cerf_actuelle.transform.position, farm.transform.position) < 30)
+                        {
+                            Destroy(cerf_actuelle);
+                        }
+                    }
+
+                }
+
+                lumiere_valeur = 105;
+                numero_vague += 1;
+
+
+                //affiche le jour
+                // jour_nuit.text = "jour";
+
+                // Attendre ... s avant de faire la suite de la fonction (jour)
+                for (int i = 0; i < temp_jour; i++)
+                {
+                    jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
+
+                    lumiere_valeur -= 1;
+                    yield return new WaitForSeconds(1f);
+                }
+                jour.GetComponent<AudioSource>().enabled = false;
+                nuit.GetComponent<AudioSource>().enabled = true;
+
+                //affiche la nuit
+                // jour_nuit.text = "nuit";
+
+                //affiche le numéro de la vague
+                vague.text = "vague : " + numero_vague;
+                zone_spawn = Random.Range(0, 4);
+                //ont instantie les zombie
+
+                if (zone_spawn == 0)
+                {
+                    //Nord
+                    for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                    {
+                        tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(50, 150), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+
+                        girouette.transform.rotation = Quaternion.Euler(0, 44, 0);
+
+                        depart += 1;
                     }
                 }
-                
-            }
-            
-            lumiere_valeur = 105;
-            numero_vague += 1;
-            
-
-            //affiche le jour
-           // jour_nuit.text = "jour";
-
-            // Attendre ... s avant de faire la suite de la fonction (jour)
-            for (int i = 0; i < temp_jour; i++)
-            {
-                jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
-                
-                lumiere_valeur -= 1;
-                yield return new WaitForSeconds(1f);
-            }
-            jour.GetComponent<AudioSource>().enabled = false;
-            nuit.GetComponent<AudioSource>().enabled = true;
-
-            //affiche la nuit
-           // jour_nuit.text = "nuit";
-          
-            //affiche le numéro de la vague
-            vague.text = "vague : " + numero_vague;
-            zone_spawn = Random.Range(0, 4);
-            //ont instantie les zombie
-
-            if(zone_spawn == 0)
-            {
-                //Nord
-                for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                else if (zone_spawn == 1)
                 {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(50, 150), 1.5f, Random.Range(150, 350)), Quaternion.identity);
-                    
-                    girouette.transform.rotation = Quaternion.Euler(0, 44, 0);
-                    
-                    depart += 1;
-                }
-            }
-            else if (zone_spawn == 1)
-            {
-                //Est
-                for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
-                {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(350, 450)), Quaternion.identity);
-                    
-                    girouette.transform.rotation = Quaternion.Euler(0, 134, 0);
-                   
-                    depart += 1;
-                }
-            }
-            else if (zone_spawn == 2)
-            {
-                //Sud
-                for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
-                {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(350, 450), 1.5f, Random.Range(150, 350)), Quaternion.identity);
-                    
-                    girouette.transform.rotation = Quaternion.Euler(0, 224, 0);
-                   
-                    depart += 1;
-                }
-            }
-            else
-            {
-                //Ouest
-                for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
-                {
-                    tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(50, 150)), Quaternion.identity);
-                   
-                    girouette.transform.rotation = Quaternion.Euler(0, 314, 0);
-                   
-                    depart += 1;
-                }
-            }
-            sauvgarde_depart = depart;
-            //ont augmente le nombre de zombie qui va spawn
-            nombre_zombie_spawn = nombre_zombie_spawn + 2;
-            // Attendre ... s avant de faire la suite de la fonction (nuit)
+                    //Est
+                    for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                    {
+                        tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(350, 450)), Quaternion.identity);
 
-            lumiere_valeur = -105;
-            for (int i = 0; i < temp_nuit; i++)
-            {
-                jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
-               
-                lumiere_valeur += 1;
-                yield return new WaitForSeconds(1f);
+                        girouette.transform.rotation = Quaternion.Euler(0, 134, 0);
+
+                        depart += 1;
+                    }
+                }
+                else if (zone_spawn == 2)
+                {
+                    //Sud
+                    for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                    {
+                        tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(350, 450), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+
+                        girouette.transform.rotation = Quaternion.Euler(0, 224, 0);
+
+                        depart += 1;
+                    }
+                }
+                else
+                {
+                    //Ouest
+                    for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
+                    {
+                        tab_zombie[i] = Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(50, 150)), Quaternion.identity);
+
+                        girouette.transform.rotation = Quaternion.Euler(0, 314, 0);
+
+                        depart += 1;
+                    }
+                }
+                sauvgarde_depart = depart;
+                //ont augmente le nombre de zombie qui va spawn
+                nombre_zombie_spawn = nombre_zombie_spawn + 2;
+                // Attendre ... s avant de faire la suite de la fonction (nuit)
+
+                lumiere_valeur = -105;
+                for (int i = 0; i < temp_nuit; i++)
+                {
+                    jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
+
+                    lumiere_valeur += 1;
+                    yield return new WaitForSeconds(1f);
+                }
+                poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
             }
-            poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
         }
+        
     }
 
     //affichage du soleil/lune
@@ -257,6 +262,21 @@ public class spawn_zombie : MonoBehaviour
             lune_quart.enabled = false;
             lune_demi.enabled = false;
             lune_trois_quart.enabled = true;
+        }
+    }
+    // 👉 Et ces deux fonctions :
+    public void StartSpawn()
+    {
+        if (spawnCoroutine == null)
+            spawnCoroutine = StartCoroutine(spawn());
+    }
+
+    public void StopSpawn()
+    {
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
         }
     }
 }
