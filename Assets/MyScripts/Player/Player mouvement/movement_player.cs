@@ -7,7 +7,7 @@ public class movement_player : MonoBehaviour
     [SerializeField]  float player_speed;
     [SerializeField] float sprint_speed;
     [SerializeField] CharacterController controller;
-
+    [SerializeField] AudioSource son_pas;
 
     //variable utiliser pour le mouvemen de la caméra
     [SerializeField] float speed_cam;
@@ -57,8 +57,14 @@ public class movement_player : MonoBehaviour
         {
             movement_x = Input.GetAxis("Horizontal");
         }
-        
-        
+        if(movement_x !=0 || movement_y != 0)
+        {
+            son_pas.Play();
+        }
+        if(movement_x == 0 && movement_y == 0)
+        {
+            son_pas.Stop();
+        }
         Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
         controller.Move(player_movement);
     }
