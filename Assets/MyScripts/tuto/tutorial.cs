@@ -19,7 +19,7 @@ public class tutorial : MonoBehaviour
     bool mid_step_part2;
     bool mid_step_part3;
     [SerializeField] RawImage viseur;
-    bool tutoriel;
+    public bool tutoriel;
     bool crosshair;
 
 

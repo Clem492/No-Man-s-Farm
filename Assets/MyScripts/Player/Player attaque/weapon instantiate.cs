@@ -30,6 +30,7 @@ public class weaponinstantiate : MonoBehaviour
     //variable utiliser pour unlok la touche x au tuto
     public bool touche_x_unclock;
     public bool double_hand_unlock;
+    [SerializeField] GameObject zombie;
 
     //feedback utilisateur
     [SerializeField] TMPro.TextMeshProUGUI feedback_take_weapon;
@@ -164,16 +165,20 @@ public class weaponinstantiate : MonoBehaviour
     //feedback
     void ui_in_screen()
     {
-        if ((Vector3.Distance(gameObject.transform.position, sickle.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, axe.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) < 5))
+        if (zombie.GetComponent<tutorial>().tutoriel == false)
         {
-            feedback_take_weapon.text = "press E to pick up";
-            Debug.Log("je peux prendre");
+            if ((Vector3.Distance(gameObject.transform.position, sickle.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, axe.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) < 5))
+            {
+                feedback_take_weapon.text = "press E to pick up";
+                Debug.Log("je peux prendre");
+            }
+            else if (Vector3.Distance(gameObject.transform.position, sickle.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, axe.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) > 5)
+            {
+                Debug.Log("je peux  pas prendre");
+                feedback_take_weapon.text = "";
+            }
         }
-         else if (Vector3.Distance(gameObject.transform.position, sickle.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, axe.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) > 5)
-          {
-              Debug.Log("je peux  pas prendre");
-              feedback_take_weapon.text = "";
-          }
+       
     }
 
 
