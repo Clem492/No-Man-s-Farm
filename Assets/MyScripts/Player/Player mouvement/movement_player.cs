@@ -62,7 +62,7 @@ public class movement_player : MonoBehaviour
             movement_x = Input.GetAxis("Horizontal");
         }
 
-        if(movement_x !=0 || movement_y != 0)
+        if((movement_x !=0 || movement_y != 0) && jump.y <2)
         {
 
             son_pas.enabled = true;

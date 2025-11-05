@@ -9,6 +9,7 @@ public class spawn_zombie : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject zombie_prefab;
+    [SerializeField] GameObject boss_zombie_prefab;
     [SerializeField] GameObject cerf;
     [SerializeField] GameObject farm;
     [SerializeField] GameObject jour, nuit;
@@ -20,6 +21,7 @@ public class spawn_zombie : MonoBehaviour
     GameObject[] tab_zombie = new GameObject[100000];
     public int[] tab_pv_zombie = new int[100000];
     public int nombre_zombie_spawn = 5;
+    public bool win;
     int numero_vague;
     int temp_jour;
     int temp_nuit;
@@ -35,6 +37,7 @@ public class spawn_zombie : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        win = false;
         nb_cerf_spawn = 20;
         numero_vague = 0;
         jour_nuit_lumiere.transform.rotation = Quaternion.Euler(90,0,0);
@@ -64,6 +67,11 @@ public class spawn_zombie : MonoBehaviour
             {
                 jour.GetComponent<AudioSource>().enabled = true; //musique jour
                 nuit.GetComponent<AudioSource>().enabled = false;//musique nuit desactiver
+                if (win == true)
+                {
+                    yield break;
+                }
+                //spawn cerf
                 if (numero_vague % 5 == 0)
                 {
                     for (int i = 0; i < nb_cerf_spawn; i++)
@@ -101,8 +109,14 @@ public class spawn_zombie : MonoBehaviour
                 //affiche le numéro de la vague
                 vague.text = "vague : " + numero_vague;
                 zone_spawn = Random.Range(0, 4);
+                //boss zombie
+                if(numero_vague == 20)
+                {
+                    Instantiate(boss_zombie_prefab, new Vector3(Random.Range(50, 150), 1.5f, Random.Range(150, 350)), Quaternion.identity);
+                    jour.GetComponent<AudioSource>().enabled = false;
+                    nuit.GetComponent<AudioSource>().enabled = false;
+                }
                 //ont instantie les zombie
-
                 if (zone_spawn == 0)
                 {
                     //Nord

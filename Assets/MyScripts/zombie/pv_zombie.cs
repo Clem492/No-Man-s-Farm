@@ -9,13 +9,22 @@ public class pv_zombie : MonoBehaviour
     [SerializeField] GameObject nails_prefab;
     [SerializeField] TMPro.TextMeshProUGUI affichage_pv_zombie;
     [SerializeField] AudioSource son_degats;
+    GameObject world ;
     int luck_nail;
     bool mort;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        nb_pv_zombie = 50;
+        world = GameObject.FindWithTag("world");
+        if (gameObject.CompareTag("boss"))
+        {
+            nb_pv_zombie = 500;
+        }
+        else
+        {
+            nb_pv_zombie = 50;
+        }
         animator = GetComponent<Animator>();
         mort = false;
     }
@@ -32,6 +41,10 @@ public class pv_zombie : MonoBehaviour
         //si c'est point de vie sont a 0 ou en dessous de 0
         if (nb_pv_zombie <= 0 && mort == false)
         {
+            if (gameObject.CompareTag("boss"))
+            {
+                world.GetComponent<spawn_zombie>().win = true;
+            }
             StartCoroutine(anim_mort_zombie());
             mort = true;
         }
