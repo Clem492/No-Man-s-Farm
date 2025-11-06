@@ -33,7 +33,7 @@ public class spawn_zombie : MonoBehaviour
     GameObject cerf_actuelle;
     //tutoriel
     public bool cycle_unlock;
-    Coroutine spawnCoroutine;
+ 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,6 +53,7 @@ public class spawn_zombie : MonoBehaviour
         lune_quart.enabled = false;
         lune_demi.enabled = false;
         lune_trois_quart.enabled = false;
+        
     }
 
     // Update is called once per frame
@@ -280,18 +281,5 @@ public class spawn_zombie : MonoBehaviour
         }
     }
     // 👉 Et ces deux fonctions :
-    public void Start_Spawn()
-    {
-        if (spawnCoroutine == null)
-            spawnCoroutine = StartCoroutine(spawn());
-    }
 
-    public void Stop_Spawn()
-    {
-        if (spawnCoroutine != null)
-        {
-            StopCoroutine(spawnCoroutine);
-            spawnCoroutine = null;
-        }
-    }
 }

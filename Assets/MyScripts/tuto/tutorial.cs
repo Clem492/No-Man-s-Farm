@@ -21,7 +21,7 @@ public class tutorial : MonoBehaviour
     [SerializeField] RawImage viseur;
     public bool tutoriel;
     bool crosshair;
-
+    Coroutine spawn_coroutine;
 
     void lancment_tuto_move()
     {
@@ -30,7 +30,9 @@ public class tutorial : MonoBehaviour
             dialogue.text = "press E to talk (Start tutorial)";
             if (Input.GetKeyDown(KeyCode.E))
             {
-                world.GetComponent<spawn_zombie>().Stop_Spawn();
+                
+                StopCoroutine(spawn_coroutine);
+
                 Player.transform.position = new Vector3(250, 1, 239);
                 Player.transform.rotation = Quaternion.Euler(0, 0, 0);
                 cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -260,7 +262,6 @@ public class tutorial : MonoBehaviour
         Player.GetComponent<weapon_attaque>().clique_unlock = true;
         Zombie.GetComponent<pv_zombie>().enabled = true;
         crosshair = false;
-        world.GetComponent<spawn_zombie>().Start_Spawn();
         StopCoroutine(fin_dialogue_part3());
     }
 
@@ -304,9 +305,11 @@ public class tutorial : MonoBehaviour
     {
         if (Zombie.GetComponent<pv_zombie>().nb_pv_zombie <= 0)
         {
+            StartCoroutine(world.GetComponent<spawn_zombie>().spawn());
             mur_porte1.SetActive(false);
             mur_porte2.SetActive(false);
             dialogue.enabled = false;
+            
         }
     }
 
@@ -340,7 +343,9 @@ public class tutorial : MonoBehaviour
     {
         
         world.GetComponent<spawn_zombie>().cycle_unlock = true;
-        world.GetComponent<spawn_zombie>().Start_Spawn();
+        spawn_coroutine = world.GetComponent<spawn_zombie>().StartCoroutine(world.GetComponent<spawn_zombie>().spawn());
+        
+
         Player.GetComponent<weaponinstantiate>().touche_x_unclock = true;
         Player.GetComponent<weaponinstantiate>().double_hand_unlock = true;
         Player.GetComponent<movement_player>().can_move_forward = true;
