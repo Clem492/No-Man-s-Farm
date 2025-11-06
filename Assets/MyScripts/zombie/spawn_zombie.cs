@@ -34,6 +34,7 @@ public class spawn_zombie : MonoBehaviour
     //tutoriel
     public bool cycle_unlock;
     Coroutine spawnCoroutine;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -279,13 +280,13 @@ public class spawn_zombie : MonoBehaviour
         }
     }
     // 👉 Et ces deux fonctions :
-    public void StartSpawn()
+    public void Start_Spawn()
     {
         if (spawnCoroutine == null)
             spawnCoroutine = StartCoroutine(spawn());
     }
 
-    public void StopSpawn()
+    public void Stop_Spawn()
     {
         if (spawnCoroutine != null)
         {

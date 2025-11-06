@@ -30,7 +30,7 @@ public class tutorial : MonoBehaviour
             dialogue.text = "press E to talk (Start tutorial)";
             if (Input.GetKeyDown(KeyCode.E))
             {
-                world.GetComponent<spawn_zombie>().StopSpawn();
+                world.GetComponent<spawn_zombie>().Stop_Spawn();
                 Player.transform.position = new Vector3(250, 1, 239);
                 Player.transform.rotation = Quaternion.Euler(0, 0, 0);
                 cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -198,7 +198,7 @@ public class tutorial : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         zombie_sond.Play();
-        dialogue.text = "Prend une arme à deux main";
+        dialogue.text = "Prend deux armes";
         yield return new WaitForSeconds(2);
         zombie_sond.Stop();
         Player.GetComponent<weaponinstantiate>().double_hand_unlock = true;
@@ -260,6 +260,7 @@ public class tutorial : MonoBehaviour
         Player.GetComponent<weapon_attaque>().clique_unlock = true;
         Zombie.GetComponent<pv_zombie>().enabled = true;
         crosshair = false;
+        world.GetComponent<spawn_zombie>().Start_Spawn();
         StopCoroutine(fin_dialogue_part3());
     }
 
@@ -306,7 +307,6 @@ public class tutorial : MonoBehaviour
             mur_porte1.SetActive(false);
             mur_porte2.SetActive(false);
             dialogue.enabled = false;
-            world.GetComponent<spawn_zombie>().StartSpawn();
         }
     }
 
@@ -340,7 +340,7 @@ public class tutorial : MonoBehaviour
     {
         
         world.GetComponent<spawn_zombie>().cycle_unlock = true;
-        world.GetComponent<spawn_zombie>().StartSpawn();
+        world.GetComponent<spawn_zombie>().Start_Spawn();
         Player.GetComponent<weaponinstantiate>().touche_x_unclock = true;
         Player.GetComponent<weaponinstantiate>().double_hand_unlock = true;
         Player.GetComponent<movement_player>().can_move_forward = true;
