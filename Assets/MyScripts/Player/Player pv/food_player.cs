@@ -19,6 +19,7 @@ public class food_player : MonoBehaviour
         
         perte_nourriture_player();
         changement_image_food();
+        mort_faim();
     }
     void mort_faim()
     {
