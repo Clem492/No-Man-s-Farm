@@ -8,22 +8,27 @@ public class ScriptMenu : MonoBehaviour
     private bool okForFade;
     [SerializeField] private RawImage imageNoire;
     [SerializeField] private float duration = 5f;
-    [SerializeField] private string sceneToLoad = "Scene1";
+    [SerializeField] private string sceneToLoad = "scene2copie";
+
 
     void Start()
     {
         okForFade = true;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
     void Update()
     {
-        if (okForFade && Input.GetKeyDown(KeyCode.Space))
-        {
-            okForFade = false;
-            StartCoroutine(FadeOutAndChangeScene());
-        }
+        
+    }
+    public void play()
+    {
+        StartCoroutine(FadeOutAndChangeScene());
+    }
+    public void exit()
+    {
+        Application.Quit();
     }
 
     IEnumerator FadeOutAndChangeScene()
