@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 // using UnityEngine.Experimental.GlobalIllumination; // supprimé car inutile et source potentielle d’erreurs
 
@@ -31,6 +32,7 @@ public class spawn_zombie : MonoBehaviour
     int sauvgarde_depart;
     int zone_spawn;
     int nb_cerf_spawn;
+    string scene_win;
     GameObject cerf_actuelle;
     //tutoriel
     public bool cycle_unlock;
@@ -72,6 +74,7 @@ public class spawn_zombie : MonoBehaviour
             nuit.GetComponent<AudioSource>().enabled = false;//musique nuit desactiver
             if (win == true)
             {
+                SceneManager.LoadScene(scene_win);
                 yield break;
             }
             //spawn cerf
@@ -117,7 +120,7 @@ public class spawn_zombie : MonoBehaviour
             vague.text = "vague : " + numero_vague;
             zone_spawn = Random.Range(0, 4);
             //boss zombie
-            if (numero_vague == 20)
+            if (numero_vague == 5)
             {
                 Instantiate(boss_zombie_prefab, new Vector3(Random.Range(50, 150), 1.5f, Random.Range(150, 350)), Quaternion.identity);
                 jour.GetComponent<AudioSource>().enabled = false;

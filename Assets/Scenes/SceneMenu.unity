@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageNoire: {fileID: 706019571}
   duration: 3
-  sceneToLoad: scene2copie
+  sceneToLoad: ScenePrincipale
 --- !u!4 &1500943105
 Transform:
   m_ObjectHideFlags: 0

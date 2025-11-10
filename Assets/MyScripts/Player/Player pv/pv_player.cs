@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class pv_player : MonoBehaviour
 {
     public float nb_pv_player;
     bool est_mort;
     [SerializeField] TMPro.TextMeshProUGUI txt_pv_player;
+    string scene_loose;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,23 +32,12 @@ public class pv_player : MonoBehaviour
         {
             
             est_mort = true;
-            StartCoroutine(reset_pos());
-            
+            SceneManager.LoadScene(scene_loose);
+
         }
             
     }
-    IEnumerator reset_pos()
-    {
-        gameObject.GetComponent<food_player>().food_player_actuelle = 100;
-        nb_pv_player = 10;
-        gameObject.GetComponent<CharacterController>().enabled = false;
-        gameObject.transform.position = new Vector3(250, 1, 250);
-        gameObject.GetComponent<CharacterController>().enabled = true;
-        txt_pv_player.text = "PV : " + nb_pv_player;
-        yield return new WaitForSeconds(1);
     
-        est_mort = false;
-    }
     //reduit les pv du joueur
     public void perte_pv_player(float degats)
     {
