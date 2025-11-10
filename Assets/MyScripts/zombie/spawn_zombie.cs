@@ -32,7 +32,7 @@ public class spawn_zombie : MonoBehaviour
     int sauvgarde_depart;
     int zone_spawn;
     int nb_cerf_spawn;
-    string scene_win;
+    string scene_win = "SceneVictoire";
     GameObject cerf_actuelle;
     //tutoriel
     public bool cycle_unlock;

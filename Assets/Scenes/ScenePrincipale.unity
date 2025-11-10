@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 485051724}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6113,6 +6113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 320019212}
   zombie_prefab: {fileID: 7397198928277762974, guid: 3ec912f9eaec02e488a79ab5c3667d95, type: 3}
+  zombie: {fileID: 7397198927630378141}
   boss_zombie_prefab: {fileID: 2026234954426996795, guid: 5c973cd5b7fb4ba4f9534bc255efb92d, type: 3}
   cerf: {fileID: 7726784429349746505, guid: aaac550b6f348464b92c7d573da7fbf1, type: 3}
   farm: {fileID: 374389100}

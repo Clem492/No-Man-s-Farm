@@ -6,7 +6,7 @@ public class pv_player : MonoBehaviour
     public float nb_pv_player;
     bool est_mort;
     [SerializeField] TMPro.TextMeshProUGUI txt_pv_player;
-    string scene_loose;
+    string scene_loose = "SceneDefaite";
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
