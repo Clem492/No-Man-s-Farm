@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    const int Full_Inventory = 20;
     public List<Item_Data> content = new List<Item_Data>();
     public void Add_Item(Item_Data item)
     {
@@ -62,6 +63,10 @@ public class Inventory : MonoBehaviour
         }
     }
 
+   public bool Inventory_Full()
+    {
+        return Full_Inventory == content.Count;
+    }
 
     IEnumerator cooldown_open_inventory()//cette coroutine empêche que les fonction close et open se joue toute les deux en meme temps 
     {

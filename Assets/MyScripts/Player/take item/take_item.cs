@@ -22,6 +22,11 @@ public class take_item : MonoBehaviour
                 Debug.Log("ceci est un item");
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    if (inventory.Inventory_Full())
+                    {
+                        return;
+                    }
+
                     inventory.Add_Item(hit.transform.GetComponent<Item>().item);
                     Destroy(hit.transform.gameObject);
                 }
@@ -29,6 +34,8 @@ public class take_item : MonoBehaviour
         }
        
     }
+
+ 
     private void Update()
     {
         pikup_item();
