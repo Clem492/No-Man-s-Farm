@@ -54,6 +54,15 @@ public class Inventory : MonoBehaviour
         Refresh_content();
     }
 
+    void meat_in_inventory()
+    {
+        for (int i = 0; i < content.Count; i++)
+        {
+            
+        }
+    }
+
+
     IEnumerator cooldown_open_inventory()//cette coroutine empêche que les fonction close et open se joue toute les deux en meme temps 
     {
         yield return new WaitForSeconds(0.1f);
