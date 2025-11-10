@@ -34,11 +34,12 @@ public class spawn_zombie : MonoBehaviour
     GameObject cerf_actuelle;
     //tutoriel
     public bool cycle_unlock;
- 
+   
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        cycle_unlock = true;
         win = false;
         nb_cerf_spawn = 20;
         numero_vague = 0;
@@ -54,7 +55,7 @@ public class spawn_zombie : MonoBehaviour
         lune_quart.enabled = false;
         lune_demi.enabled = false;
         lune_trois_quart.enabled = false;
-        
+        StartCoroutine(spawn());
     }
 
     // Update is called once per frame
@@ -66,6 +67,7 @@ public class spawn_zombie : MonoBehaviour
     {
         if (cycle_unlock)
         {
+
             jour.GetComponent<AudioSource>().enabled = true; //musique jour
             nuit.GetComponent<AudioSource>().enabled = false;//musique nuit desactiver
             if (win == true)

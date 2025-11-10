@@ -343,7 +343,9 @@ public class tutorial : MonoBehaviour
 
     private void Start()
     {
+       
         tuto_fini = false;
+        tutoriel = false;
         world.GetComponent<spawn_zombie>().cycle_unlock = true;
         Player.GetComponent<weaponinstantiate>().touche_x_unclock = true;
         Player.GetComponent<weaponinstantiate>().double_hand_unlock = true;
