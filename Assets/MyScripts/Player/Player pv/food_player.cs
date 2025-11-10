@@ -16,7 +16,6 @@ public class food_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         perte_nourriture_player();
         changement_image_food();
         mort_faim();
