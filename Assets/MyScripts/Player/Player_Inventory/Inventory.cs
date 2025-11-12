@@ -13,6 +13,12 @@ public class Inventory : MonoBehaviour
         content.Add(item);
     }
 
+    public void Remove_Item(Item_Data item)
+    {
+        content.Remove(item);
+        
+    }
+
     //ouverture et fermeture de l'inventaire 
 
     [SerializeField] Canvas Inventory_ui;//Canva utiliser pour l'ui de l'inventaire
@@ -53,13 +59,23 @@ public class Inventory : MonoBehaviour
         open_inventory();
         close_inventory();
         Refresh_content();
+        meat_in_inventory();
     }
 
     void meat_in_inventory()
     {
         for (int i = 0; i < content.Count; i++)
         {
-            
+            if (content[i].Item_Name == "Steak")
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    Remove_Item(content[i]);
+                    inventory_slot_parent.GetChild(i).GetComponent<Image>().sprite = null;
+                    return;
+                }
+            }
+            else Debug.Log("je n'ai pas de steack");
         }
     }
 
