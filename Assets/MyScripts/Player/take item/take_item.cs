@@ -29,6 +29,7 @@ public class take_item : MonoBehaviour
 
                     inventory.Add_Item(hit.transform.GetComponent<Item>().item);
                     Destroy(hit.transform.gameObject);
+                    inventory.GetComponent<Inventory>().Refresh_content();
                 }
             }
         }

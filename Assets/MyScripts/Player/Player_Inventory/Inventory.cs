@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
 {
     const int Full_Inventory = 20;
     public List<Item_Data> content = new List<Item_Data>();
+    public List<Image> slot_images = new List<Image>();
     public void Add_Item(Item_Data item)
     {
         content.Add(item);
@@ -58,8 +59,9 @@ public class Inventory : MonoBehaviour
     {
         open_inventory();
         close_inventory();
-        Refresh_content();
         meat_in_inventory();
+       
+        
     }
 
     void meat_in_inventory()
@@ -70,12 +72,28 @@ public class Inventory : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
+                    if (GameObject.FindWithTag("player").GetComponent<food_player>().food_player_actuelle <90)
+                    {
+                        slot_images[i].sprite = null;
+                        Remove_Item(content[i]);
+                        Refresh_content();
+                        GameObject.FindWithTag("player").GetComponent<food_player>().gain_nourriture_player(10);
+                        return;
+                    }
+                    
+                }
+            }
+            if (content[i].Item_Name == "Wooden Stick")
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    slot_images[i].sprite = null;
                     Remove_Item(content[i]);
-                    inventory_slot_parent.GetChild(i).GetComponent<Image>().sprite = null;
+                    Refresh_content();
+
                     return;
                 }
             }
-            else Debug.Log("je n'ai pas de steack");
         }
     }
 
@@ -98,11 +116,20 @@ public class Inventory : MonoBehaviour
 
     //affichage des élément de notre inventaire dans l'ui inventaire 
     [SerializeField] private Transform inventory_slot_parent;
-    private void Refresh_content()
+    public void Refresh_content()
     {
+        //  Efface tous les slots d'abord
+        foreach (var img in slot_images)
+        {
+            img.sprite = null;
+            
+        }
+
+        //  Puis affiche les items actuels dans l’ordre
         for (int i = 0; i < content.Count; i++)
         {
-            inventory_slot_parent.GetChild(i).GetComponent<Image>().sprite = content[i].Item_Image;
+            slot_images[i].sprite = content[i].Item_Image;
+            
         }
     }
 }

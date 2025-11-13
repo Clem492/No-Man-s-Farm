@@ -3780,6 +3780,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: []
+  slot_images:
+  - {fileID: 217355172}
+  - {fileID: 1696462889}
+  - {fileID: 1751302081}
+  - {fileID: 646329490}
+  - {fileID: 1056636755}
+  - {fileID: 859293886}
+  - {fileID: 1300264284}
+  - {fileID: 278993080}
+  - {fileID: 1959735788}
+  - {fileID: 2069935421}
+  - {fileID: 1671940973}
+  - {fileID: 1868660090}
+  - {fileID: 1341659928}
+  - {fileID: 670561563}
+  - {fileID: 944148896}
+  - {fileID: 1531932361}
+  - {fileID: 185363838}
+  - {fileID: 960814404}
+  - {fileID: 1008467520}
+  - {fileID: 517589325}
   Inventory_ui: {fileID: 315889118}
   crosshaire: {fileID: 838553067}
   inventory_slot_parent: {fileID: 465634329}
