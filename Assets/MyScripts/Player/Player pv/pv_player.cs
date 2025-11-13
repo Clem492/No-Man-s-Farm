@@ -37,6 +37,10 @@ public class pv_player : MonoBehaviour
         }
             
     }
+    public void mort_player_food()
+    {
+        SceneManager.LoadScene(scene_loose);
+    }
     
     //reduit les pv du joueur
     public void perte_pv_player(float degats)

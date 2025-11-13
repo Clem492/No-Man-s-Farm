@@ -19,12 +19,13 @@ public class food_player : MonoBehaviour
         perte_nourriture_player();
         changement_image_food();
         mort_faim();
+       
     }
     void mort_faim()
     {
         if(food_player_actuelle <= 0)
         {
-            gameObject.GetComponent<pv_player>().mort_player();
+            gameObject.GetComponent<pv_player>().mort_player_food();
         }
     }
     void perte_nourriture_player()
