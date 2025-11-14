@@ -8,6 +8,7 @@ public class craft_inventory : MonoBehaviour
     [SerializeField] Canvas craft_canva;
     public List<Image> slot_images_craft = new List<Image>();
     List<Item_Data> content;
+    [SerializeField] craft craft;
 
     private void Start()
     {
@@ -20,14 +21,21 @@ public class craft_inventory : MonoBehaviour
     {
         content = inventory.content;
         open_craft_pannel();
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     void open_craft_pannel()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
+            Cursor.lockState = CursorLockMode.None;   
             craft_canva.enabled = !craft_canva.enabled;
             Refresh_content();
+            craft.wood();
+            
         }
     }
 

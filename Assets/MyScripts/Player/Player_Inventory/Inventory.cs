@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     const int Full_Inventory = 20;
     public List<Item_Data> content = new List<Item_Data>();
     public List<Image> slot_images = new List<Image>();
+    
     public void Add_Item(Item_Data item)
     {
         content.Add(item);
@@ -53,6 +54,7 @@ public class Inventory : MonoBehaviour
         crosshaire.enabled = true;
         Inventory_ui.gameObject.SetActive(false);
         inventory_in_screen = false;
+        
     }
 
     private void Update()
