@@ -30,7 +30,7 @@ public class food_player : MonoBehaviour
     }
     void perte_nourriture_player()
     {
-        food_player_actuelle -= 0.75f * Time.deltaTime;
+        food_player_actuelle -= 0.50f * Time.deltaTime;
     }
     public void gain_nourriture_player(float val_nourriture)
     {
