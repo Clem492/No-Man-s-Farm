@@ -31,10 +31,20 @@ public class craft_inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Cursor.lockState = CursorLockMode.None;   
+
+              
             craft_canva.enabled = !craft_canva.enabled;
+            if (craft_canva.enabled)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
             Refresh_content();
-            craft.wood();
+            craft.Wood();
+            craft.Nails();
             
         }
     }

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5061,7 +5061,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f751786fa1cddb47b07afa2e705d6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: []
+  content:
+  - {fileID: 11400000, guid: abdb4415d640d584c83d1a5012bee324, type: 2}
+  - {fileID: 11400000, guid: abdb4415d640d584c83d1a5012bee324, type: 2}
+  - {fileID: 11400000, guid: abdb4415d640d584c83d1a5012bee324, type: 2}
+  - {fileID: 11400000, guid: abdb4415d640d584c83d1a5012bee324, type: 2}
+  - {fileID: 11400000, guid: abdb4415d640d584c83d1a5012bee324, type: 2}
+  - {fileID: 11400000, guid: 4fd083e3e6a62ec4b8fbe573e2f31973, type: 2}
+  - {fileID: 11400000, guid: 4fd083e3e6a62ec4b8fbe573e2f31973, type: 2}
+  - {fileID: 11400000, guid: 4fd083e3e6a62ec4b8fbe573e2f31973, type: 2}
+  - {fileID: 11400000, guid: 4fd083e3e6a62ec4b8fbe573e2f31973, type: 2}
+  - {fileID: 11400000, guid: 4fd083e3e6a62ec4b8fbe573e2f31973, type: 2}
+  - {fileID: 11400000, guid: 4fd083e3e6a62ec4b8fbe573e2f31973, type: 2}
+  - {fileID: 11400000, guid: 4fd083e3e6a62ec4b8fbe573e2f31973, type: 2}
   slot_images:
   - {fileID: 217355172}
   - {fileID: 1696462889}
@@ -5824,7 +5836,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1007683761}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1950431240}
+        m_TargetAssemblyTypeName: craft, Assembly-CSharp
+        m_MethodName: pitchforck_button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1007683761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6423,6 +6447,10 @@ PrefabInstance:
       propertyPath: axe
       value: 
       objectReference: {fileID: 1602539976}
+    - target: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      propertyPath: craft
+      value: 
+      objectReference: {fileID: 1950431240}
     - target: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: sickle
       value: 
@@ -7197,7 +7225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7467,7 +7495,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1279292266}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1950431240}
+        m_TargetAssemblyTypeName: craft, Assembly-CSharp
+        m_MethodName: sickle_button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1279292266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8093,18 +8133,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1950431240}
+        m_TargetAssemblyTypeName: craft, Assembly-CSharp
+        m_MethodName: craft_button
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!114 &1342002005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8650,6 +8690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arbre_prefab: {fileID: 3596009632643465309, guid: 41f31a93fa0601745b3df0a6e3272ea5, type: 3}
   arbre_mort_prefab: {fileID: 5697183462181675349, guid: 5e8a3f7db22dc54478ed38e0a0a7cac5, type: 3}
+  arbre_corrompu: {fileID: 3392180456356440291, guid: f71193770e159fd4ea6e5faf40389b31, type: 3}
   farm: {fileID: 374389100}
 --- !u!114 &1464093476
 MonoBehaviour:
@@ -8668,6 +8709,7 @@ MonoBehaviour:
   zombie: {fileID: 7397198927630378141}
   boss_zombie_prefab: {fileID: 2026234954426996795, guid: 5c973cd5b7fb4ba4f9534bc255efb92d, type: 3}
   cerf: {fileID: 7726784429349746505, guid: aaac550b6f348464b92c7d573da7fbf1, type: 3}
+  cerf_bugger: {fileID: 7868472980595760784, guid: 69d53539c6c73c248bbd427e29baca48, type: 3}
   farm: {fileID: 374389100}
   jour: {fileID: 1965863003}
   nuit: {fileID: 1303174321}
@@ -11168,8 +11210,17 @@ MonoBehaviour:
   bois_text: {fileID: 1255294915}
   clou_text: {fileID: 21803836}
   bois_sprite: {fileID: 21300000, guid: 4e080506ac352e043b2257c4b1b98f47, type: 3}
+  clou_sprite: {fileID: 21300000, guid: a6d44d9d2777b3c4e9bcafcd052ba1a1, type: 3}
   axe: {fileID: 2800000, guid: 029d4c05621a49843921b4016e5ca792, type: 3}
+  pitchfork: {fileID: 2800000, guid: a11aa9221ecd846449ab57fd18a12c91, type: 3}
+  faussille: {fileID: 2800000, guid: ee72cdeb1f3d569429b5e53249894cad, type: 3}
   inventory: {fileID: 891743938}
+  weaponinstantiate: {fileID: 320019221}
+  bois_requis: 0
+  clou_requis: 0
+  wood_in_inventory: 0
+  nails_in_inventory: 0
+  what_craft: 0
 --- !u!1 &1959735786
 GameObject:
   m_ObjectHideFlags: 0

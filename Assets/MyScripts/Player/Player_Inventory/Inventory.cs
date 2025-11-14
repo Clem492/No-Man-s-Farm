@@ -85,17 +85,8 @@ public class Inventory : MonoBehaviour
                     
                 }
             }
-            if (content[i].Item_Name == "Wooden Stick")
-            {
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    slot_images[i].sprite = null;
-                    Remove_Item(content[i]);
-                    Refresh_content();
-
-                    return;
-                }
-            }
+            
+            
         }
     }
 

@@ -35,8 +35,11 @@ public class weaponinstantiate : MonoBehaviour
     //feedback utilisateur
     [SerializeField] TMPro.TextMeshProUGUI feedback_take_weapon;
 
+    //variable pour crafter une arme dans l'établie
+    [SerializeField] craft craft;
+
     //fonction pour savoir quelle arme le joueur a en main
-    void What_hand()
+    void What_hand_take()
     {
         
         if (right_hand == false)
@@ -51,6 +54,20 @@ public class weaponinstantiate : MonoBehaviour
         firs_hand = false;
     }
 
+     public void What_hand_craft()
+    {
+
+        if (right_hand == false)
+        {
+            firs_hand = true;
+            craft_weapon_right();
+        }
+        if (left_hand == false && right_hand == true && firs_hand == false && double_hand == false && double_hand_unlock)
+        {
+            craft_weapon_left();
+        }
+        firs_hand = false;
+    }
 
 
 
@@ -162,6 +179,77 @@ public class weaponinstantiate : MonoBehaviour
         }
     
     }
+
+    void craft_weapon_right()
+    {
+        if (craft.wood_in_inventory >= craft.bois_requis && craft.nails_in_inventory >= craft.clou_requis && craft.what_craft == 1)//hache
+        {
+            Debug.Log("je craft");
+            hand_right = Instantiate(axe_prefab);
+            hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hache en enfant
+            hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
+            hand_right.transform.localRotation = Quaternion.Euler(90, 90, 0);
+            right_hand = true;
+            weapon_diff = 1;
+        }
+        if (craft.wood_in_inventory >= craft.bois_requis && craft.nails_in_inventory >= craft.clou_requis && craft.what_craft == 2)//sickles
+        {
+            hand_right = Instantiate(sickle_prefab);
+            hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hou en enfant
+            hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
+            hand_right.transform.localRotation = Quaternion.Euler(50, 0, 90);
+            right_hand = true;
+            weapon_diff = 2;
+        }
+        if (craft.wood_in_inventory >= craft.bois_requis && craft.nails_in_inventory >= craft.clou_requis && craft.what_craft == 3)//fouche
+        {
+            // Instanciation de la fourche
+            hand_right = Instantiate(pitchfork_prefab);
+
+            // Parent à la main droite
+            hand_right.transform.SetParent(right_hand_position, false);
+
+            // Position et rotation locales
+            hand_right.transform.localPosition = new Vector3(0, 0, -0.5f);
+            Debug.Log("bien instantier");
+            hand_right.transform.localRotation = Quaternion.Euler(0, -90, 0);
+
+            // Mise à jour des états
+            right_hand = true;
+            double_hand = true;
+            weapon_diff = 3;
+            weapon_hand = true;
+        }
+    }
+
+    void craft_weapon_left()
+    {
+        if (craft.wood_in_inventory >= craft.bois_requis && craft.nails_in_inventory >= craft.clou_requis && craft.what_craft == 1)
+        {
+            if (weapon_diff == 1)
+            {
+                hand_left = Instantiate(axe_prefab);
+                hand_left.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
+                hand_left.transform.localPosition = new Vector3(0, 0.6f, 0);
+                hand_left.transform.localRotation = Quaternion.Euler(90, 90, 0);
+                left_hand = true;
+            }
+        }
+        if (craft.wood_in_inventory >= craft.bois_requis && craft.nails_in_inventory >= craft.clou_requis && craft.what_craft == 2)
+        {
+            if (weapon_diff == 2)
+            {
+                hand_left = Instantiate(sickle_prefab);
+                hand_left.transform.SetParent(left_hand_position, false);//permet de mettre la hache en enfant
+                hand_left.transform.localPosition = new Vector3(0, 0.6f, 0);
+                hand_left.transform.localRotation = Quaternion.Euler(50, 0, 90);
+                left_hand = true;
+            }
+        }
+
+    }
+
+
     //feedback
     void ui_in_screen()
     {
@@ -221,7 +309,7 @@ public class weaponinstantiate : MonoBehaviour
     private void Update()
     {
         nothing_in_hand();
-        What_hand();
+        What_hand_take();
         player_position = gameObject.transform.position;
         drop_weapon();
         ui_in_screen();

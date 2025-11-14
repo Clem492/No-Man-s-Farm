@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item_Name: nail
   Item_Description: metal
-  Item_Image: {fileID: 0}
+  Item_Image: {fileID: 21300000, guid: a6d44d9d2777b3c4e9bcafcd052ba1a1, type: 3}
   Prefab: {fileID: 3767517178294465950, guid: c8b6306abc1909b4881a3a7139a8fc30, type: 3}
   Quantity: 0
   Stack: 50
