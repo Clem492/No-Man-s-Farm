@@ -7,7 +7,9 @@ public class spawn_arbre : MonoBehaviour
     GameObject[] tab_arbre_mort = new GameObject[100];
     [SerializeField] GameObject arbre_prefab;
     [SerializeField] GameObject arbre_mort_prefab;
+    [SerializeField] GameObject arbre_corrompu;
     [SerializeField] GameObject farm;
+    int nb_arbre_corrompu = 50;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,9 +24,21 @@ public class spawn_arbre : MonoBehaviour
     }
     void spawn_arbre_fonction()
     {
-        for (int i = 0; i < tab_arbre.Length; i++)
+        for (int i = 0; i < tab_arbre.Length-nb_arbre_corrompu; i++)
         {
             tab_arbre[i] = Instantiate(arbre_prefab, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
+            if (Vector3.Distance(tab_arbre[i].transform.position, farm.transform.position) < 25)
+            {
+                Destroy(tab_arbre[i]);
+            }
+            if (Vector3.Distance(tab_arbre[i].transform.position, GameObject.FindWithTag("anti_arbre").transform.position) < 20)
+            {
+                Destroy(tab_arbre[i]);
+            }
+        }
+        for (int i = 0; i < nb_arbre_corrompu; i++)
+        {
+            tab_arbre[i] = Instantiate(arbre_corrompu, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
             if (Vector3.Distance(tab_arbre[i].transform.position, farm.transform.position) < 25)
             {
                 Destroy(tab_arbre[i]);

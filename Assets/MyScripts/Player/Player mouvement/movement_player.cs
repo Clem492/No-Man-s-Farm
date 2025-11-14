@@ -62,17 +62,16 @@ public class movement_player : MonoBehaviour
             movement_x = Input.GetAxis("Horizontal");
         }
 
-        if((movement_x !=0 || movement_y != 0) && jump.y <2)
+        if((movement_x !=0 || movement_y != 0) && gameObject.transform.position.y<1.5f)
         {
 
             son_pas.enabled = true;
         }
-        if(movement_x == 0 && movement_y == 0)
+        else
         {
-
-
             son_pas.enabled = false;
         }
+        
         Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
 
         

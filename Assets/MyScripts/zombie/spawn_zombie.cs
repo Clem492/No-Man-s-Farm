@@ -13,6 +13,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] GameObject zombie;
     [SerializeField] GameObject boss_zombie_prefab;
     [SerializeField] GameObject cerf;
+    [SerializeField] GameObject cerf_bugger;
     [SerializeField] GameObject farm;
     [SerializeField] GameObject jour, nuit;
    // [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
@@ -78,7 +79,7 @@ public class spawn_zombie : MonoBehaviour
                 yield break;
             }
             //spawn cerf
-            if (numero_vague % 5 == 0)
+            if (numero_vague % 2 == 0)
             {
                 for (int i = 0; i < nb_cerf_spawn; i++)
                 {
@@ -88,7 +89,8 @@ public class spawn_zombie : MonoBehaviour
                         Destroy(cerf_actuelle);
                     }
                 }
-
+                cerf_actuelle = Instantiate(cerf_bugger, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
+                cerf_actuelle = Instantiate(cerf_bugger, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
             }
 
             lumiere_valeur = 105;

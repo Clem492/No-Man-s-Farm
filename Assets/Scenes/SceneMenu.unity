@@ -2011,7 +2011,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 9f9a03e4599fcd240aeffaebe518509a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2217,6 +2217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arbre_prefab: {fileID: 3596009632643465309, guid: 41f31a93fa0601745b3df0a6e3272ea5, type: 3}
   arbre_mort_prefab: {fileID: 5697183462181675349, guid: 5e8a3f7db22dc54478ed38e0a0a7cac5, type: 3}
+  arbre_corrompu: {fileID: 3392180456356440291, guid: f71193770e159fd4ea6e5faf40389b31, type: 3}
   farm: {fileID: 374389100}
 --- !u!114 &1464093476
 MonoBehaviour:
@@ -2235,6 +2236,7 @@ MonoBehaviour:
   zombie: {fileID: 0}
   boss_zombie_prefab: {fileID: 0}
   cerf: {fileID: 7726784429349746505, guid: aaac550b6f348464b92c7d573da7fbf1, type: 3}
+  cerf_bugger: {fileID: 7868472980595760784, guid: 69d53539c6c73c248bbd427e29baca48, type: 3}
   farm: {fileID: 374389100}
   jour: {fileID: 1965863003}
   nuit: {fileID: 1303174321}
@@ -2958,7 +2960,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5d88f2d1e241ffc46868892293d4ec63, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

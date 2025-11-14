@@ -1576,7 +1576,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 645072babfd76a446b48eb3ce8d8ac39, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1673,7 +1673,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6d6e2b051c13ae24aab86a8809645ee3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1820,7 +1820,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c89a710ea72dedc4087eb14f99bced28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2968,7 +2968,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8eb7d8a90f2133245aa3244b5a3c374e, type: 2}
+  - {fileID: 2100000, guid: c89a710ea72dedc4087eb14f99bced28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6025,7 +6025,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c89a710ea72dedc4087eb14f99bced28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6190,7 +6190,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a8232f30ce47ec648b953042a0ffe2e1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6742,6 +6742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arbre_prefab: {fileID: 3596009632643465309, guid: 41f31a93fa0601745b3df0a6e3272ea5, type: 3}
   arbre_mort_prefab: {fileID: 5697183462181675349, guid: 5e8a3f7db22dc54478ed38e0a0a7cac5, type: 3}
+  arbre_corrompu: {fileID: 3392180456356440291, guid: f71193770e159fd4ea6e5faf40389b31, type: 3}
   farm: {fileID: 374389100}
 --- !u!114 &1464093476
 MonoBehaviour:
@@ -6760,6 +6761,7 @@ MonoBehaviour:
   zombie: {fileID: 7397198927630378141}
   boss_zombie_prefab: {fileID: 2026234954426996795, guid: 5c973cd5b7fb4ba4f9534bc255efb92d, type: 3}
   cerf: {fileID: 7726784429349746505, guid: aaac550b6f348464b92c7d573da7fbf1, type: 3}
+  cerf_bugger: {fileID: 7868472980595760784, guid: 69d53539c6c73c248bbd427e29baca48, type: 3}
   farm: {fileID: 374389100}
   jour: {fileID: 1965863003}
   nuit: {fileID: 1303174321}
@@ -8296,7 +8298,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c89a710ea72dedc4087eb14f99bced28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8725,7 +8727,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5d88f2d1e241ffc46868892293d4ec63, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
