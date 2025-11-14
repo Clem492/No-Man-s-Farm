@@ -27,6 +27,7 @@ public class craft_inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             craft_canva.enabled = !craft_canva.enabled;
+            Refresh_content();
         }
     }
 
