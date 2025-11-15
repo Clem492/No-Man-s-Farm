@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class craft_inventory : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
-    [SerializeField] Canvas craft_canva;
+    [SerializeField] public Canvas craft_canva;
     public List<Image> slot_images_craft = new List<Image>();
     List<Item_Data> content;
     [SerializeField] craft craft;
@@ -21,10 +21,7 @@ public class craft_inventory : MonoBehaviour
     {
         content = inventory.content;
         open_craft_pannel();
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        Refresh_content();
     }
 
     void open_craft_pannel()
@@ -34,15 +31,6 @@ public class craft_inventory : MonoBehaviour
 
               
             craft_canva.enabled = !craft_canva.enabled;
-            if (craft_canva.enabled)
-            {
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            Refresh_content();
             craft.Wood();
             craft.Nails();
             

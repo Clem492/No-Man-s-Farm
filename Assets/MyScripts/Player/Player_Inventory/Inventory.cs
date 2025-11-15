@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour
         open_inventory();
         close_inventory();
         meat_in_inventory();
-       
+       Refresh_content();
         
     }
 

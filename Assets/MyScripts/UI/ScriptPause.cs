@@ -8,7 +8,9 @@ public class script_pause : MonoBehaviour
     [SerializeField] Button bouton_continuer, boutton_quitter;
     [SerializeField] GameObject ecran_pause;
     [SerializeField] Canvas canvas;
+    [SerializeField] craft_inventory craft_Inventory;
     public bool ecran_pause_actif;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,12 +57,21 @@ public class script_pause : MonoBehaviour
         if (ecran_pause_actif)
         {
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+           // Cursor.visible = true;
         }
-        else 
+        else if (!craft_Inventory.craft_canva.enabled && ecran_pause_actif)
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.visible = false;
+        }
+        
+        if (craft_Inventory.craft_canva.enabled && !ecran_pause_actif)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (!craft_Inventory.craft_canva.enabled && !ecran_pause_actif)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
        
     }

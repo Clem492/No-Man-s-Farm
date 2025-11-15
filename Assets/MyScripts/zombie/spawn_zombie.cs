@@ -37,7 +37,7 @@ public class spawn_zombie : MonoBehaviour
     GameObject cerf_actuelle;
     //tutoriel
     public bool cycle_unlock;
-   
+    [SerializeField] bool cheat_code;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -103,6 +103,10 @@ public class spawn_zombie : MonoBehaviour
             // Attendre ... s avant de faire la suite de la fonction (jour)
             for (int i = 0; i < temp_jour; i++)
             {
+                if (cheat_code)
+                {
+                    break;
+                }
                 jour_nuit_lumiere.transform.rotation = Quaternion.Euler(lumiere_valeur, 0, 0);
 
                 lumiere_valeur -= 1;
