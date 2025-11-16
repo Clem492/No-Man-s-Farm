@@ -40,6 +40,9 @@ public class movement_player : MonoBehaviour
     public bool tutorial_cam;
    public float cam_x;
    public float cam_y;
+
+    //récupération du canva de la table de craft pour bloquer les mouvement de caméras du joueur 
+    [SerializeField] craft_inventory craft_Inventory;
     // fonction pour pouvoir déplacer le joueur 
     void movement()
     {
@@ -111,8 +114,12 @@ public class movement_player : MonoBehaviour
     {
         if (tutorial_cam)
         {
-            cam_x = Input.GetAxis("Mouse X");
-            cam_y = Input.GetAxis("Mouse Y");
+            if (craft_Inventory.craft_canva.enabled == false)
+            {
+                cam_x = Input.GetAxis("Mouse X");
+                cam_y = Input.GetAxis("Mouse Y");
+            }
+            
         }
         Vector3 cam_position_y = new Vector3(0, cam_x, 0) * speed_cam * Time.deltaTime;
         xRotation -= cam_y;

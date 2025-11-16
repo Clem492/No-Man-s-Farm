@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class craft_inventory : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
+    [SerializeField] tabledecraft table_de_craft;
     [SerializeField] public Canvas craft_canva;
     public List<Image> slot_images_craft = new List<Image>();
     List<Item_Data> content;
@@ -26,15 +27,19 @@ public class craft_inventory : MonoBehaviour
 
     void open_craft_pannel()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (table_de_craft.can_open_ui_craft)
         {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
 
-              
-            craft_canva.enabled = !craft_canva.enabled;
-            craft.Wood();
-            craft.Nails();
-            
+
+                craft_canva.enabled = !craft_canva.enabled;
+                craft.Wood();
+                craft.Nails();
+
+            }
         }
+        
     }
 
     public void Refresh_content()
