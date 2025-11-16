@@ -41,7 +41,7 @@ public class script_bouton_anim_pause : MonoBehaviour, IPointerEnterHandler, IPo
     }
     void Update()
     {
-        if (menu_pause.GetComponent<script_pause>().ecran_pause_actif == true && anti_rep == true)
+        /*if (menu_pause.GetComponent<script_pause>().ecran_pause_actif == true && anti_rep == true)
         {
             anti_rep = false;
             LeanTween.moveY(rectTransform, position_finale_y, duree_entree)
@@ -54,7 +54,7 @@ public class script_bouton_anim_pause : MonoBehaviour, IPointerEnterHandler, IPo
             Vector2 pos = rectTransform.anchoredPosition;
             pos.y = depart_y;
             rectTransform.anchoredPosition = pos;
-        }
+        }*/
 
     }
 }
