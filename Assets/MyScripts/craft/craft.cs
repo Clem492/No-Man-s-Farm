@@ -16,6 +16,7 @@ public class craft : MonoBehaviour
     [SerializeField] Texture faussille; //permet de visualiser le craft final de la faussille
     [SerializeField] Inventory inventory;//permet de récuper la liste des items
     [SerializeField] weaponinstantiate weaponinstantiate; //permet de récupérer la fonction what_whand_craft
+    [SerializeField] AudioSource hammer; // récupération du bruit de craft
     public int bois_requis; //nombre de bois que le joueur a besoins de dépenser pour un craft
     public int clou_requis; //nombre de clou que le joueur a besoins de dépenser pour un craft
     public int wood_in_inventory; //combien le joueur à de bois dans son inventaire
@@ -177,7 +178,7 @@ public class craft : MonoBehaviour
             {
                 nails_in_inventory = nails_in_inventory - clou_requis;
             }
-
+            hammer.Play();
             Wood_after_craft();
             Nails_after_craft();
         }

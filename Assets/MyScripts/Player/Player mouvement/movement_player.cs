@@ -116,6 +116,7 @@ public class movement_player : MonoBehaviour
         {
             if (craft_Inventory.craft_canva.enabled == false)
             {
+
                 cam_x = Input.GetAxis("Mouse X");
                 cam_y = Input.GetAxis("Mouse Y");
             }
