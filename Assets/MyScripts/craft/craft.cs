@@ -178,7 +178,7 @@ public class craft : MonoBehaviour
             {
                 nails_in_inventory = nails_in_inventory - clou_requis;
             }
-            hammer.Play();
+           // hammer.Play();
             Wood_after_craft();
             Nails_after_craft();
         }
