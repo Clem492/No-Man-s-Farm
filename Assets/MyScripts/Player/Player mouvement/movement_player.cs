@@ -7,7 +7,7 @@ public class movement_player : MonoBehaviour
     [SerializeField]  float player_speed;
     [SerializeField] float sprint_speed;
     [SerializeField] CharacterController controller;
-
+    [SerializeField] GameObject menu_pause;
     [SerializeField] AudioSource son_pas;
 
     Vector3 player_movement;
@@ -46,42 +46,50 @@ public class movement_player : MonoBehaviour
     // fonction pour pouvoir déplacer le joueur 
     void movement()
     {
-        if (tutorial_move == 1)
+        if(menu_pause.GetComponent<script_pause>().ecran_pause_actif == false)
         {
-            movement_y = Input.GetAxis("Vertical");
-            can_move_forward = true;
-        }
-        if (tutorial_move ==2)
-        {
-            movement_x = Input.GetAxis("Horizontal");
-            can_move_right = true;
-        }
-        if (can_move_forward)
-        {
-            movement_y = Input.GetAxis("Vertical");
-        }
-        if (can_move_right)
-        {
-            movement_x = Input.GetAxis("Horizontal");
-        }
+            if (tutorial_move == 1)
+            {
+                movement_y = Input.GetAxis("Vertical");
+                can_move_forward = true;
+            }
+            if (tutorial_move == 2)
+            {
+                movement_x = Input.GetAxis("Horizontal");
+                can_move_right = true;
+            }
+            if (can_move_forward)
+            {
+                movement_y = Input.GetAxis("Vertical");
+            }
+            if (can_move_right)
+            {
+                movement_x = Input.GetAxis("Horizontal");
+            }
 
-        if((movement_x !=0 || movement_y != 0) && gameObject.transform.position.y<1.5f)
-        {
+            if ((movement_x != 0 || movement_y != 0) && gameObject.transform.position.y < 1.5f)
+            {
 
-            son_pas.enabled = true;
+                son_pas.enabled = true;
+            }
+            else
+            {
+                son_pas.enabled = false;
+            }
+
+            Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
+
+
+
+            player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
+
+            controller.Move(player_movement);
         }
         else
         {
             son_pas.enabled = false;
         }
         
-        Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
-
-        
-        
-        player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
-
-        controller.Move(player_movement);
         
     }
     //fonction pour le sprint 
@@ -116,9 +124,17 @@ public class movement_player : MonoBehaviour
         {
             if (craft_Inventory.craft_canva.enabled == false)
             {
-
-                cam_x = Input.GetAxis("Mouse X");
-                cam_y = Input.GetAxis("Mouse Y");
+                if (menu_pause.GetComponent<script_pause>().ecran_pause_actif == false)
+                {
+                    cam_x = Input.GetAxis("Mouse X");
+                    cam_y = Input.GetAxis("Mouse Y");
+                }
+                else
+                {
+                    cam_x = 0;
+                    cam_y = 0;
+                }
+               
             }
             
         }

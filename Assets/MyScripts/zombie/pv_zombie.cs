@@ -52,6 +52,7 @@ public class pv_zombie : MonoBehaviour
     //reduit les pv du zombie
     public void perte_pv_zombie(float degats)
     {
+        Debug.Log("truc zombie");
         nb_pv_zombie -= degats;
         StartCoroutine(son_zombie());
         animator.SetTrigger("degat_zombie");

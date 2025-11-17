@@ -57,6 +57,7 @@ public class weapon_attaque : MonoBehaviour
 
                     if (hit.transform.GetComponent<pv_zombie>())
                     {
+                        
                         hand_dommage = 2;
                         hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
                     }
