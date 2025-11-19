@@ -2,7 +2,7 @@ using System.Net;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Rendering;
 
 public class weaponinstantiate : MonoBehaviour
 
@@ -246,7 +246,7 @@ public class weaponinstantiate : MonoBehaviour
                 left_hand = true;
             }
         }
-
+        
     }
 
 
