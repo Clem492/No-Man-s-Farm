@@ -7,6 +7,7 @@ public class pv_cerf : MonoBehaviour
     public float nb_pv_cerf;
     [SerializeField] GameObject viande;
     [SerializeField] GameObject sang;
+    [SerializeField] AudioSource son_cerf;
     bool mort;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +33,7 @@ public class pv_cerf : MonoBehaviour
     }
     public void perte_pv_cerf(float degats)
     {
+        son_cerf.Play();
         nb_pv_cerf -= degats;
         StartCoroutine(effet_sang());
     }
