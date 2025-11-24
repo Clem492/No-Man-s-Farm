@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class pv_player : MonoBehaviour
 {
     public float nb_pv_player;
     bool est_mort;
     [SerializeField] TMPro.TextMeshProUGUI txt_pv_player;
     string scene_loose = "SceneDefaite";
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //effet de sang
+    [SerializeField] RawImage blood;
+    
+    [SerializeField] float blood_transparency;
     void Start()
     {
         //ont initialise les pv du joueur
@@ -15,6 +19,15 @@ public class pv_player : MonoBehaviour
         est_mort = false;
         //affiche pv joueur
         txt_pv_player.text = "PV : " + nb_pv_player;
+
+
+        //effet de sang pas visible 
+        RawImage img = blood;
+        Color C = img.color;
+        C.a = 0;
+        img.color = C;
+       
+        
     }
 
     // Update is called once per frame
@@ -23,6 +36,7 @@ public class pv_player : MonoBehaviour
         //affiche pv joueur
         txt_pv_player.text = "PV : " + nb_pv_player;
         mort_player();
+        
     }
     //ont verifie si le joueur est mort
     public void mort_player()
@@ -49,4 +63,7 @@ public class pv_player : MonoBehaviour
         
         
     }
+   
+
+   
 }
