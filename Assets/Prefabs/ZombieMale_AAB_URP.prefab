@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 2167401319115119348}
   m_Layer: 0
   m_Name: ZombieMale_AAB_URP
-  m_TagString: Untagged
+  m_TagString: zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

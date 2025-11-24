@@ -12,6 +12,7 @@ TagManager:
   - anti_arbre
   - boss
   - world
+  - zombie
   layers:
   - Default
   - TransparentFX
