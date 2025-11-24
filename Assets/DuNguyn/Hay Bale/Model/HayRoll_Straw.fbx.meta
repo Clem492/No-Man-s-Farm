@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e2e2bebca9985245b93d25fe70e4001
+guid: f22f467cc590db24eac23c7c06102c65
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -16,8 +16,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -107,10 +105,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 305506
-  packageName: Props Pack - Hay Bale
-  packageVersion: 0.0.1
-  assetPath: Assets/DuNguyn/Hay Bale/Model/HayRoll_Straw.fbx
-  uploadId: 717953
