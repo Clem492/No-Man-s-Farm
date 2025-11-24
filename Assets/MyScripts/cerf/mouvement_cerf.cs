@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class mouvement_cerf : MonoBehaviour
 {
-    [SerializeField] float temps_entre_deplacements = 10f;
+    [SerializeField] float temps_entre_deplacements = 5f;
     GameObject[] cerf_pos_tab;
     NavMeshAgent agent;
 
