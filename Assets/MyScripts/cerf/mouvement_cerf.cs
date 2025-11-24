@@ -1,27 +1,28 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.AI;
 
 
 public class mouvement_cerf : MonoBehaviour
 {
     [SerializeField] float vitesse_cerf = 2f;                
-    [SerializeField] float temps_entre_deplacements = 3f; 
-
+    [SerializeField] float temps_entre_deplacements = 3f;
+    NavMeshAgent agent;
     Vector3 cible; 
 
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
         StartCoroutine(ChangeDestination());
     }
 
     void Update()
     {
-        
-        transform.position = Vector3.MoveTowards(transform.position, cible, vitesse_cerf * Time.deltaTime);
+        agent.SetDestination(cible);
+        /*transform.position = Vector3.MoveTowards(transform.position, cible, vitesse_cerf * Time.deltaTime);
         Vector3 direction = (cible - transform.position).normalized;
         if (direction != Vector3.zero)
-            transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * 10f);
+            transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * 10f);*/
     }
 
     IEnumerator ChangeDestination()
