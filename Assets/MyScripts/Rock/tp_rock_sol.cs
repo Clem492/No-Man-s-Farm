@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class tp_arbre_sol : MonoBehaviour
+public class tp_rock_sol : MonoBehaviour
 {
     RaycastHit hit;
     Vector3 new_pos;
@@ -17,14 +17,14 @@ public class tp_arbre_sol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void deplacement()
     {
-        Debug.DrawRay(transform.position, new Vector3(0, -100, 0) , Color.red);
-        Physics.Raycast(transform.position, Vector3.down, out hit,100f);
-        new_pos = new Vector3(hit.point.x, hit.point.y - 0.25f, hit.point.z);
+        Debug.DrawRay(transform.position, new Vector3(0, -100, 0), Color.red);
+        Physics.Raycast(transform.position, Vector3.down, out hit, 100f);
+        new_pos = new Vector3( hit.point.x, hit.point.y-0.5f, hit.point.z);
         gameObject.transform.position = new_pos;
-        
+
     }
 }
