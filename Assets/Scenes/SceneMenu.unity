@@ -2344,7 +2344,7 @@ MonoBehaviour:
   exit_b: {fileID: 1137634193}
   titre: {fileID: 1037816130}
   duration: 3
-  sceneToLoad: ScenePrincipale
+  sceneToLoad: scene1
 --- !u!4 &1500943105
 Transform:
   m_ObjectHideFlags: 0
