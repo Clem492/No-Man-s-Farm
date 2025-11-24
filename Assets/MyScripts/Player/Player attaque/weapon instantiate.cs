@@ -258,11 +258,11 @@ public class weaponinstantiate : MonoBehaviour
             if ((Vector3.Distance(gameObject.transform.position, sickle.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, axe.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) < 5))
             {
                 feedback_take_weapon.text = "press E to pick up";
-                Debug.Log("je peux prendre");
+                
             }
             else if (Vector3.Distance(gameObject.transform.position, sickle.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, axe.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) > 5)
             {
-                Debug.Log("je peux  pas prendre");
+                
                 feedback_take_weapon.text = "";
             }
         }
