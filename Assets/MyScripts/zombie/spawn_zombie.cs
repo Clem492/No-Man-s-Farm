@@ -82,7 +82,7 @@ public class spawn_zombie : MonoBehaviour
             {
                 for (int i = 0; i < nb_cerf_spawn; i++)
                 {
-                    cerf_actuelle = Instantiate(cerf, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
+                    cerf_actuelle = Instantiate(cerf, new Vector3(Random.Range(0, 500), 75f, Random.Range(0, 500)), Quaternion.identity);
                     if (Vector3.Distance(cerf_actuelle.transform.position, farm.transform.position) < 30)
                     {
                         Destroy(cerf_actuelle);
