@@ -293,6 +293,6 @@ public class spawn_zombie : MonoBehaviour
             lune_trois_quart.enabled = true;
         }
     }
-    // 👉 Et ces deux fonctions :
+    
 
 }

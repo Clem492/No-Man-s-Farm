@@ -13,6 +13,7 @@ TagManager:
   - boss
   - world
   - zombie
+  - cible_cerf
   layers:
   - Default
   - TransparentFX

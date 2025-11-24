@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62312b508ebe22247a1171f5c54f0ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitesse_cerf: 3
   temps_entre_deplacements: 10
 --- !u!195 &-6048154787743642606
 NavMeshAgent:

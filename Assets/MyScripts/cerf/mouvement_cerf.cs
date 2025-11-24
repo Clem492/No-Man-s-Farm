@@ -1,28 +1,30 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
-
 public class mouvement_cerf : MonoBehaviour
 {
-    [SerializeField] float vitesse_cerf = 2f;                
-    [SerializeField] float temps_entre_deplacements = 3f;
+    [SerializeField] float temps_entre_deplacements = 10f;
+    GameObject[] cerf_pos_tab;
     NavMeshAgent agent;
-    Vector3 cible; 
 
-    void Start()
+    IEnumerator Start()
     {
+        // attendre que tp_cerf_sol ait fini son travail
+        yield return null;
+
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(ChangeDestination());
-    }
 
-    void Update()
-    {
-        agent.SetDestination(cible);
-        /*transform.position = Vector3.MoveTowards(transform.position, cible, vitesse_cerf * Time.deltaTime);
-        Vector3 direction = (cible - transform.position).normalized;
-        if (direction != Vector3.zero)
-            transform.forward = Vector3.Lerp(transform.forward, direction, Time.deltaTime * 10f);*/
+        // Vérification IMPORTANTE
+        if (!agent.isOnNavMesh)
+        {
+            Debug.LogError("❌ Le cerf N'EST PAS sur un NavMesh !");
+            yield break;
+        }
+
+        cerf_pos_tab = GameObject.FindGameObjectsWithTag("cible_cerf");
+
+        StartCoroutine(ChangeDestination());
     }
 
     IEnumerator ChangeDestination()
@@ -30,9 +32,12 @@ public class mouvement_cerf : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(temps_entre_deplacements);
-            cible = new Vector3(Random.Range(10, 490), transform.position.y, Random.Range(10, 490));
+
+            int pos = Random.Range(0, cerf_pos_tab.Length);
+            Vector3 cible = cerf_pos_tab[pos].transform.position;
+
+            agent.SetDestination(cible);
         }
     }
-
-    
 }
+
