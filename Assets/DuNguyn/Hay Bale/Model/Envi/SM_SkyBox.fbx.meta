@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 676fb3dba4c782c4daf41aa52c5a0b47
+guid: d674789607403fd46a076fd05ae8dee5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 1835b202d79f4ed439780d3038a49ada, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -21,8 +16,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -112,10 +105,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 305506
-  packageName: Props Pack - Hay Bale
-  packageVersion: 0.0.1
-  assetPath: Assets/DuNguyn/Hay Bale/Model/Envi/SM_SkyBox.fbx
-  uploadId: 717953

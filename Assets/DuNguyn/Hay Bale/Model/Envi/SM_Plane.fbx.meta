@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 6834b1bc931d0ff4dbae5a2e64221740
+guid: 439ecd3a87bb9b34a91922624aa43e56
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: f6f419b91eace024d9a7d5a195083d21, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -21,8 +16,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -112,10 +105,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 305506
-  packageName: Props Pack - Hay Bale
-  packageVersion: 0.0.1
-  assetPath: Assets/DuNguyn/Hay Bale/Model/Envi/SM_Plane.fbx
-  uploadId: 717953
