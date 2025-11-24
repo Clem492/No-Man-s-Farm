@@ -9,6 +9,7 @@ public class pv_zombie : MonoBehaviour
     [SerializeField] GameObject nails_prefab;
     [SerializeField] TMPro.TextMeshProUGUI affichage_pv_zombie;
     [SerializeField] AudioSource son_degats;
+    [SerializeField] GameObject sang;
     GameObject world ;
     int luck_nail;
     bool mort;
@@ -16,6 +17,7 @@ public class pv_zombie : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sang.SetActive(false);
         world = GameObject.FindWithTag("world");
         if (gameObject.CompareTag("boss"))
         {
@@ -56,7 +58,8 @@ public class pv_zombie : MonoBehaviour
         nb_pv_zombie -= degats;
         StartCoroutine(son_zombie());
         animator.SetTrigger("degat_zombie");
-        
+        StartCoroutine(effet_sang());
+
     }
     IEnumerator anim_mort_zombie()
     {
@@ -79,5 +82,11 @@ public class pv_zombie : MonoBehaviour
         son_degats.enabled = true;
         yield return new WaitForSeconds(1);
         son_degats.enabled = false;
+    }
+    IEnumerator effet_sang()
+    {
+        sang.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        sang.SetActive(false);
     }
 }
