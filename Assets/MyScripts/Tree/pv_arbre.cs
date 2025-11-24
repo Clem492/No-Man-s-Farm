@@ -14,6 +14,8 @@ public class pv_arbre : MonoBehaviour
     {
         nb_pv_arbre = 3;
         animator = GetComponentInChildren<Animator>();
+        if (animator == null )  Debug.LogError("l'animator n'a pas été trouvé sur : " + gameObject.name);
+        
         gameObject.GetComponent<AudioSource>().enabled = false;
     }
 
@@ -26,6 +28,10 @@ public class pv_arbre : MonoBehaviour
     {
 
         nb_pv_arbre -= degats;
+        if (animator == null)
+        {
+            Debug.LogError("animator de l'arbre pas trouver");
+        }
         animator.SetTrigger("degat_arbre");
         StartCoroutine(audio_arbre());
     }

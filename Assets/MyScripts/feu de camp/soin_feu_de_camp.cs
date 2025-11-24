@@ -16,6 +16,10 @@ public class soin_feu_de_camp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            Debug.LogWarning("le joueur na pas été trouver");
+        }
         pv = player.GetComponent<pv_player>().nb_pv_player;
         soin_player_proche();
     }
