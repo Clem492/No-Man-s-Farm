@@ -9051,6 +9051,10 @@ PrefabInstance:
       propertyPath: txt_pv_player
       value: 
       objectReference: {fileID: 1790023131}
+    - target: {fileID: 7581224490311279546, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      propertyPath: blood_speed_disapering
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: axe
       value: 
@@ -21011,6 +21015,7 @@ MonoBehaviour:
   nails_prefab: {fileID: 3767517178294465950, guid: c8b6306abc1909b4881a3a7139a8fc30, type: 3}
   affichage_pv_zombie: {fileID: 2316480363629928046}
   son_degats: {fileID: 2744470256620659492}
+  sang: {fileID: 5772540487814196598, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
 --- !u!4 &3744302172723865895
 Transform:
   m_ObjectHideFlags: 0
