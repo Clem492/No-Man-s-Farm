@@ -30,5 +30,11 @@ public class piege_degats : MonoBehaviour
 
         }
         
+        if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("player").transform.position) <= 2f)
+        {
+            GameObject.FindGameObjectWithTag("player").GetComponent<pv_player>().perte_pv_player(1);
+            Destroy(gameObject);
+        }
+        
     }
 }
