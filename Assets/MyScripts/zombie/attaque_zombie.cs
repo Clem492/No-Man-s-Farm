@@ -37,7 +37,7 @@ public class attaque_zombie : MonoBehaviour
                     gameObject.GetComponent<NavMeshAgent>().enabled = false;
                     gameObject.GetComponent<mouvement_zombie>().enabled = false;
                     animator.SetTrigger("attaque_zombie");
-
+                    GameObject.FindWithTag("player").GetComponent<pv_player>().Blood_Effect();
                     yield return new WaitForSeconds(1f);
                     gameObject.GetComponent<NavMeshAgent>().enabled = true;
                     gameObject.GetComponent<mouvement_zombie>().enabled = true;
@@ -53,6 +53,8 @@ public class attaque_zombie : MonoBehaviour
                 gameObject.GetComponent<mouvement_zombie>().enabled = false;
                 animator.SetTrigger("attaque_zombie");
 
+
+                GameObject.FindWithTag("player").GetComponent<pv_player>().Blood_Effect();
                 yield return new WaitForSeconds(1f);
                 gameObject.GetComponent<NavMeshAgent>().enabled = true;
                 gameObject.GetComponent<mouvement_zombie>().enabled = true;

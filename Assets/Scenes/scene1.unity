@@ -5949,77 +5949,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7676654968540853032, guid: 396911d37c7860643905da88e3a638fb, type: 3}
   m_PrefabInstance: {fileID: 1353789689}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &736531146
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2529691420156183512}
-    m_Modifications:
-    - target: {fileID: 5772540487814196598, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_Name
-      value: blood splatter_floor
-      objectReference: {fileID: 0}
-    - target: {fileID: 5772540487814196598, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.399
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
---- !u!1 &736531147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5772540487814196598, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-  m_PrefabInstance: {fileID: 736531146}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &736531148 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6582009007778166732, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
-  m_PrefabInstance: {fileID: 736531146}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &748184404 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3526137265780754645, guid: 06cf5262bccc41841b21ae6e180c5eb8, type: 3}
@@ -9122,6 +9051,10 @@ PrefabInstance:
       propertyPath: txt_pv_player
       value: 
       objectReference: {fileID: 1790023131}
+    - target: {fileID: 7581224490311279546, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      propertyPath: blood_speed_disapering
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: axe
       value: 
@@ -11178,7 +11111,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a8232f30ce47ec648b953042a0ffe2e1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -20574,7 +20507,6 @@ Transform:
   - {fileID: 8591191710067347157}
   - {fileID: 6026758463216077262}
   - {fileID: 7941486534416562672}
-  - {fileID: 736531148}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2536683426555677311
@@ -20688,7 +20620,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 60d39855faa989a4c819b84d6523dcb3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -21083,7 +21015,7 @@ MonoBehaviour:
   nails_prefab: {fileID: 3767517178294465950, guid: c8b6306abc1909b4881a3a7139a8fc30, type: 3}
   affichage_pv_zombie: {fileID: 2316480363629928046}
   son_degats: {fileID: 2744470256620659492}
-  sang: {fileID: 736531147}
+  sang: {fileID: 5772540487814196598, guid: e83550cfcac62a043849a9d56cde0822, type: 3}
 --- !u!4 &3744302172723865895
 Transform:
   m_ObjectHideFlags: 0

@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Unity.Mathematics;
 public class pv_player : MonoBehaviour
 {
     public float nb_pv_player;
@@ -10,8 +12,10 @@ public class pv_player : MonoBehaviour
     string scene_loose = "SceneDefaite";
     //effet de sang
     [SerializeField] RawImage blood;
-    
-    [SerializeField] float blood_transparency;
+    [SerializeField] float blood_speed_disapering;
+    bool blood_in_screen = false;
+    RawImage img;
+    Color C;
     void Start()
     {
         //ont initialise les pv du joueur
@@ -22,7 +26,7 @@ public class pv_player : MonoBehaviour
 
 
         //effet de sang pas visible 
-        RawImage img = blood;
+        img = blood;
         Color C = img.color;
         C.a = 0;
         img.color = C;
@@ -63,7 +67,30 @@ public class pv_player : MonoBehaviour
         
         
     }
-   
 
-   
+   public void Blood_Effect()
+    {
+        //effet de sang pas visible 
+        C = img.color;
+        C.a = 1;
+        img.color = C;
+        blood_in_screen = true;
+        StartCoroutine(FadeBlood());
+    }
+
+    private IEnumerator FadeBlood()
+    {
+        while (C.a > 0f)
+        {
+            // Diminue l'alpha progressivement
+            C.a -= Time.deltaTime * blood_speed_disapering;
+            C.a = Mathf.Clamp01(C.a); // S'assure que l'alpha reste entre 0 et 1
+            img.color = C;
+
+            yield return null; // Attend la prochaine frame
+        }
+
+        blood_in_screen = false; // Le sang a complètement disparu
+    }
+
 }
