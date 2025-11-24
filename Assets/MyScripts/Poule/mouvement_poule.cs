@@ -29,7 +29,7 @@ public class mouvement_poule : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(temps_entre_deplacements);
-            cible = new Vector3(Random.Range(273, 277), transform.position.y, Random.Range(251,255));
+            cible = new Vector3(Random.Range(286, 298), transform.position.y, Random.Range(243,254));
         }
     }
 
