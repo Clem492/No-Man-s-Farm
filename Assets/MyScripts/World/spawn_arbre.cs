@@ -26,7 +26,7 @@ public class spawn_arbre : MonoBehaviour
     {
         for (int i = 0; i < tab_arbre.Length-nb_arbre_corrompu; i++)
         {
-            tab_arbre[i] = Instantiate(arbre_prefab, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
+            tab_arbre[i] = Instantiate(arbre_prefab, new Vector3(Random.Range(0, 500), 75f, Random.Range(0, 500)), Quaternion.identity);
             if (Vector3.Distance(tab_arbre[i].transform.position, farm.transform.position) < 25)
             {
                 Destroy(tab_arbre[i]);
@@ -38,7 +38,7 @@ public class spawn_arbre : MonoBehaviour
         }
         for (int i = 0; i < nb_arbre_corrompu; i++)
         {
-            tab_arbre[i] = Instantiate(arbre_corrompu, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.identity);
+            tab_arbre[i] = Instantiate(arbre_corrompu, new Vector3(Random.Range(0, 500), 75f, Random.Range(0, 500)), Quaternion.identity);
             if (Vector3.Distance(tab_arbre[i].transform.position, farm.transform.position) < 25)
             {
                 Destroy(tab_arbre[i]);
@@ -53,7 +53,7 @@ public class spawn_arbre : MonoBehaviour
     {
         for (int i = 0; i < tab_arbre_mort.Length; i++)
         {
-            tab_arbre_mort[i] = Instantiate(arbre_mort_prefab, new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.Euler(0, Random.Range(0, 360), 0));
+            tab_arbre_mort[i] = Instantiate(arbre_mort_prefab, new Vector3(Random.Range(0, 500), 75f, Random.Range(0, 500)), Quaternion.Euler(0, Random.Range(0, 360), 0));
             if (Vector3.Distance(tab_arbre_mort[i].transform.position, farm.transform.position) < 25)
             {
                 Destroy(tab_arbre_mort[i]);

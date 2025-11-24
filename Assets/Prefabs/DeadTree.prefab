@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3409095146874421094}
   - component: {fileID: -3206904964813441703}
   - component: {fileID: 1479995121119104636}
+  - component: {fileID: 1364246213591299706}
   m_Layer: 0
   m_Name: DeadTree
   m_TagString: Untagged
@@ -55,8 +56,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.410955, y: 1.4110181, z: 2.6877854}
-  m_Center: {x: 0.22178984, y: 0.721171, z: 0.010339856}
+  m_Size: {x: 6.410955, y: 0.9607197, z: 2.6877854}
+  m_Center: {x: 0.22178984, y: 0.94632024, z: 0.010339856}
 --- !u!208 &3409095146874421094
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -184,6 +185,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1364246213591299706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697183462181675349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7824fac3316044b88ac7f138c152e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6333320250743873492
 GameObject:
   m_ObjectHideFlags: 0

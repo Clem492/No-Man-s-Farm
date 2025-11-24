@@ -31,7 +31,7 @@ public class spawn_rock : MonoBehaviour
         for (int i = 0; i < tab_rock.Length; i++)
         {
             indice_rock_aleatoire = Random.Range(0, 3);
-            tab_rock[i] = Instantiate(tab_rock_prefabs[indice_rock_aleatoire], new Vector3(Random.Range(0, 500), 0f, Random.Range(0, 500)), Quaternion.Euler(0, Random.Range(0, 360), 0));
+            tab_rock[i] = Instantiate(tab_rock_prefabs[indice_rock_aleatoire], new Vector3(Random.Range(0, 500),75f, Random.Range(0, 500)), Quaternion.Euler(0, Random.Range(0, 360), 0));
             if (Vector3.Distance(tab_rock[i].transform.position, farm.transform.position) < 25)
             {
                 Destroy(tab_rock[i]);

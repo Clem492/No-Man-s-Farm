@@ -68,6 +68,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6beea39e898f54abf5b5ae4002daa8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3819405182821692101}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af6beea39e898f54abf5b5ae4002daa8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7753922321364492124}
   m_SourcePrefab: {fileID: 100100000, guid: af6beea39e898f54abf5b5ae4002daa8, type: 3}
 --- !u!1 &1152961137555689136 stripped
 GameObject:
@@ -93,8 +96,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 20, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 9.296004, z: 1}
+  m_Center: {x: 0, y: 5.351998, z: 0}
 --- !u!208 &1321923242251716730
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -223,3 +226,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7753922321364492124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152961137555689136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7824fac3316044b88ac7f138c152e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
