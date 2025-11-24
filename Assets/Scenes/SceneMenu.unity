@@ -1892,7 +1892,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5a704c0e778e1374c8f65ace4211c602, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6b2f8226bb982664b9ee103edc134d5b, type: 2}
   m_BuildHeightMesh: 0
 --- !u!154 &1194091465
 TerrainCollider:
@@ -2218,9 +2218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ff32ec9e37ce04e9b8b24928264a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arbre_prefab: {fileID: 3596009632643465309, guid: 41f31a93fa0601745b3df0a6e3272ea5, type: 3}
+  arbre_prefab: {fileID: 1152961137555689136, guid: bf19a5235a552fb41ac2922d6f517e6a, type: 3}
   arbre_mort_prefab: {fileID: 5697183462181675349, guid: 5e8a3f7db22dc54478ed38e0a0a7cac5, type: 3}
-  arbre_corrompu: {fileID: 3392180456356440291, guid: f71193770e159fd4ea6e5faf40389b31, type: 3}
+  arbre_corrompu: {fileID: 8995479937928179970, guid: f71193770e159fd4ea6e5faf40389b31, type: 3}
   farm: {fileID: 374389100}
 --- !u!114 &1464093476
 MonoBehaviour:
@@ -3234,6 +3234,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c7a4e795f90074c6f8a2465e88d97b39, type: 2}
+    - target: {fileID: 6940723724057332579, guid: be326a05abb8b0b48980adff317d1f4d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940723724057332579, guid: be326a05abb8b0b48980adff317d1f4d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940723724057332579, guid: be326a05abb8b0b48980adff317d1f4d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6940723724057332579, guid: be326a05abb8b0b48980adff317d1f4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 250
