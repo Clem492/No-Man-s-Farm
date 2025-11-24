@@ -18,7 +18,7 @@ public class mouvement_cerf : MonoBehaviour
         // Vérification IMPORTANTE
         if (!agent.isOnNavMesh)
         {
-            Debug.LogError("❌ Le cerf N'EST PAS sur un NavMesh !");
+           
             yield break;
         }
 

@@ -23,7 +23,7 @@ public class tp_cerf_sol : MonoBehaviour
     {
         Debug.DrawRay(transform.position, new Vector3(0, -100, 0), Color.red);
         Physics.Raycast(transform.position, Vector3.down, out hit, 100f);
-        new_pos = new Vector3(hit.point.x, hit.point.y+1f, hit.point.z);
+        new_pos = new Vector3(hit.point.x, hit.point.y+0.1f, hit.point.z);
         gameObject.transform.position = new_pos;
 
     }
