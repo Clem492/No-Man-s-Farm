@@ -203,6 +203,7 @@ public class weapon_attaque : MonoBehaviour
         
         if (hit.transform.GetComponent<pv_zombie>() )
         {
+            Instantiate(sang, hit.point, Quaternion.identity);
             float pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(pitchfork_dommage);
             Debug.Log("Zombie touché !");

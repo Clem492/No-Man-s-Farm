@@ -9638,6 +9638,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3323745748376128415, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      propertyPath: sang
+      value: 
+      objectReference: {fileID: 6823200998282874702, guid: 8f8fe12323625f5499b2853dd2ad3e58, type: 3}
+    - target: {fileID: 3323745748376128415, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: son_weapon
       value: 
       objectReference: {fileID: 320019240}
@@ -13615,7 +13619,7 @@ MonoBehaviour:
   nombre_zombie_spawn: 5
   win: 0
   cycle_unlock: 0
-  cheat_code: 0
+  cheat_code: 1
   soleil: {fileID: 1128806185}
   soleil_quart: {fileID: 558445201}
   soleil_demi: {fileID: 1319394044}

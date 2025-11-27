@@ -31,12 +31,14 @@ public class mouvement_cerf : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(temps_entre_deplacements);
-
+            yield return new WaitForSeconds(1f);
             int pos = Random.Range(0, cerf_pos_tab.Length);
             Vector3 cible = cerf_pos_tab[pos].transform.position;
 
             agent.SetDestination(cible);
+            yield return new WaitForSeconds(temps_entre_deplacements);
+
+            
         }
     }
 }

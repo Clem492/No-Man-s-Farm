@@ -6,13 +6,13 @@ public class pv_cerf : MonoBehaviour
 {
     public float nb_pv_cerf;
     [SerializeField] GameObject viande;
-    [SerializeField] GameObject sang;
+    //[SerializeField] GameObject sang;
     [SerializeField] AudioSource son_cerf;
     bool mort;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        sang.SetActive(false);
+        //sang.SetActive(false);
         nb_pv_cerf = 20;
         mort = false;
     }
@@ -35,7 +35,7 @@ public class pv_cerf : MonoBehaviour
     {
         son_cerf.Play();
         nb_pv_cerf -= degats;
-        StartCoroutine(effet_sang());
+        //StartCoroutine(effet_sang());
     }
     IEnumerator spawn_viande()
     {
@@ -47,10 +47,10 @@ public class pv_cerf : MonoBehaviour
         }
         
     }
-    IEnumerator effet_sang()
+    /*IEnumerator effet_sang()
     {
         sang.SetActive (true);
         yield return new WaitForSeconds (0.2f);
         sang.SetActive(false);
-    }
+    }*/
 }
