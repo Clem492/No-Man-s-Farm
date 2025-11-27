@@ -7,11 +7,13 @@ public class pv_arbre : MonoBehaviour
     public float nb_pv_arbre;
     [SerializeField] GameObject souche;
     [SerializeField] GameObject branche;
-    
+    [SerializeField] GameObject effet_feuille;
     Animator animator;
 
     void Start()
     {
+        gameObject.GetComponent<AudioSource>().enabled = false;
+        effet_feuille.SetActive(false);
         nb_pv_arbre = 3;
         animator = GetComponentInChildren<Animator>();
         if (animator == null )  Debug.LogError("l'animator n'a pas été trouvé sur : " + gameObject.name);
@@ -33,6 +35,7 @@ public class pv_arbre : MonoBehaviour
             Debug.LogError("animator de l'arbre pas trouver");
         }
         animator.SetTrigger("degat_arbre");
+        StartCoroutine(effet_feuille_arbre());
         StartCoroutine(audio_arbre());
     }
     void destruction_arbre()
@@ -44,6 +47,12 @@ public class pv_arbre : MonoBehaviour
         }
            
     }
+    IEnumerator effet_feuille_arbre()
+    {
+        effet_feuille.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        effet_feuille.SetActive(false);
+    }
     IEnumerator anim_destruction_arbre()
     {
         //animator.SetTrigger("destrution_arbre");
@@ -52,7 +61,7 @@ public class pv_arbre : MonoBehaviour
         Instantiate(souche, gameObject.transform.position, Quaternion.Euler(0, Random.Range(0, 360), 0));
         for (int i = 0; i < Random.Range(1,4); i++)
         {
-            Instantiate(branche,new Vector3(gameObject.transform.position.x,3,gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
+            Instantiate(branche,new Vector3(gameObject.transform.position.x,gameObject.transform.position.y+3,gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
         }
         Destroy(gameObject);
     }

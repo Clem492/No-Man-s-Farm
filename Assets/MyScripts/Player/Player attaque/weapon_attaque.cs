@@ -12,6 +12,7 @@ public class weapon_attaque : MonoBehaviour
     [SerializeField] weaponinstantiate hand_right;
     [SerializeField] GameObject cam;
     [SerializeField] AudioSource son_weapon;
+    [SerializeField] GameObject sang;
    public int weapon_diff;
     bool right_hand;
     bool left_hand;
@@ -57,13 +58,13 @@ public class weapon_attaque : MonoBehaviour
 
                     if (hit.transform.GetComponent<pv_zombie>())
                     {
-                        
+                        Instantiate(sang, hit.point, Quaternion.identity);
                         hand_dommage = 2;
                         hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
                     }
                     if (hit.transform.GetComponent<pv_cerf>())
                     {
-
+                        Instantiate(sang, hit.point, Quaternion.identity);
                       hand_dommage =2 ;
                       hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
                     }
@@ -136,18 +137,19 @@ public class weapon_attaque : MonoBehaviour
         {
             if (col.transform.GetComponent<pv_zombie>())
             {
+                Instantiate(sang, hit.point, Quaternion.identity);
                 axe_dommage = rarety * (double_hand_dammage * 5);
                 col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
             }
             if (col.transform.GetComponent<pv_arbre>())
             {
-
+               
                 axe_dommage_tree = 1;
                 col.transform.GetComponent<pv_arbre>().perte_pv_arbre(axe_dommage_tree);
             }
             if (col.transform.GetComponent<pv_cerf>())
             {
-
+                Instantiate(sang, hit.point, Quaternion.identity);
                 axe_dommage = rarety * (double_hand_dammage * 5); ;
                 col.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
             }
@@ -171,12 +173,13 @@ public class weapon_attaque : MonoBehaviour
     {
         if (hit.transform.GetComponent<pv_zombie>())
         {
+            Instantiate(sang, hit.point, Quaternion.identity);
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(sickle_dommage);
         }
         if (hit.transform.GetComponent<pv_cerf>())
         {
-
+            Instantiate(sang, hit.point, Quaternion.identity);
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(sickle_dommage);
         }
@@ -207,7 +210,7 @@ public class weapon_attaque : MonoBehaviour
         }
         if (hit.transform.GetComponent<pv_cerf>())
         {
-
+            Instantiate(sang, hit.point, Quaternion.identity);
             pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(pitchfork_dommage);
         }
