@@ -12,11 +12,10 @@ public class weapon_attaque : MonoBehaviour
     [SerializeField] weaponinstantiate hand_right;
     [SerializeField] GameObject cam;
     [SerializeField] AudioSource son_weapon;
-    [SerializeField] GameObject sang;
    public int weapon_diff;
     bool right_hand;
     bool left_hand;
-
+    
 
 
     //variable pour la sphère cast
@@ -31,6 +30,10 @@ public class weapon_attaque : MonoBehaviour
     float axe_dommage_tree;
     float sickle_dommage;
     float pitchfork_dommage;
+    float gun_dommage;
+
+
+
     int rarety;
     float double_hand_dammage = 1.5f;
 
@@ -38,6 +41,9 @@ public class weapon_attaque : MonoBehaviour
     bool can_attaque;
     //variable pour le tuto
     public bool clique_unlock;
+
+
+    [SerializeField] GameObject explosion_gun;
 
     //fonction pour savoir quelle arme le joueur a en main
     public void What_weapon()
@@ -58,13 +64,13 @@ public class weapon_attaque : MonoBehaviour
 
                     if (hit.transform.GetComponent<pv_zombie>())
                     {
-                        Instantiate(sang, hit.point, Quaternion.identity);
+                        
                         hand_dommage = 2;
                         hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
                     }
                     if (hit.transform.GetComponent<pv_cerf>())
                     {
-                        Instantiate(sang, hit.point, Quaternion.identity);
+
                       hand_dommage =2 ;
                       hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
                     }
@@ -129,7 +135,25 @@ public class weapon_attaque : MonoBehaviour
             }
         }
 
-        
+        if (weapon_diff == 4 && can_attaque == true && clique_unlock == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+               
+                Debug.DrawRay(cam.transform.position, cam.transform.forward * 70, Color.red);
+                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 70))
+                {
+                    
+                    gun_dommage = rarety * (double_hand_dammage * 20);
+                    hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(gun_dommage);
+                }
+            }
+         
+           
+        }
+
+
+
     }
     IEnumerator anti_spam_axe()// permet de faire les dégat mais aussi d'avoir le temps d'attente
     {
@@ -137,19 +161,18 @@ public class weapon_attaque : MonoBehaviour
         {
             if (col.transform.GetComponent<pv_zombie>())
             {
-                Instantiate(sang, hit.point, Quaternion.identity);
                 axe_dommage = rarety * (double_hand_dammage * 5);
                 col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
             }
             if (col.transform.GetComponent<pv_arbre>())
             {
-               
+
                 axe_dommage_tree = 1;
                 col.transform.GetComponent<pv_arbre>().perte_pv_arbre(axe_dommage_tree);
             }
             if (col.transform.GetComponent<pv_cerf>())
             {
-                Instantiate(sang, hit.point, Quaternion.identity);
+
                 axe_dommage = rarety * (double_hand_dammage * 5); ;
                 col.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
             }
@@ -173,13 +196,12 @@ public class weapon_attaque : MonoBehaviour
     {
         if (hit.transform.GetComponent<pv_zombie>())
         {
-            Instantiate(sang, hit.point, Quaternion.identity);
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(sickle_dommage);
         }
         if (hit.transform.GetComponent<pv_cerf>())
         {
-            Instantiate(sang, hit.point, Quaternion.identity);
+
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(sickle_dommage);
         }
@@ -203,7 +225,6 @@ public class weapon_attaque : MonoBehaviour
         
         if (hit.transform.GetComponent<pv_zombie>() )
         {
-            Instantiate(sang, hit.point, Quaternion.identity);
             float pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(pitchfork_dommage);
             Debug.Log("Zombie touché !");
@@ -211,7 +232,7 @@ public class weapon_attaque : MonoBehaviour
         }
         if (hit.transform.GetComponent<pv_cerf>())
         {
-            Instantiate(sang, hit.point, Quaternion.identity);
+
             pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(pitchfork_dommage);
         }

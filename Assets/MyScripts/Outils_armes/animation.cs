@@ -11,6 +11,11 @@ public class animation : MonoBehaviour
      Animator animator;
     // il faut savoir si il est possible de jouer l'animation 
     bool can_attaque;
+    [SerializeField] bool attaque;
+
+
+    [SerializeField] GameObject explosion;
+
     private void Update()
     {
         player = GameObject.FindWithTag("player");
@@ -40,6 +45,15 @@ public class animation : MonoBehaviour
             can_attaque = false;
             StartCoroutine(pitforck_anim());
         }
+        if (weapon_diff == 4 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        {
+            can_attaque = false;
+            attaque = false;
+            explosion.SetActive(true);
+            animator.SetBool("attaque", attaque);
+            StartCoroutine(gun_anim());
+        }
+   
     }
 
     IEnumerator axe_anim()
@@ -63,6 +77,17 @@ public class animation : MonoBehaviour
         yield return new WaitForSeconds(1f);
         can_attaque = true;
     }
+
+    IEnumerator gun_anim()
+    {
+        can_attaque = true;
+        explosion.SetActive(false);
+        animator.SetBool("attaque", attaque);
+        yield return new WaitForSeconds(0.2f);
+        attaque = true;
+
+    }
+
     private void Start()
     {
         animator = GetComponent<Animator>();

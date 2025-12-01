@@ -143,8 +143,8 @@ public class weaponinstantiate : MonoBehaviour
             {
                 hand_right = Instantiate(Gun_prefab);
                 hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hou en enfant
-                hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
-                hand_right.transform.localRotation = Quaternion.Euler(50, 0, 90);
+                hand_right.transform.localPosition = new Vector3(0, 0.2f, 0);
+                hand_right.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 right_hand = true;
                 weapon_diff = 4; //gun
             }
