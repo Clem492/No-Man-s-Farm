@@ -74,6 +74,11 @@ public class weapon_attaque : MonoBehaviour
                       hand_dommage =2 ;
                       hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
                     }
+                    if (hit.transform.GetComponent<pv_poule>())
+                    {
+                        axe_dommage_tree = 1;
+                        hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
+                    }
 
 
                 }
@@ -181,7 +186,12 @@ public class weapon_attaque : MonoBehaviour
                 axe_dommage_tree = 1;
                 col.transform.GetComponent<pv_arbre_mort>().perte_pv_arbre(axe_dommage_tree);
             }
-           
+            if (col.transform.GetComponent<pv_poule>())
+            {
+                axe_dommage_tree = 1;
+                col.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
+            }
+
 
         }
         yield return new WaitForSeconds(1.7f);
@@ -204,6 +214,11 @@ public class weapon_attaque : MonoBehaviour
 
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(sickle_dommage);
+        }
+        if (hit.transform.GetComponent<pv_poule>())
+        {
+            axe_dommage_tree = 1;
+            hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
         }
         yield return new WaitForSeconds(1.1f);
         can_attaque = true;
@@ -235,6 +250,11 @@ public class weapon_attaque : MonoBehaviour
 
             pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(pitchfork_dommage);
+        }
+        if (hit.transform.GetComponent<pv_poule>())
+        {
+            axe_dommage_tree = 1;
+            hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
         }
         yield return new WaitForSeconds(1.3f);
         can_attaque = true;
