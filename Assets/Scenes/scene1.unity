@@ -9916,6 +9916,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 320019240}
     - target: {fileID: 3323745748376128415, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      propertyPath: explosion_gun
+      value: 
+      objectReference: {fileID: 1881118393}
+    - target: {fileID: 3323745748376128415, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: weapons_created
       value: 
       objectReference: {fileID: 320019221}
@@ -14933,6 +14937,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4483615138615187247, guid: 016790f3166f2ca46b5524a9e323319f, type: 3}
+      propertyPath: explosion_gun
+      value: 
+      objectReference: {fileID: 1881118393}
     - target: {fileID: 6141606063204579617, guid: 016790f3166f2ca46b5524a9e323319f, type: 3}
       propertyPath: m_Name
       value: Pitchfork
@@ -18773,6 +18781,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d985827dc2f0a94fbb84d96fdf353fa, type: 3}
+--- !u!1 &1881118393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5456150466296607818, guid: 712cb3ec4ff1e2043985e15a5cedfbbd, type: 3}
+  m_PrefabInstance: {fileID: 2582345719971648649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1884719513
 PrefabInstance:
   m_ObjectHideFlags: 0

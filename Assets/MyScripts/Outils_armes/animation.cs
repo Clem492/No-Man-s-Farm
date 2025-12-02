@@ -47,8 +47,9 @@ public class animation : MonoBehaviour
         }
         if (weapon_diff == 4 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
         {
+            
             can_attaque = false;
-            attaque = false;
+            attaque = true;
             explosion.SetActive(true);
             animator.SetBool("attaque", attaque);
             StartCoroutine(gun_anim());
@@ -82,9 +83,11 @@ public class animation : MonoBehaviour
     {
         can_attaque = true;
         explosion.SetActive(false);
-        animator.SetBool("attaque", attaque);
         yield return new WaitForSeconds(0.2f);
-        attaque = true;
+        attaque = false;
+        animator.SetBool("attaque", attaque);
+        
+        
 
     }
 
