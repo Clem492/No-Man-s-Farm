@@ -7,6 +7,7 @@ public class weapon_attaque : MonoBehaviour
 {
     //variable pour le raycast
     RaycastHit hit;
+    [SerializeField] GameObject sang;
     [SerializeField] weaponinstantiate weapons_created;
     [SerializeField] weaponinstantiate hand_left;
     [SerializeField] weaponinstantiate hand_right;
@@ -63,18 +64,19 @@ public class weapon_attaque : MonoBehaviour
 
                     if (hit.transform.GetComponent<pv_zombie>())
                     {
-                        
+                        Instantiate(sang, hit.point, Quaternion.identity);
                         hand_dommage = 2;
                         hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
                     }
                     if (hit.transform.GetComponent<pv_cerf>())
                     {
-
-                      hand_dommage =2 ;
+                        Instantiate(sang, hit.point, Quaternion.identity);
+                        hand_dommage =2 ;
                       hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
                     }
                     if (hit.transform.GetComponent<pv_poule>())
                     {
+                        Instantiate(sang, hit.point, Quaternion.identity);
                         axe_dommage_tree = 1;
                         hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
                     }
@@ -151,17 +153,18 @@ public class weapon_attaque : MonoBehaviour
                     gun_dommage = rarety * (double_hand_dammage * 20);
                     if (hit.transform.GetComponent<pv_zombie>())
                     {
+                        Instantiate(sang, hit.point, Quaternion.identity);
                         hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(gun_dommage);
                     }
                     if (hit.transform.GetComponent<pv_cerf>())
                     {
 
-                       
+                        Instantiate(sang, hit.point, Quaternion.identity);
                         hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(gun_dommage);
                     }
                     if (hit.transform.GetComponent<pv_poule>())
                     {
-                        
+                        Instantiate(sang, hit.point, Quaternion.identity);
                         hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
                     }
 
@@ -180,6 +183,7 @@ public class weapon_attaque : MonoBehaviour
         {
             if (col.transform.GetComponent<pv_zombie>())
             {
+               
                 axe_dommage = rarety * (double_hand_dammage * 5);
                 col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
             }
@@ -220,17 +224,19 @@ public class weapon_attaque : MonoBehaviour
     {
         if (hit.transform.GetComponent<pv_zombie>())
         {
+            Instantiate(sang, hit.point, Quaternion.identity);
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(sickle_dommage);
         }
         if (hit.transform.GetComponent<pv_cerf>())
         {
-
+            Instantiate(sang, hit.point, Quaternion.identity);
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(sickle_dommage);
         }
         if (hit.transform.GetComponent<pv_poule>())
         {
+            Instantiate(sang, hit.point, Quaternion.identity);
             axe_dommage_tree = 1;
             hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
         }
@@ -254,19 +260,21 @@ public class weapon_attaque : MonoBehaviour
         
         if (hit.transform.GetComponent<pv_zombie>() )
         {
+            Instantiate(sang, hit.point, Quaternion.identity);
             float pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(pitchfork_dommage);
-            Debug.Log("Zombie touché !");
+           
             
         }
         if (hit.transform.GetComponent<pv_cerf>())
         {
-
+            Instantiate(sang, hit.point, Quaternion.identity);
             pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(pitchfork_dommage);
         }
         if (hit.transform.GetComponent<pv_poule>())
         {
+            Instantiate(sang, hit.point, Quaternion.identity);
             axe_dommage_tree = 1;
             hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
         }
