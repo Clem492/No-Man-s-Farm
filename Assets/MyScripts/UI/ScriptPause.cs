@@ -9,11 +9,14 @@ public class script_pause : MonoBehaviour
     [SerializeField] GameObject ecran_pause;
     [SerializeField] Canvas canvas;
     [SerializeField] craft_inventory craft_Inventory;
+    [SerializeField] GameObject text_control;
     public bool ecran_pause_actif;
-    
+    bool control_actif;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        text_control.SetActive(false);
+        control_actif = false;
         ecran_pause_actif = false;
         ecran_pause.SetActive(false);
         bloquer_souris();
@@ -74,5 +77,18 @@ public class script_pause : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
        
+    }
+    public void controls()
+    {
+        if (!control_actif)
+        {
+            text_control.SetActive(true);
+            control_actif = true;
+        }
+        else
+        {
+            text_control.SetActive(false);
+            control_actif = false;
+        }
     }
 }
