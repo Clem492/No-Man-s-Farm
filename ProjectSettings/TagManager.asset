@@ -16,6 +16,7 @@ TagManager:
   - cible_cerf
   - FxTemporaire
   - detruire
+  - explosion
   layers:
   - Default
   - TransparentFX

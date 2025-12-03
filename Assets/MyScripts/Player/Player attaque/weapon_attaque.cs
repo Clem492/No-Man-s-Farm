@@ -43,7 +43,6 @@ public class weapon_attaque : MonoBehaviour
     public bool clique_unlock;
 
 
-    [SerializeField] GameObject explosion_gun;
 
     //fonction pour savoir quelle arme le joueur a en main
     public void What_weapon()
@@ -150,7 +149,22 @@ public class weapon_attaque : MonoBehaviour
                 {
                     
                     gun_dommage = rarety * (double_hand_dammage * 20);
-                    hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(gun_dommage);
+                    if (hit.transform.GetComponent<pv_zombie>())
+                    {
+                        hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(gun_dommage);
+                    }
+                    if (hit.transform.GetComponent<pv_cerf>())
+                    {
+
+                       
+                        hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(gun_dommage);
+                    }
+                    if (hit.transform.GetComponent<pv_poule>())
+                    {
+                        
+                        hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
+                    }
+
                 }
             }
          

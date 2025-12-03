@@ -12,12 +12,10 @@ public class animation : MonoBehaviour
     // il faut savoir si il est possible de jouer l'animation 
     bool can_attaque;
     [SerializeField] bool attaque;
-
-
-    [SerializeField] GameObject explosion;
-
+    
     private void Update()
     {
+     
         player = GameObject.FindWithTag("player");
         weapon_diff =  player.GetComponent<weapon_attaque>().weapon_diff; //je récupe quelle arme est en main
         animation_weapon();
@@ -50,7 +48,7 @@ public class animation : MonoBehaviour
             
             can_attaque = false;
             attaque = true;
-            explosion.SetActive(true);
+            GetComponent<explosion>().lancement_explosion();
             animator.SetBool("attaque", attaque);
             StartCoroutine(gun_anim());
         }
@@ -82,7 +80,7 @@ public class animation : MonoBehaviour
     IEnumerator gun_anim()
     {
         can_attaque = true;
-        explosion.SetActive(false);
+    
         yield return new WaitForSeconds(0.2f);
         attaque = false;
         animator.SetBool("attaque", attaque);
@@ -93,7 +91,12 @@ public class animation : MonoBehaviour
 
     private void Start()
     {
+
+       
         animator = GetComponent<Animator>();
         can_attaque = true;
+       
+        
+        
     }
 }
