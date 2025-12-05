@@ -10,7 +10,7 @@ public class animation : MonoBehaviour
     //il faut aussi récupérer la main gauche ou droite du joueur
      Animator animator;
     // il faut savoir si il est possible de jouer l'animation 
-    bool can_attaque;
+    public bool can_attaque1;
     [SerializeField] bool attaque;
     
     private void Update()
@@ -24,32 +24,33 @@ public class animation : MonoBehaviour
     //fonction pour savoir quelle animation en fonction de quelle arme
     void animation_weapon()
     {
-        if (weapon_diff == 0 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true)
+        if (weapon_diff == 0 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true)
         {
 
         }
-        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
         {
-            can_attaque = false;
+            can_attaque1 = false;
             StartCoroutine(axe_anim());
         }
-        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
         {
-            can_attaque = false;
+            can_attaque1 = false;
             StartCoroutine(sickle_anim());
         }
-        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_attaque1 == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
         {
-            can_attaque = false;
+            can_attaque1 = false;
             StartCoroutine(pitforck_anim());
         }
-        if (weapon_diff == 4 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        if (weapon_diff == 4 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
         {
             
-            can_attaque = false;
+            
             attaque = true;
+            can_attaque1 = false;
             GetComponent<explosion>().lancement_explosion();
-            animator.SetBool("attaque", attaque);
+            animator.SetTrigger("attaque 0");
             StartCoroutine(gun_anim());
         }
    
@@ -60,32 +61,32 @@ public class animation : MonoBehaviour
         animator.SetTrigger("axe_attack");
         Debug.Log("la touche est appuyer");
         yield return new WaitForSeconds(1.7f);
-        can_attaque = true;
+        can_attaque1 = true;
     }
 
     IEnumerator pitforck_anim()
     {
         animator.SetTrigger("pitchfork_attack");
         yield return new WaitForSeconds(1.5f);
-        can_attaque = true;
+        can_attaque1 = true;
     }
 
     IEnumerator sickle_anim()
     {
         animator.SetTrigger("sickle_attack");
         yield return new WaitForSeconds(1f);
-        can_attaque = true;
+        can_attaque1 = true;
     }
 
     IEnumerator gun_anim()
     {
-        can_attaque = true;
+        
     
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1.5f);
         attaque = false;
-        animator.SetBool("attaque", attaque);
-        
-        
+
+        can_attaque1 = true;
+
 
     }
 
@@ -94,7 +95,8 @@ public class animation : MonoBehaviour
 
        
         animator = GetComponent<Animator>();
-        can_attaque = true;
+        
+        can_attaque1 = true;
        
         
         

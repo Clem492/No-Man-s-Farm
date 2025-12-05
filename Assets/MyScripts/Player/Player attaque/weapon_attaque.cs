@@ -13,17 +13,17 @@ public class weapon_attaque : MonoBehaviour
     [SerializeField] weaponinstantiate hand_right;
     [SerializeField] GameObject cam;
     [SerializeField] AudioSource son_weapon;
-   public int weapon_diff;
+    public int weapon_diff;
     bool right_hand;
     bool left_hand;
-    
+
 
 
     //variable pour la sphère cast
     Collider[] enemies;
-    
 
-   
+
+
 
     //dégat pour les différente arme
     float hand_dommage;
@@ -43,17 +43,19 @@ public class weapon_attaque : MonoBehaviour
     //variable pour le tuto
     public bool clique_unlock;
 
+    animation animation_attaque;
+    int bullet = 20;
 
 
     //fonction pour savoir quelle arme le joueur a en main
     public void What_weapon()
-      {
+    {
 
-          weapon_diff = weapons_created.GetComponent<weaponinstantiate>().weapon_diff;
-          right_hand = hand_right.right_hand;
-          left_hand = hand_left.left_hand;
+        weapon_diff = weapons_created.GetComponent<weaponinstantiate>().weapon_diff;
+        right_hand = hand_right.right_hand;
+        left_hand = hand_left.left_hand;
 
-        if (weapon_diff == 0 && right_hand == false && clique_unlock == true ) //le 0 signifie main nue
+        if (weapon_diff == 0 && right_hand == false && clique_unlock == true) //le 0 signifie main nue
         {
             Debug.DrawRay(cam.transform.position, cam.transform.forward * 2, Color.red);
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -71,8 +73,8 @@ public class weapon_attaque : MonoBehaviour
                     if (hit.transform.GetComponent<pv_cerf>())
                     {
                         Instantiate(sang, hit.point, Quaternion.identity);
-                        hand_dommage =2 ;
-                      hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
+                        hand_dommage = 2;
+                        hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
                     }
                     if (hit.transform.GetComponent<pv_poule>())
                     {
@@ -88,7 +90,7 @@ public class weapon_attaque : MonoBehaviour
         }
 
         if (weapon_diff == 1 && can_attaque == true && clique_unlock == true) //le 1 signfie la hache
-          {
+        {
             //raycast en boule pour toucher plus d'enemie
             //il faut faire la hache
             enemies = Physics.OverlapSphere(cam.transform.position + cam.transform.forward * 2f, 2);
@@ -97,30 +99,30 @@ public class weapon_attaque : MonoBehaviour
                 son_weapon.Play();
                 can_attaque = false;
                 StartCoroutine(anti_spam_axe());
-              
+
             }
 
 
         }
-          if (weapon_diff == 2 && can_attaque == true && clique_unlock == true) //le 2 signifie la faussile
-          {
-              Debug.DrawRay(transform.position, cam.transform.forward * 2, Color.red);
-              if (Input.GetKeyDown(KeyCode.Mouse0))
-              {
+        if (weapon_diff == 2 && can_attaque == true && clique_unlock == true) //le 2 signifie la faussile
+        {
+            Debug.DrawRay(transform.position, cam.transform.forward * 2, Color.red);
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
                 son_weapon.Play();
                 can_attaque = false;
-                  if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
-                  {
+                if (Physics.Raycast(transform.position, cam.transform.forward, out hit, 4))
+                {
                     StartCoroutine(anti_spam_sickle());
 
-                  }
+                }
                 else
                 {
                     StartCoroutine(reset_anim_sickle());
                 }
-              }
-          }
-       
+            }
+        }
+
         if (weapon_diff == 3 && can_attaque == true && clique_unlock == true)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -141,37 +143,33 @@ public class weapon_attaque : MonoBehaviour
             }
         }
 
-        if (weapon_diff == 4 && can_attaque == true && clique_unlock == true)
+        if (weapon_diff == 4 && can_attaque && clique_unlock == true)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (bullet != 0)
             {
-               
-                Debug.DrawRay(cam.transform.position, cam.transform.forward * 70, Color.red);
-                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 70))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    can_attaque = false;
+                    Debug.DrawRay(cam.transform.position, cam.transform.forward * 70, Color.red);
+                    if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 70))
+                    {
+                        StartCoroutine(anti_spam_gun());
+                        if (bullet <= 0 )
+                        {
+                            GameObject[] a_detruire;
+                            a_detruire = GameObject.FindGameObjectsWithTag("chiant");
+                            foreach(GameObject game in a_detruire)
+                            {
+                                Destroy(game);
+                            }
+                            
+                        }
+                    }
                     
-                    gun_dommage = rarety * (double_hand_dammage * 20);
-                    if (hit.transform.GetComponent<pv_zombie>())
-                    {
-                        Instantiate(sang, hit.point, Quaternion.identity);
-                        hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(gun_dommage);
-                    }
-                    if (hit.transform.GetComponent<pv_cerf>())
-                    {
-
-                        Instantiate(sang, hit.point, Quaternion.identity);
-                        hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(gun_dommage);
-                    }
-                    if (hit.transform.GetComponent<pv_poule>())
-                    {
-                        Instantiate(sang, hit.point, Quaternion.identity);
-                        hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
-                    }
-
                 }
             }
-         
-           
+
+
         }
 
 
@@ -183,7 +181,7 @@ public class weapon_attaque : MonoBehaviour
         {
             if (col.transform.GetComponent<pv_zombie>())
             {
-               
+
                 axe_dommage = rarety * (double_hand_dammage * 5);
                 col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
             }
@@ -214,10 +212,32 @@ public class weapon_attaque : MonoBehaviour
         }
         yield return new WaitForSeconds(1.7f);
         can_attaque = true;
-  
-    }
-   
 
+    }
+
+    IEnumerator anti_spam_gun()
+    {
+        gun_dommage = rarety * (double_hand_dammage * 20);
+        if (hit.transform.GetComponent<pv_zombie>())
+        {
+            Instantiate(sang, hit.point, Quaternion.identity);
+            hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(gun_dommage);
+        }
+        if (hit.transform.GetComponent<pv_cerf>())
+        {
+
+            Instantiate(sang, hit.point, Quaternion.identity);
+            hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(gun_dommage);
+        }
+        if (hit.transform.GetComponent<pv_poule>())
+        {
+            Instantiate(sang, hit.point, Quaternion.identity);
+            hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
+        }
+        bullet -= 1;
+        yield return new WaitForSeconds(1.5f);
+        can_attaque = true;
+    }
 
 
     IEnumerator anti_spam_sickle()
@@ -257,14 +277,14 @@ public class weapon_attaque : MonoBehaviour
 
     IEnumerator anti_spam_pitfork()
     {
-        
-        if (hit.transform.GetComponent<pv_zombie>() )
+
+        if (hit.transform.GetComponent<pv_zombie>())
         {
             Instantiate(sang, hit.point, Quaternion.identity);
             float pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(pitchfork_dommage);
-           
-            
+
+
         }
         if (hit.transform.GetComponent<pv_cerf>())
         {
@@ -280,7 +300,7 @@ public class weapon_attaque : MonoBehaviour
         }
         yield return new WaitForSeconds(1.3f);
         can_attaque = true;
-        
+
     }
 
     IEnumerator reset_anim_pitchfork()
@@ -318,18 +338,18 @@ public class weapon_attaque : MonoBehaviour
         if (weapon_diff == 1) //le 1 signfie la hache
         {
 
-           Gizmos.DrawSphere(cam.transform.position + cam.transform.forward * 2f, 2);
+            Gizmos.DrawSphere(cam.transform.position + cam.transform.forward * 2f, 2);
 
         }
     }
 
 
-   
+
     private void Start()
     {
         rarety = 1;
         can_attaque = true;
-        
+
     }
 
 
@@ -337,6 +357,11 @@ public class weapon_attaque : MonoBehaviour
     {
         What_weapon();
         Double_hand_active();
-     
+        animation_attaque = GameObject.FindWithTag("chiant").GetComponent<animation>();
+        if (animation_attaque == null)
+        {
+            Debug.LogError("le truc manque ");
+        }
+        print(bullet);
     }
 }
