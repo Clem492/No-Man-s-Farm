@@ -10,7 +10,7 @@ public class ScriptMenu : MonoBehaviour
     [SerializeField] private Button play_b,exit_b;
     [SerializeField] TMPro.TextMeshProUGUI titre;
     [SerializeField] private float duration = 5f;
-    [SerializeField] private string sceneToLoad = "scene1";
+    [SerializeField] private string sceneToLoad ;
 
 
     void Start()

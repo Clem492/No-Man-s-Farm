@@ -22,7 +22,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] GameObject girouette;
     [SerializeField] GameObject poule;
     
-    public int nombre_zombie_spawn = 5;
+    public int nombre_zombie_spawn = 7;
     public bool win;
     int numero_vague;
     int temp_jour;
@@ -64,6 +64,7 @@ public class spawn_zombie : MonoBehaviour
     void Update()
     {
         switch_ui_cycle();
+     
     }
    public IEnumerator spawn()
     {

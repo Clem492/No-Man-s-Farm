@@ -10297,6 +10297,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 188039066}
     - target: {fileID: 3567207992851305084, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      propertyPath: duree_zoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567207992851305084, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: food_vide_1
       value: 
       objectReference: {fileID: 553273875}
@@ -10336,6 +10340,10 @@ PrefabInstance:
       propertyPath: food_vide_10
       value: 
       objectReference: {fileID: 1580043083}
+    - target: {fileID: 3567207992851305084, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      propertyPath: grossisement
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3567207992851305084, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: txt_food_player
       value: 
@@ -12784,7 +12792,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a8232f30ce47ec648b953042a0ffe2e1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13607,16 +13615,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1679446344}
-  - {fileID: 2004756764}
-  - {fileID: 1745497803}
-  - {fileID: 217288826}
-  - {fileID: 933327756}
-  - {fileID: 211970354}
-  - {fileID: 776555168}
-  - {fileID: 1359826075}
-  - {fileID: 1038146334}
-  - {fileID: 188039065}
   - {fileID: 553273874}
   - {fileID: 1040129889}
   - {fileID: 718112179}
@@ -13627,6 +13625,16 @@ RectTransform:
   - {fileID: 847893408}
   - {fileID: 1207998110}
   - {fileID: 1580043082}
+  - {fileID: 1679446344}
+  - {fileID: 2004756764}
+  - {fileID: 1745497803}
+  - {fileID: 217288826}
+  - {fileID: 933327756}
+  - {fileID: 211970354}
+  - {fileID: 776555168}
+  - {fileID: 1359826075}
+  - {fileID: 1038146334}
+  - {fileID: 188039065}
   m_Father: {fileID: 1812829929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

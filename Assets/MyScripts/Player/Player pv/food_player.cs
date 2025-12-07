@@ -123,7 +123,7 @@ public class food_player : MonoBehaviour
         {
             if (!verif_food_10)
             {
-                verif_food_1 = true;
+                
                 StartCoroutine(grossisement_food(food_10, food_vide_10, 9));
             }
                
