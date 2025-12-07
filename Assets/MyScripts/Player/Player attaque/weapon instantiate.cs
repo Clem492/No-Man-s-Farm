@@ -297,6 +297,7 @@ public class weaponinstantiate : MonoBehaviour
                 left_hand = false;
                 right_hand = false;
                 double_hand = false;
+                weapon_diff = 0;
             }
         } 
     }

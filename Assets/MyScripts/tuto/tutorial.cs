@@ -353,7 +353,7 @@ public class tutorial : MonoBehaviour
         Player.GetComponent<movement_player>().can_move_right = true;
         Player.GetComponent<movement_player>().tutorial_cam = true;
         Player.GetComponent<weapon_attaque>().clique_unlock = true;
-        Zombie.GetComponent<pv_zombie>().enabled = true;
+        Zombie.GetComponent<pv_zombie>().enabled = false;
         crosshair = false;
         zombie_sond.enabled = false;
         mur_tuto_move.SetActive(false);

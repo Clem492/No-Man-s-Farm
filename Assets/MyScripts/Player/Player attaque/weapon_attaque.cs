@@ -1,7 +1,8 @@
-using Unity.VisualScripting;
+
 using UnityEditor;
 using UnityEngine;
 using System.Collections;
+using TMPro;
 //ce sript utilise weapon instantiate
 public class weapon_attaque : MonoBehaviour
 {
@@ -39,13 +40,13 @@ public class weapon_attaque : MonoBehaviour
     float double_hand_dammage = 1.5f;
 
     //utile pour la coroutine anti_spam
-    bool can_attaque;
+    public bool can_attaque;
     //variable pour le tuto
     public bool clique_unlock;
 
-    animation animation_attaque;
+ 
     int bullet = 20;
-
+    [SerializeField] TextMeshProUGUI bullet_text;
 
     //fonction pour savoir quelle arme le joueur a en main
     public void What_weapon()
@@ -145,14 +146,24 @@ public class weapon_attaque : MonoBehaviour
 
         if (weapon_diff == 4 && can_attaque && clique_unlock == true)
         {
-            if (bullet != 0)
+            
+            
+            
+            
+            if (bullet != 0 && weapons_created.right_hand)
             {
+                bullet_text.enabled = true;
+                bullet_text.text = "20/" + bullet;
+                
+                
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    
                     can_attaque = false;
                     Debug.DrawRay(cam.transform.position, cam.transform.forward * 70, Color.red);
                     if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 70))
                     {
+                        
                         StartCoroutine(anti_spam_gun());
                         if (bullet <= 0 )
                         {
@@ -160,16 +171,42 @@ public class weapon_attaque : MonoBehaviour
                             a_detruire = GameObject.FindGameObjectsWithTag("chiant");
                             foreach(GameObject game in a_detruire)
                             {
+                                weapons_created.right_hand = false;
                                 Destroy(game);
+
                             }
-                            
+                            bullet_text.enabled = false;
+                        }
+                        
+                    }
+                    else
+                    {
+                        bullet -= 1;
+                        bullet_text.text = "20/" + bullet;
+                        StartCoroutine(reset_anim_gun());
+                        if (bullet <= 0)
+                        {
+                            GameObject[] a_detruire;
+                            a_detruire = GameObject.FindGameObjectsWithTag("chiant");
+                            foreach (GameObject game in a_detruire)
+                            {
+                                weapons_created.right_hand = false;
+                                Destroy(game);
+
+                            }
+                            bullet_text.enabled = false;
                         }
                     }
-                    
+
                 }
             }
 
+        }
+        else if (!weapons_created.right_hand)
+        {
 
+            bullet_text.enabled = false;
+            bullet = 20;
         }
 
 
@@ -217,6 +254,7 @@ public class weapon_attaque : MonoBehaviour
 
     IEnumerator anti_spam_gun()
     {
+        
         gun_dommage = rarety * (double_hand_dammage * 20);
         if (hit.transform.GetComponent<pv_zombie>())
         {
@@ -235,10 +273,17 @@ public class weapon_attaque : MonoBehaviour
             hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
         }
         bullet -= 1;
+        bullet_text.text = "20/" + bullet;
         yield return new WaitForSeconds(1.5f);
         can_attaque = true;
     }
 
+
+    IEnumerator reset_anim_gun()
+    {
+        yield return new WaitForSeconds(1.5f);
+        can_attaque = true;
+    }
 
     IEnumerator anti_spam_sickle()
     {
@@ -357,11 +402,6 @@ public class weapon_attaque : MonoBehaviour
     {
         What_weapon();
         Double_hand_active();
-        animation_attaque = GameObject.FindWithTag("chiant").GetComponent<animation>();
-        if (animation_attaque == null)
-        {
-            Debug.LogError("le truc manque ");
-        }
-        print(bullet);
+        
     }
 }
