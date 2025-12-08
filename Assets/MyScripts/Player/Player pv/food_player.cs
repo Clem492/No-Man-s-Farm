@@ -74,54 +74,54 @@ public class food_player : MonoBehaviour
     {
         if (food_player_actuelle <= 0)
         {
-            if (!verif_food_1)
+            if (!tab_verif[0] && food_1.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_1, food_vide_1,0));
         }
         if (food_player_actuelle <= 10)
         {
-            if (!verif_food_2)
+            if (!tab_verif[1] && food_2.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_2, food_vide_2,1));
         }
         if (food_player_actuelle <= 20)
         {
-            if (!verif_food_3)
+            if (!tab_verif[2] && food_3.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_3, food_vide_3,2));
         }
         if (food_player_actuelle <= 30)
         {
-            if (!verif_food_4)
+            if (!tab_verif[3] && food_4.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_4, food_vide_4,3));
         }
         if (food_player_actuelle <= 40)
         {
-            if (!verif_food_5)
+            if (!tab_verif[4] && food_5.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_5, food_vide_5,4));
         }
         if (food_player_actuelle <= 50)
         {
-            if (!verif_food_6)
+            if (!tab_verif[5] && food_6.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_6, food_vide_6,5));
         }
         if (food_player_actuelle <= 60)
         {
-            if (!verif_food_7)
+            if (!tab_verif[6] && food_7.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_7, food_vide_7,6));
         }
         if (food_player_actuelle <= 70)
         {
-            if (!verif_food_8)
+            if (!tab_verif[7] && food_8.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_8, food_vide_8,7));
             
         }
         if (food_player_actuelle <= 80)
         {
-            if (!verif_food_9)
+            if (!tab_verif[8] && food_9.isActiveAndEnabled)
                 StartCoroutine(grossisement_food(food_9, food_vide_9, 8));
     
         }
         if (food_player_actuelle <= 90)
         {
-            if (!verif_food_10)
+            if (!tab_verif[9] && food_10.isActiveAndEnabled)
             {
                 
                 StartCoroutine(grossisement_food(food_10, food_vide_10, 9));
@@ -180,7 +180,7 @@ public class food_player : MonoBehaviour
             food_vide_10.enabled = false;
         }
     }
-    IEnumerator grossisement_food(RawImage food_image, RawImage food_image_vide,int i)
+    /*IEnumerator grossisement_food(RawImage food_image, RawImage food_image_vide,int i)
     {
         tab_verif[i] = true;
         LeanTween.scale(food_image.GetComponent<RectTransform>(), food_image.GetComponent<RectTransform>().localScale * grossisement, duree_zoom)
@@ -188,6 +188,36 @@ public class food_player : MonoBehaviour
         yield return new WaitForSeconds(duree_zoom);
         food_image.enabled = false;
         food_image_vide.enabled = true;
+        tab_verif[i] = false;
+    }*/
+    IEnumerator grossisement_food(RawImage food_image, RawImage food_image_vide, int i)
+    {
+        // Indique que l'animation est en cours pour éviter de la redémarrer
+        tab_verif[i] = true;
+
+        // Récupérer le RectTransform
+        RectTransform rectTransform = food_image.GetComponent<RectTransform>();
+
+        // Stocker l'échelle de départ (normalement Vector3.one ou l'échelle définie dans l'éditeur)
+        Vector3 scaleDepart = rectTransform.localScale;
+        // Définir l'échelle cible (par exemple, 1.2 fois l'échelle de départ si grossissement est 1.2)
+        Vector3 scaleCible = scaleDepart * grossisement;
+
+        // Mise à l'échelle vers la cible
+        LeanTween.scale(rectTransform, scaleCible, duree_zoom)
+                 .setEaseOutQuad();
+
+        // Attendre la fin de l'animation
+        yield return new WaitForSeconds(duree_zoom);
+
+        // Réinitialiser l'échelle à l'échelle de départ (IMPORTANT)
+        rectTransform.localScale = scaleDepart;
+
+        // Changer d'image
+        food_image.enabled = false;
+        food_image_vide.enabled = true;
+
+        // Indique que l'animation est terminée
         tab_verif[i] = false;
     }
     IEnumerator wait()
