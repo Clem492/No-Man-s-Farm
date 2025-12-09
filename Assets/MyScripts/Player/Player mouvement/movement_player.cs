@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class movement_player : MonoBehaviour
 {
@@ -43,6 +45,16 @@ public class movement_player : MonoBehaviour
 
     //récupération du canva de la table de craft pour bloquer les mouvement de caméras du joueur 
     [SerializeField] craft_inventory craft_Inventory;
+
+    //recuperer le slider pour le temp qu'il reste en sprint
+    [SerializeField] Slider sprint_slider;
+    //déclaration du temp que dure le sprint et le cooldown
+    
+    [SerializeField] float sprint_max_value;
+    [SerializeField] float sprint_cooldown;
+    //déclaration d'un booléen pour savoir si le joueur sprint ou non
+    public bool can_sprint;
+
     // fonction pour pouvoir déplacer le joueur 
     void movement()
     {
@@ -95,12 +107,38 @@ public class movement_player : MonoBehaviour
     //fonction pour le sprint 
     void apply_sprint()
     {
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+
+        if (can_sprint)
         {
-            Vector3 player_sprint = transform.forward * Time.deltaTime * sprint_speed;
-            controller.Move(player_sprint);
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+            {
+                
+                sprint_slider.value -= Time.deltaTime;
+                Vector3 player_sprint = transform.forward * Time.deltaTime * sprint_speed;
+                controller.Move(player_sprint);
+            }
+            else if (!Input.GetKeyUp(KeyCode.LeftShift) && sprint_slider.value < sprint_slider.maxValue)
+            {
+                can_sprint = false;
+                StartCoroutine(Sprint_cooldown());
+            }
         }
+        else if (sprint_slider.value <= 0)
+        {
+            can_sprint = false;
+            StartCoroutine(Sprint_cooldown());
+        }
+
+
     }
+
+    IEnumerator Sprint_cooldown()
+    {
+        yield return new WaitForSeconds(sprint_cooldown);
+        sprint_slider.value = sprint_max_value;
+        can_sprint = true;
+    }
+
     //fonction pour le saut 
     void apply_jump()
     {
@@ -166,6 +204,9 @@ public class movement_player : MonoBehaviour
         can_move_forward = false;
         can_move_right = false;
         tutorial_cam = false;
+        can_sprint = true;
+        sprint_slider.maxValue = sprint_max_value;
+        sprint_slider.value = sprint_max_value;
     }
 
     private void Update()
