@@ -422,7 +422,14 @@ public class weapon_attaque : MonoBehaviour
             Instantiate(sang, hit.point, Quaternion.identity);
             float pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(pitchfork_dommage);
-
+            if (hand_right.hand_right != null)
+            {
+                hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+            }
+            if (hand_left.hand_left != null)
+            {
+                hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+            }
 
         }
         if (hit.transform.GetComponent<pv_cerf>())
@@ -430,12 +437,28 @@ public class weapon_attaque : MonoBehaviour
             Instantiate(sang, hit.point, Quaternion.identity);
             pitchfork_dommage = 10;
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(pitchfork_dommage);
+            if (hand_right.hand_right != null)
+            {
+                hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+            }
+            if (hand_left.hand_left != null)
+            {
+                hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+            }
         }
         if (hit.transform.GetComponent<pv_poule>())
         {
             Instantiate(sang, hit.point, Quaternion.identity);
             axe_dommage_tree = 1;
             hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
+            if (hand_right.hand_right != null)
+            {
+                hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+            }
+            if (hand_left.hand_left != null)
+            {
+                hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+            }
         }
         yield return new WaitForSeconds(1.3f);
         can_attaque = true;
