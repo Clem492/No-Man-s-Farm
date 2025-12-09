@@ -14,6 +14,7 @@ public class craft : MonoBehaviour
     [SerializeField] Texture axe; //permet de visualiser le craft final de la hache
     [SerializeField] Texture pitchfork; //permet de visualiser le craft final de la pitchfork
     [SerializeField] Texture faussille; //permet de visualiser le craft final de la faussille
+    [SerializeField] Texture gun; //permet de visualiser le craft final du gun
     [SerializeField] Inventory inventory;//permet de récuper la liste des items
     [SerializeField] weaponinstantiate weaponinstantiate; //permet de récupérer la fonction what_whand_craft
     //[SerializeField] AudioSource hammer; // récupération du bruit de craft
@@ -159,6 +160,16 @@ public class craft : MonoBehaviour
         craft_final.texture = faussille;
         what_craft = 2;
         bois_requis = 5;
+        clou_requis = 5;
+    }
+
+    public void gun_button()
+    {
+        bois.sprite = bois_sprite;
+        clou.sprite = clou_sprite;
+        craft_final.texture = gun;
+        what_craft = 4;
+        bois_requis = 1;
         clou_requis = 5;
     }
     //fonction qui calcule le nombre de bois et de clou restant dans l'inventaire 

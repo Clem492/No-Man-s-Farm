@@ -235,6 +235,15 @@ public class weaponinstantiate : MonoBehaviour
             weapon_diff = 3;
             weapon_hand = true;
         }
+        if (craft.wood_in_inventory >= craft.bois_requis && craft.nails_in_inventory >= craft.clou_requis && craft.what_craft == 4)//gun
+        {
+            hand_right = Instantiate(Gun_prefab);
+            hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hou en enfant
+            hand_right.transform.localPosition = new Vector3(0, 0.2f, 0);
+            hand_right.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            right_hand = true;
+            weapon_diff = 4; //gun
+        }
     }
 
     void craft_weapon_left()
