@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 //ce sript utilise weapon instantiate
 public class weapon_attaque : MonoBehaviour
 {
+    [SerializeField] TMPro.TextMeshProUGUI text_dura_gauche, text_dura_droite;
     //variable pour le raycast
     RaycastHit hit;
     [SerializeField] GameObject sang;
@@ -495,6 +496,13 @@ public class weapon_attaque : MonoBehaviour
     {
         What_weapon();
         Double_hand_active();
-        
+        if (hand_right.hand_right != null)
+        {
+           text_dura_droite.text=""+ hand_right.hand_right.GetComponent<dura_arme>().dura;
+        }
+        if (hand_left.hand_left != null)
+        {
+            text_dura_gauche.text = "" + hand_left.hand_left.GetComponent<dura_arme>().dura;
+        }
     }
 }
