@@ -170,7 +170,7 @@ public class craft : MonoBehaviour
         craft_final.texture = gun;
         what_craft = 4;
         bois_requis = 1;
-        clou_requis = 15;
+        clou_requis = 10;
     }
 
     //fonction qui calcule le nombre de bois et de clou restant dans l'inventaire 

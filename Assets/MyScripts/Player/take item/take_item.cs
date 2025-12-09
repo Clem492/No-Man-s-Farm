@@ -1,6 +1,5 @@
 using UnityEngine;
-using static UnityEditor.Progress;
-using static UnityEditor.Timeline.Actions.MenuPriority;
+
 
 public class take_item : MonoBehaviour
 {

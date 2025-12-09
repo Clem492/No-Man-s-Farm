@@ -1,8 +1,7 @@
-using System.Net;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
+
+
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 public class weaponinstantiate : MonoBehaviour
 
