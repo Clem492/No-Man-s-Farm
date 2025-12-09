@@ -68,13 +68,13 @@ public class weapon_attaque : MonoBehaviour
                     if (hit.transform.GetComponent<pv_zombie>())
                     {
                         Instantiate(sang, hit.point, Quaternion.identity);
-                        hand_dommage = 2;
+                        hand_dommage = 1;
                         hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
                     }
                     if (hit.transform.GetComponent<pv_cerf>())
                     {
                         Instantiate(sang, hit.point, Quaternion.identity);
-                        hand_dommage = 2;
+                        hand_dommage = 1;
                         hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
                     }
                     if (hit.transform.GetComponent<pv_poule>())

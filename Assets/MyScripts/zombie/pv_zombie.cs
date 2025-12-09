@@ -65,12 +65,12 @@ public class pv_zombie : MonoBehaviour
     {
         animator.SetTrigger("mort_zombie");
         luck_nail = Random.Range(0, 4);
-        if (luck_nail <= 2)
+        if (luck_nail <= 3)
         {
             Instantiate(nails_prefab, new Vector3(gameObject.transform.position.x, 1f, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
         }
               
-        if (luck_nail == 0)
+        if (luck_nail == 0 || luck_nail ==1)
         {
             Instantiate(nails_prefab, new Vector3(gameObject.transform.position.x, 1f, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
         }

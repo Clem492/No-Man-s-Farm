@@ -19,7 +19,7 @@ public class take_item : MonoBehaviour
         {
             if (hit.transform.CompareTag("item") || hit.transform.CompareTag("arme"))
             {
-                Debug.Log("ceci est un item");
+             
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (inventory.Inventory_Full())
