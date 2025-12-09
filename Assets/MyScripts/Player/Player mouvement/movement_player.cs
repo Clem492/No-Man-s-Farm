@@ -120,7 +120,8 @@ public class movement_player : MonoBehaviour
             else if (!Input.GetKeyUp(KeyCode.LeftShift) && sprint_slider.value < sprint_slider.maxValue && can_sprint)
             {
                 
-                sprint_slider.value = sprint_max_value;
+                can_sprint = false;
+                rechargement_sprint = true;
             }
         }
         if (sprint_slider.value <= 0)
