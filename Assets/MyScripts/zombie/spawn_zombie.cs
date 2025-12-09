@@ -138,10 +138,10 @@ public class spawn_zombie : MonoBehaviour
                 //Nord
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                   Instantiate(zombie_prefab, new Vector3(Random.Range(50, 150),1.5f, Random.Range(150, 350)), Quaternion.Euler(0,0,0));
+                   Instantiate(zombie_prefab, new Vector3(Random.Range(6, 38),1.5f, Random.Range(272, 310)), Quaternion.Euler(0,0,0));
 
                     girouette.transform.rotation = Quaternion.Euler(0, 44, 0);
-
+                    yield return new WaitForSeconds(0.25f);
                     depart += 1;
                 }
             }
@@ -150,10 +150,10 @@ public class spawn_zombie : MonoBehaviour
                 //Est
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                     Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350),1.5f, Random.Range(350, 450)), Quaternion.Euler(0, 0, 0));
+                     Instantiate(zombie_prefab, new Vector3(Random.Range(203, 224),1.5f, Random.Range(483, 496)), Quaternion.Euler(0, 0, 0));
 
                     girouette.transform.rotation = Quaternion.Euler(0, 134, 0);
-
+                    yield return new WaitForSeconds(0.25f);
                     depart += 1;
                 }
             }
@@ -162,10 +162,10 @@ public class spawn_zombie : MonoBehaviour
                 //Sud
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    Instantiate(zombie_prefab, new Vector3(Random.Range(350, 450), 1.5f, Random.Range(150, 350)), Quaternion.Euler(0, 0, 0));
+                    Instantiate(zombie_prefab, new Vector3(Random.Range(483, 494), 1.5f, Random.Range(268, 302)), Quaternion.Euler(0, 0, 0));
 
                     girouette.transform.rotation = Quaternion.Euler(0, 224, 0);
-
+                    yield return new WaitForSeconds(0.25f);
                     depart += 1;
                 }
             }
@@ -174,10 +174,10 @@ public class spawn_zombie : MonoBehaviour
                 //Ouest
                 for (int i = depart; i < nombre_zombie_spawn + sauvgarde_depart; i++)
                 {
-                    Instantiate(zombie_prefab, new Vector3(Random.Range(150, 350), 1.5f, Random.Range(50, 150)), Quaternion.Euler(0, 0, 0));
+                    Instantiate(zombie_prefab, new Vector3(Random.Range(298, 314), 1.5f, Random.Range(2, 15)), Quaternion.Euler(0, 0, 0));
 
                     girouette.transform.rotation = Quaternion.Euler(0, 314, 0);
-
+                    yield return new WaitForSeconds(0.25f);
                     depart += 1;
                 }
             }
