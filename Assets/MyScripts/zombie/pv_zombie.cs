@@ -67,12 +67,12 @@ public class pv_zombie : MonoBehaviour
         luck_nail = Random.Range(0, 4);
         if (luck_nail <= 3)
         {
-            Instantiate(nails_prefab, new Vector3(gameObject.transform.position.x, 1f, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
+            Instantiate(nails_prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y +0.5f, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
         }
               
         if (luck_nail == 0 || luck_nail ==1)
         {
-            Instantiate(nails_prefab, new Vector3(gameObject.transform.position.x, 1f, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
+            Instantiate(nails_prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.5f, gameObject.transform.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
         }
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
