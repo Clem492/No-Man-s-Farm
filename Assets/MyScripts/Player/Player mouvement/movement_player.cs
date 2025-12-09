@@ -48,10 +48,10 @@ public class movement_player : MonoBehaviour
 
     //recuperer le slider pour le temp qu'il reste en sprint
     [SerializeField] Slider sprint_slider;
-    //déclaration du temp que dure le sprint et le cooldown
+    //déclaration du temp que dure le sprint 
     
-    [SerializeField] float sprint_max_value;
-    [SerializeField] float sprint_cooldown;
+    [SerializeField] float sprint_time;
+    
     //déclaration d'un booléen pour savoir si le joueur sprint ou non
     public bool can_sprint;
     public bool rechargement_sprint;
@@ -110,9 +110,9 @@ public class movement_player : MonoBehaviour
 
         if (can_sprint)
         {
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
-                
+                sprint_slider.gameObject.SetActive(true);
                 sprint_slider.value -= Time.deltaTime;
                 Vector3 player_sprint = transform.forward * Time.deltaTime * sprint_speed;
                 controller.Move(player_sprint);
@@ -135,21 +135,18 @@ public class movement_player : MonoBehaviour
         if (rechargement_sprint)
         {
             sprint_slider.value += Time.deltaTime;
-            if (sprint_slider.value == sprint_max_value)
+            if (sprint_slider.value == sprint_time)
             {
                 can_sprint = true;
                 rechargement_sprint = false;
+                sprint_slider.gameObject.SetActive(false);
             }
         }
 
 
     }
 
-    IEnumerator Sprint_cooldown()
-    {
-        yield return new WaitForSeconds(sprint_cooldown);
-        can_sprint = true;
-    }
+    
 
     //fonction pour le saut 
     void apply_jump()
@@ -217,8 +214,9 @@ public class movement_player : MonoBehaviour
         can_move_right = false;
         tutorial_cam = false;
         can_sprint = true;
-        sprint_slider.maxValue = sprint_max_value;
-        sprint_slider.value = sprint_max_value;
+        sprint_slider.gameObject.SetActive(false);
+        sprint_slider.maxValue = sprint_time;
+        sprint_slider.value = sprint_time;
     }
 
     private void Update()
