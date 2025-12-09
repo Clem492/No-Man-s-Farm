@@ -54,7 +54,7 @@ public class movement_player : MonoBehaviour
     [SerializeField] float sprint_cooldown;
     //déclaration d'un booléen pour savoir si le joueur sprint ou non
     public bool can_sprint;
-
+    public bool rechargement_sprint;
     // fonction pour pouvoir déplacer le joueur 
     void movement()
     {
@@ -125,10 +125,20 @@ public class movement_player : MonoBehaviour
         }
         if (sprint_slider.value <= 0)
         {
-            sprint_slider.value = sprint_max_value;
-            can_sprint = false;
-            StartCoroutine(Sprint_cooldown());
             
+            can_sprint = false;
+            rechargement_sprint = true;
+            
+            
+        }
+        if (rechargement_sprint)
+        {
+            sprint_slider.value += Time.deltaTime;
+            if (sprint_slider.value == sprint_max_value)
+            {
+                can_sprint = true;
+                rechargement_sprint = false;
+            }
         }
 
 
@@ -137,7 +147,6 @@ public class movement_player : MonoBehaviour
     IEnumerator Sprint_cooldown()
     {
         yield return new WaitForSeconds(sprint_cooldown);
-        sprint_slider.value = sprint_max_value;
         can_sprint = true;
     }
 
