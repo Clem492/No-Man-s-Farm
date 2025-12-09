@@ -23,6 +23,7 @@ public class dura_arme : MonoBehaviour
     {
         if (dura <= 0)
         {
+            
             Destroy(gameObject);
         }
     }

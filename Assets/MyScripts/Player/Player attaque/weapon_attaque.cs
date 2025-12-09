@@ -504,5 +504,9 @@ public class weapon_attaque : MonoBehaviour
         {
             text_dura_gauche.text = "" + hand_left.hand_left.GetComponent<dura_arme>().dura;
         }
+        if (hand_right.hand_right == null && hand_left.hand_left == null)
+        {
+            weapon_diff = 0;
+        }
     }
 }
