@@ -65,6 +65,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d8426311171f4325b64ad2b6c28a79f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3348568127617642473}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d8426311171f4325b64ad2b6c28a79f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2544160097368003021}
   m_SourcePrefab: {fileID: 100100000, guid: 4d8426311171f4325b64ad2b6c28a79f, type: 3}
 --- !u!1 &6141606063204579617 stripped
 GameObject:
@@ -83,13 +86,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b15a10e9dbf54408f24de472bcbb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sang: {fileID: 0}
   weapons_created: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
   hand_left: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
   hand_right: {fileID: 7972873374294261791, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
   cam: {fileID: 7099769697083449595, guid: 9ea18376962de364ca6db52884cee48c, type: 3}
   son_weapon: {fileID: 0}
   weapon_diff: 0
+  can_attaque: 0
   clique_unlock: 0
+  bullet_text: {fileID: 0}
 --- !u!95 &2143194595634893979
 Animator:
   serializedVersion: 7
@@ -125,3 +131,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon_diff: 0
+  can_attaque1: 0
+  attaque: 0
+--- !u!114 &2544160097368003021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141606063204579617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017dc8870cab76841981ff759406ef3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dura: 40

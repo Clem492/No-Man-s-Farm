@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 //ce sript utilise weapon instantiate
 public class weapon_attaque : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class weapon_attaque : MonoBehaviour
 
  
     int bullet = 20;
+    int dura_arme_droite;
+    int dura_arme_gauche;
+    
     [SerializeField] TextMeshProUGUI bullet_text;
 
     //fonction pour savoir quelle arme le joueur a en main
@@ -70,18 +74,42 @@ public class weapon_attaque : MonoBehaviour
                         Instantiate(sang, hit.point, Quaternion.identity);
                         hand_dommage = 1;
                         hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(hand_dommage);
+                        if (hand_right.hand_right != null)
+                        {
+                            hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+                        }
+                        if (hand_left.hand_left != null)
+                        {
+                            hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+                        }
                     }
                     if (hit.transform.GetComponent<pv_cerf>())
                     {
                         Instantiate(sang, hit.point, Quaternion.identity);
                         hand_dommage = 1;
                         hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(hand_dommage);
+                        if (hand_right.hand_right != null)
+                        {
+                            hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+                        }
+                        if (hand_left.hand_left != null)
+                        {
+                            hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+                        }
                     }
                     if (hit.transform.GetComponent<pv_poule>())
                     {
                         Instantiate(sang, hit.point, Quaternion.identity);
                         axe_dommage_tree = 1;
                         hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
+                        if (hand_right.hand_right != null)
+                        {
+                            hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+                        }
+                        if (hand_left.hand_left != null)
+                        {
+                            hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+                        }
                     }
 
 
@@ -221,28 +249,68 @@ public class weapon_attaque : MonoBehaviour
 
                 axe_dommage = rarety * (double_hand_dammage * 5);
                 col.transform.GetComponent<pv_zombie>().perte_pv_zombie(axe_dommage);
+                if (hand_right.hand_right != null)
+                {
+                    hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+                }
+                if (hand_left.hand_left != null)
+                {
+                    hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+                }
             }
             if (col.transform.GetComponent<pv_arbre>())
             {
 
                 axe_dommage_tree = 1;
                 col.transform.GetComponent<pv_arbre>().perte_pv_arbre(axe_dommage_tree);
+                if (hand_right.hand_right != null)
+                {
+                    hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+                }
+                if (hand_left.hand_left != null)
+                {
+                    hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+                }
             }
             if (col.transform.GetComponent<pv_cerf>())
             {
 
                 axe_dommage = rarety * (double_hand_dammage * 5); ;
                 col.transform.GetComponent<pv_cerf>().perte_pv_cerf(axe_dommage);
+                if (hand_right.hand_right != null)
+                {
+                    hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+                }
+                if (hand_left.hand_left != null)
+                {
+                    hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+                }
             }
             if (col.transform.GetComponent<pv_arbre_mort>())
             {
                 axe_dommage_tree = 1;
                 col.transform.GetComponent<pv_arbre_mort>().perte_pv_arbre(axe_dommage_tree);
+                if (hand_right.hand_right != null)
+                {
+                    hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+                }
+                if (hand_left.hand_left != null)
+                {
+                    hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+                }
             }
             if (col.transform.GetComponent<pv_poule>())
             {
                 axe_dommage_tree = 1;
                 col.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
+                if (hand_right.hand_right != null)
+                {
+                    hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+                }
+                if (hand_left.hand_left != null)
+                {
+                    hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+                }
             }
 
 
@@ -292,18 +360,43 @@ public class weapon_attaque : MonoBehaviour
             Instantiate(sang, hit.point, Quaternion.identity);
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_zombie>().perte_pv_zombie(sickle_dommage);
+            if (hand_right.hand_right != null)
+            {
+                hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+            }
+            if (hand_left.hand_left != null)
+            {
+                hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+            }
         }
         if (hit.transform.GetComponent<pv_cerf>())
         {
             Instantiate(sang, hit.point, Quaternion.identity);
             sickle_dommage = rarety * (double_hand_dammage * 7);
             hit.transform.GetComponent<pv_cerf>().perte_pv_cerf(sickle_dommage);
+
+            if (hand_right.hand_right != null)
+            {
+                hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+            }
+            if (hand_left.hand_left != null)
+            {
+                hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+            }
         }
         if (hit.transform.GetComponent<pv_poule>())
         {
             Instantiate(sang, hit.point, Quaternion.identity);
             axe_dommage_tree = 1;
             hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
+            if (hand_right.hand_right != null)
+            {
+                hand_right.hand_right.GetComponent<dura_arme>().retirer_dura();
+            }
+            if (hand_left.hand_left != null)
+            {
+                hand_left.hand_left.GetComponent<dura_arme>().retirer_dura();
+            }
         }
         yield return new WaitForSeconds(1.1f);
         can_attaque = true;
