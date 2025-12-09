@@ -28,7 +28,7 @@ public class weaponinstantiate : MonoBehaviour
     [SerializeField] GameObject pitchfork_prefab;
     [SerializeField] GameObject pitchfork;
     [SerializeField] GameObject Gun_prefab;
-    [SerializeField] GameObject Gun;
+    
 
     //variable utiliser pour unlok la touche x au tuto
     public bool touche_x_unclock;
@@ -90,7 +90,7 @@ public class weaponinstantiate : MonoBehaviour
                 hand_right.transform.localRotation = Quaternion.Euler(90, 90, 0);
                 right_hand = true;
                 weapon_diff = 1; //axe
-
+                axe.SetActive(false);
             }
         }
     
@@ -106,7 +106,7 @@ public class weaponinstantiate : MonoBehaviour
                 hand_right.transform.localRotation = Quaternion.Euler(50, 0, 90);
                 right_hand = true;
                 weapon_diff = 2;//sickle
-
+                sickle.SetActive(false);
             }
         }
     
@@ -134,21 +134,11 @@ public class weaponinstantiate : MonoBehaviour
                 double_hand = true;
                 weapon_diff = 3;//pitforck
                 weapon_hand = true;
+                pitchfork.SetActive(false);
             }
         }
 
-        if (Vector3.Distance(transform.position, Gun.transform.position) < 5)
-        {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                hand_right = Instantiate(Gun_prefab);
-                hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hou en enfant
-                hand_right.transform.localPosition = new Vector3(0, 0.2f, 0);
-                hand_right.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                right_hand = true;
-                weapon_diff = 4; //gun
-            }
-        }
+        
     }
 
     //fonction pour instantiate une arme
