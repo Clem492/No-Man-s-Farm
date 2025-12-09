@@ -153,7 +153,7 @@ public class weapon_attaque : MonoBehaviour
             if (bullet != 0 && weapons_created.right_hand)
             {
                 bullet_text.enabled = true;
-                bullet_text.text = "20/" + bullet;
+                bullet_text.text = bullet + "/20";
                 
                 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -182,7 +182,7 @@ public class weapon_attaque : MonoBehaviour
                     else
                     {
                         bullet -= 1;
-                        bullet_text.text = "20/" + bullet;
+                        bullet_text.text = bullet + "/20";
                         StartCoroutine(reset_anim_gun());
                         if (bullet <= 0)
                         {
@@ -273,7 +273,7 @@ public class weapon_attaque : MonoBehaviour
             hit.transform.GetComponent<pv_poule>().retirer_pv_poule(1);
         }
         bullet -= 1;
-        bullet_text.text = "20/" + bullet;
+        bullet_text.text =  bullet + "/20";
         yield return new WaitForSeconds(1.5f);
         can_attaque = true;
     }
