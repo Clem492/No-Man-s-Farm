@@ -508,5 +508,13 @@ public class weapon_attaque : MonoBehaviour
         {
             weapon_diff = 0;
         }
+        if(hand_right.hand_right == null)
+        {
+            hand_right.right_hand = false;
+        }
+        if (hand_left.hand_left == null)
+        {
+            hand_left.left_hand = false;
+        }
     }
 }

@@ -13,7 +13,7 @@ public class dura_arme : MonoBehaviour
     void Update()
     {
         destruction();
-        Debug.Log(dura);
+
     }
     public void retirer_dura()
     {
@@ -23,7 +23,7 @@ public class dura_arme : MonoBehaviour
     {
         if (dura <= 0)
         {
-            
+          
             Destroy(gameObject);
         }
     }
