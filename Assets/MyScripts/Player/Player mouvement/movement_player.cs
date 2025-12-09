@@ -117,16 +117,18 @@ public class movement_player : MonoBehaviour
                 Vector3 player_sprint = transform.forward * Time.deltaTime * sprint_speed;
                 controller.Move(player_sprint);
             }
-            else if (!Input.GetKeyUp(KeyCode.LeftShift) && sprint_slider.value < sprint_slider.maxValue)
+            else if (!Input.GetKeyUp(KeyCode.LeftShift) && sprint_slider.value < sprint_slider.maxValue && can_sprint)
             {
-                can_sprint = false;
-                StartCoroutine(Sprint_cooldown());
+                
+                sprint_slider.value = sprint_max_value;
             }
         }
-        else if (sprint_slider.value <= 0)
+        if (sprint_slider.value <= 0)
         {
+            sprint_slider.value = sprint_max_value;
             can_sprint = false;
             StartCoroutine(Sprint_cooldown());
+            
         }
 
 
