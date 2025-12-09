@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6833344249020131063}
   - component: {fileID: 2149212724071603876}
   - component: {fileID: -7903972543143511755}
+  - component: {fileID: 7674404436527754567}
   m_Layer: 0
   m_Name: Nails
   m_TagString: item
@@ -152,6 +153,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: abdb4415d640d584c83d1a5012bee324, type: 2}
+--- !u!208 &7674404436527754567
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767517178294465950}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.15, y: 0.075, z: 0.123}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.003, y: 0, z: 0.042000003}
+  m_TimeToStationary: 0.5
 --- !u!1001 &8596788869516138059
 PrefabInstance:
   m_ObjectHideFlags: 0

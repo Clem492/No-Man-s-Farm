@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8864608372692580360}
   - component: {fileID: 5027961967051199621}
   - component: {fileID: -3174082538093387704}
+  - component: {fileID: 2404645016560823141}
   m_Layer: 0
   m_Name: Food_Steak Variant
   m_TagString: item
@@ -151,3 +152,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: af03595040ad2894a981aae65164546c, type: 2}
+--- !u!208 &2404645016560823141
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3688800238703088547}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.158, y: 0.024, z: 0.101}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.003, y: 0.019000001, z: 0.003}
+  m_TimeToStationary: 0.5
