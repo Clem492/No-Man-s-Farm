@@ -224,7 +224,8 @@ public class movement_player : MonoBehaviour
         movement();
         cam_movement();
         apply_gravity();
-        apply_sprint();
         apply_jump();
+        apply_sprint();
+        
     }
 }
