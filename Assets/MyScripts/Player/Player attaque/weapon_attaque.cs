@@ -534,10 +534,12 @@ public class weapon_attaque : MonoBehaviour
         if(hand_right.hand_right == null)
         {
             hand_right.right_hand = false;
+            text_dura_droite.text = "";
         }
         if (hand_left.hand_left == null)
         {
             hand_left.left_hand = false;
+            text_dura_gauche.text = "";
         }
     }
 }
