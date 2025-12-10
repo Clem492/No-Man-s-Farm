@@ -28,7 +28,7 @@ public class tutorial : MonoBehaviour
             dialogue.text = "press E to talk (Start tutorial)";
             if (Input.GetKeyDown(KeyCode.E))
             {
-                
+
                 
                 
                 Player.transform.position = new Vector3(250, 1, 239);
@@ -70,7 +70,7 @@ public class tutorial : MonoBehaviour
 
     IEnumerator debut_dialogue()
     {
-       
+        Debug.Log("entrer dans le tuto coroutine");
         yield return new WaitForSeconds(2);
         zombie_sond.enabled = true;
         dialogue.text = "Bonjour toi humain, moi être steve zombie, mais moi me sentir homme";
@@ -341,7 +341,7 @@ public class tutorial : MonoBehaviour
 
     private void Start()
     {
-       
+       mid_step_part2 = false;
         tuto_fini = false;
         tutoriel = false;
         world.GetComponent<spawn_zombie>().cycle_unlock = true;

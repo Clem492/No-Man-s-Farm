@@ -40,6 +40,11 @@ public class weaponinstantiate : MonoBehaviour
     //variable pour crafter une arme dans l'établie
     [SerializeField] craft craft;
 
+    //variable pour ne pas récuperer les armes par terre a l'infinie 
+    bool can_take_axe;
+    bool can_take_pitchfork;
+    bool can_take_sickle;
+    bool ui_screen;
     //fonction pour savoir quelle arme le joueur a en main
     void What_hand_take()
     {
@@ -78,9 +83,13 @@ public class weaponinstantiate : MonoBehaviour
     {
         
         
-        if (Vector3.Distance(transform.position, axe.transform.position) < 5)
+        if (Vector3.Distance(transform.position, axe.transform.position) < 5 && can_take_axe)
         {
-         
+
+
+            ui_screen = true;
+
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 hand_right = Instantiate(axe_prefab);
@@ -90,13 +99,18 @@ public class weaponinstantiate : MonoBehaviour
                 right_hand = true;
                 weapon_diff = 1; //axe
                 axe.SetActive(false);
+                can_take_axe = false;
+                ui_screen = false;
             }
         }
-    
+        
 
-        if (Vector3.Distance(transform.position, sickle.transform.position) < 5)
+
+
+
+            if (Vector3.Distance(transform.position, sickle.transform.position) < 5 && can_take_sickle)
         {
-         
+            ui_screen = true;
             if (Input.GetKeyDown(KeyCode.E))
             {
                 hand_right = Instantiate(sickle_prefab);
@@ -106,19 +120,22 @@ public class weaponinstantiate : MonoBehaviour
                 right_hand = true;
                 weapon_diff = 2;//sickle
                 sickle.SetActive(false);
+                can_take_sickle = false;
+                ui_screen = false;
             }
         }
-    
+       
 
-        if (Vector3.Distance(transform.position, pitchfork.transform.position) < 5)
+
+        if (Vector3.Distance(transform.position, pitchfork.transform.position) < 5 && can_take_pitchfork)
         {
-         
+            ui_screen = true;
 
             if (Input.GetKeyDown(KeyCode.E))
             {
 
                 // Instanciation de la fourche
-                 hand_right = Instantiate(pitchfork_prefab);
+                hand_right = Instantiate(pitchfork_prefab);
 
                 // Parent à la main droite
                 hand_right.transform.SetParent(right_hand_position, false);
@@ -134,11 +151,35 @@ public class weaponinstantiate : MonoBehaviour
                 weapon_diff = 3;//pitforck
                 weapon_hand = true;
                 pitchfork.SetActive(false);
+                can_take_pitchfork = false;
+                ui_screen = false;
             }
         }
-
         
+
+
     }
+
+
+    void ui()
+    {
+        if (ui_screen)
+        {
+            feedback_take_weapon.text = "press E to pick up";
+        }
+         if (!ui_screen)
+        {
+            feedback_take_weapon.text = "";
+        }
+
+         if (Vector3.Distance(transform.position, axe.transform.position) > 5 && Vector3.Distance(transform.position, sickle.transform.position) > 5 && Vector3.Distance(transform.position, pitchfork.transform.position) > 5)
+        {
+            
+            ui_screen = false;
+        }
+    }
+
+
 
     //fonction pour instantiate une arme
 
@@ -163,7 +204,8 @@ public class weaponinstantiate : MonoBehaviour
             }
 
         }
-      
+        
+
         if (Vector3.Distance(transform.position, sickle.transform.position) < 5)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -263,24 +305,7 @@ public class weaponinstantiate : MonoBehaviour
     }
 
 
-    //feedback
-    void ui_in_screen()
-    {
-        if (zombie.GetComponent<tutorial>().tutoriel == false)
-        {
-            if ((Vector3.Distance(gameObject.transform.position, sickle.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, axe.transform.position) < 5) || (Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) < 5))
-            {
-                feedback_take_weapon.text = "press E to pick up";
-                
-            }
-            else if (Vector3.Distance(gameObject.transform.position, sickle.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, axe.transform.position) > 5 && Vector3.Distance(gameObject.transform.position, pitchfork.transform.position) > 5)
-            {
-                
-                feedback_take_weapon.text = "";
-            }
-        }
-       
-    }
+   
 
 
     //méthode pour lacher une arme qui a été prise 
@@ -317,7 +342,11 @@ public class weaponinstantiate : MonoBehaviour
         right_hand = false;
         firs_hand = false;
         double_hand = false;
-        
+
+        can_take_axe = true;
+        can_take_pitchfork = true;
+        can_take_sickle = true;
+        ui_screen = false;
     }
 
     private void Update()
@@ -326,7 +355,8 @@ public class weaponinstantiate : MonoBehaviour
         What_hand_take();
         player_position = gameObject.transform.position;
         drop_weapon();
-        ui_in_screen();
+        ui();
+        
     }
 }
 
