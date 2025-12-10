@@ -29,7 +29,7 @@ public class attaque_zombie : MonoBehaviour
         {
             if (gameObject.CompareTag("boss"))
             {
-                if (Vector3.Distance(GameObject.FindWithTag("player").transform.position, gameObject.transform.position) < 4f)
+                if (Vector3.Distance(GameObject.FindWithTag("player").transform.position, gameObject.transform.position) < 5f)
                 {
                     //ont appelle la fonction du script pv_player pour retirer des pv au joueur
                     GameObject.FindWithTag("player").GetComponent<pv_player>().perte_pv_player(degat_zombie_boss);

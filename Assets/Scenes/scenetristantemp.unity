@@ -14588,6 +14588,7 @@ MonoBehaviour:
   farm: {fileID: 374389100}
   jour: {fileID: 1965863003}
   nuit: {fileID: 1303174321}
+  prefab_feu_artifice: {fileID: 0}
   vague: {fileID: 917616505}
   jour_nuit_lumiere: {fileID: 485051724}
   girouette: {fileID: 1574002980}
@@ -17797,6 +17798,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 838f8207efadcfd438cda9d67103e9a8, type: 3}
+--- !u!1001 &1694942374
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 283.32138
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.2062187
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 130.33296
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422889307101478297, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437498499696117108, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
+      propertyPath: m_Name
+      value: boss_zombie v2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e35075fa4c9f92147a01e076376e1628, type: 3}
 --- !u!1 &1696462887
 GameObject:
   m_ObjectHideFlags: 0
@@ -26721,3 +26779,4 @@ SceneRoots:
   - {fileID: 2083439410}
   - {fileID: 777711489}
   - {fileID: 1384841772}
+  - {fileID: 1694942374}
