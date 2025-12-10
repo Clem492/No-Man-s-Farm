@@ -112,7 +112,7 @@ public class spawn_zombie : MonoBehaviour
                 }
                 if (win == true)
                 {
-                    for (int y = 0; y < 30; y++)
+                    for (int y = 0; y < 200; y++)
                     {
                         Instantiate(prefab_feu_artifice, new Vector3(Random.Range(10, 490), 1f, Random.Range(10, 490)), Quaternion.identity);
                     }
@@ -200,7 +200,7 @@ public class spawn_zombie : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 if (win == true)
                 {
-                    for (int y = 0; y < 30; y++)
+                    for (int y = 0; y < 200; y++)
                     {
                         Instantiate(prefab_feu_artifice, new Vector3(Random.Range(10, 490), 1f, Random.Range(10, 490)), Quaternion.identity);
                     }
