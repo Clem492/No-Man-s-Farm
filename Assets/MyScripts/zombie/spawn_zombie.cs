@@ -1,6 +1,4 @@
 using System.Collections;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +14,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] GameObject cerf_bugger;
     [SerializeField] GameObject farm;
     [SerializeField] GameObject jour, nuit;
+    [SerializeField] GameObject prefab_feu_artifice;
    // [SerializeField] TMPro.TextMeshProUGUI jour_nuit;
     [SerializeField] TMPro.TextMeshProUGUI vague;
     [SerializeField] Light jour_nuit_lumiere; 
@@ -73,11 +72,7 @@ public class spawn_zombie : MonoBehaviour
 
             jour.GetComponent<AudioSource>().enabled = true; //musique jour
             nuit.GetComponent<AudioSource>().enabled = false;//musique nuit desactiver
-            if (win == true)
-            {
-                SceneManager.LoadScene(scene_win);
-                yield break;
-            }
+            
             //spawn cerf
             if (numero_vague % 2 == 0)
             {
@@ -113,6 +108,16 @@ public class spawn_zombie : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 if (zombie.GetComponent<tutorial>().tutoriel)
                 {
+                    yield break;
+                }
+                if (win == true)
+                {
+                    for (int y = 0; y < 30; y++)
+                    {
+                        Instantiate(prefab_feu_artifice, new Vector3(Random.Range(10, 490), 1f, Random.Range(10, 490)), Quaternion.identity);
+                    }
+                    yield return new WaitForSeconds(10);
+                    SceneManager.LoadScene(scene_win);
                     yield break;
                 }
             }
@@ -193,6 +198,16 @@ public class spawn_zombie : MonoBehaviour
 
                 lumiere_valeur += 1;
                 yield return new WaitForSeconds(1f);
+                if (win == true)
+                {
+                    for (int y = 0; y < 30; y++)
+                    {
+                        Instantiate(prefab_feu_artifice, new Vector3(Random.Range(10, 490), 1f, Random.Range(10, 490)), Quaternion.identity);
+                    }
+                    yield return new WaitForSeconds(10);
+                    SceneManager.LoadScene(scene_win);
+                    yield break;
+                }
             }
             poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
             StartCoroutine(spawn());
