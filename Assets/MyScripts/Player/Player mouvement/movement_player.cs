@@ -42,7 +42,7 @@ public class movement_player : MonoBehaviour
     public bool tutorial_cam;
    public float cam_x;
    public float cam_y;
-
+    bool in_jump;
     //récupération du canva de la table de craft pour bloquer les mouvement de caméras du joueur 
     [SerializeField] craft_inventory craft_Inventory;
 
@@ -79,7 +79,7 @@ public class movement_player : MonoBehaviour
                 movement_x = Input.GetAxis("Horizontal");
             }
 
-            if ((movement_x != 0 || movement_y != 0) && gameObject.transform.position.y < 1.5f)
+            if (in_jump ==true)
             {
 
                 son_pas.enabled = true;
@@ -208,6 +208,7 @@ public class movement_player : MonoBehaviour
 
     private void Start()
     {
+        in_jump = false;
         Cursor.lockState = CursorLockMode.Locked;
         tutorial_move = 0;
         can_move_forward = false;
@@ -226,6 +227,14 @@ public class movement_player : MonoBehaviour
         apply_gravity();
         apply_jump();
         apply_sprint();
-        
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+
+        //}
+        if(controller.velocity.y == 0)
+        {
+            Debug.Log("jsbdflkqsfg");
+        }
     }
+    
 }
