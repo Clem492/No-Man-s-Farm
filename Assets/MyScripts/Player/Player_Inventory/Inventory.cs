@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < content.Count; i++)
         {
-            if (content[i].Item_Name == "Steak")
+            if (content[i].Item_Name == "Steak" || content[i].Item_Name == "Egg")
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {

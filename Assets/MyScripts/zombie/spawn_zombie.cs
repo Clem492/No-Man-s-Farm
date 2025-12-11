@@ -19,7 +19,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI vague;
     [SerializeField] Light jour_nuit_lumiere; 
     [SerializeField] GameObject girouette;
-    [SerializeField] GameObject poule;
+    [SerializeField] GameObject poule , poule_1,poule_2,poule_3;
     
     public int nombre_zombie_spawn = 7;
     public bool win;
@@ -210,6 +210,9 @@ public class spawn_zombie : MonoBehaviour
                 }
             }
             poule.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
+            poule_1.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
+            poule_2.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
+            poule_3.GetComponent<spawn_oeuf>().spawn_oeuf_vague();
             StartCoroutine(spawn());
         }
         
