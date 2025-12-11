@@ -2,12 +2,14 @@ using UnityEngine;
 using System.Collections;
 public class soin_feu_de_camp : MonoBehaviour
 {
+    [SerializeField] ParticleSystem croix_vert;
     GameObject player;
     bool anti_spam_soin;
     float pv;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        croix_vert.Stop();
         anti_spam_soin = true;
         player = GameObject.FindWithTag("player");
         pv = player.GetComponent<pv_player>().nb_pv_player;
@@ -36,8 +38,10 @@ public class soin_feu_de_camp : MonoBehaviour
        
            
         player.GetComponent<pv_player>().nb_pv_player += 1;
-       
-        yield return new WaitForSeconds(10);
+        croix_vert.Play();
+        yield return new WaitForSeconds(1);
+        croix_vert.Stop();
+        yield return new WaitForSeconds(9);
         anti_spam_soin = true;
     }
 }
