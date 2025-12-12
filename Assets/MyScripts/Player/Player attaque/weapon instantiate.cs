@@ -163,20 +163,24 @@ public class weaponinstantiate : MonoBehaviour
 
     void ui()
     {
-        if (ui_screen)
+        if (zombie.GetComponent<tutorial>().tutoriel == false)
         {
-            feedback_take_weapon.text = "press E to pick up";
-        }
-         if (!ui_screen)
-        {
-            feedback_take_weapon.text = "";
-        }
+            if (ui_screen)
+            {
+                feedback_take_weapon.text = "press E to pick up";
+            }
+            if (!ui_screen)
+            {
+                feedback_take_weapon.text = "";
+            }
 
-         if (Vector3.Distance(transform.position, axe.transform.position) > 5 && Vector3.Distance(transform.position, sickle.transform.position) > 5 && Vector3.Distance(transform.position, pitchfork.transform.position) > 5)
-        {
-            
-            ui_screen = false;
+            if (Vector3.Distance(transform.position, axe.transform.position) > 5 && Vector3.Distance(transform.position, sickle.transform.position) > 5 && Vector3.Distance(transform.position, pitchfork.transform.position) > 5)
+            {
+
+                ui_screen = false;
+            }
         }
+       
     }
 
 
