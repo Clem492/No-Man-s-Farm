@@ -19644,7 +19644,7 @@ MonoBehaviour:
   nombre_zombie_spawn: 7
   win: 0
   cycle_unlock: 0
-  cheat_code: 1
+  cheat_code: 0
   soleil: {fileID: 1128806185}
   soleil_quart: {fileID: 558445201}
   soleil_demi: {fileID: 1319394044}
