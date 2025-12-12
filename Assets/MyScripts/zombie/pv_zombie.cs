@@ -25,7 +25,7 @@ public class pv_zombie : MonoBehaviour
         }
         else
         {
-            nb_pv_zombie = 50;
+            nb_pv_zombie = 40;
         }
         animator = GetComponent<Animator>();
         mort = false;

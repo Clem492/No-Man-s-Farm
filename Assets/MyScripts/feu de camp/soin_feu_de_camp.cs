@@ -41,7 +41,7 @@ public class soin_feu_de_camp : MonoBehaviour
         croix_vert.Play();
         yield return new WaitForSeconds(1);
         croix_vert.Stop();
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(4);
         anti_spam_soin = true;
     }
 }
