@@ -106,10 +106,6 @@ public class spawn_zombie : MonoBehaviour
 
                 lumiere_valeur -= 1;
                 yield return new WaitForSeconds(1f);
-                if (zombie.GetComponent<tutorial>().tutoriel)
-                {
-                    yield break;
-                }
                 if (win == true)
                 {
                     for (int y = 0; y < 200; y++)

@@ -28,22 +28,22 @@ public class animation : MonoBehaviour
         {
 
         }
-        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        if (weapon_diff == 1 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true)
         {
             can_attaque1 = false;
             StartCoroutine(axe_anim());
         }
-        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        if (weapon_diff == 2 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true)
         {
             can_attaque1 = false;
             StartCoroutine(sickle_anim());
         }
-        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_attaque1 == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        if (weapon_diff == 3 && Input.GetKeyDown(KeyCode.Mouse0) && player.GetComponent<weaponinstantiate>().weapon_hand == true && can_attaque1 == true)
         {
             can_attaque1 = false;
             StartCoroutine(pitforck_anim());
         }
-        if (weapon_diff == 4 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true && player.GetComponent<weapon_attaque>().clique_unlock == true)
+        if (weapon_diff == 4 && Input.GetKeyDown(KeyCode.Mouse0) && can_attaque1 == true)
         {
             
             

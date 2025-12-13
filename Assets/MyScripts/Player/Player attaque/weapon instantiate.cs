@@ -29,9 +29,7 @@ public class weaponinstantiate : MonoBehaviour
     [SerializeField] GameObject Gun_prefab;
     
 
-    //variable utiliser pour unlok la touche x au tuto
-    public bool touche_x_unclock;
-    public bool double_hand_unlock;
+
     [SerializeField] GameObject zombie;
 
     //feedback utilisateur
@@ -54,7 +52,7 @@ public class weaponinstantiate : MonoBehaviour
             firs_hand = true;
             Take_weapon_right();
         }
-        if (left_hand == false && right_hand == true && firs_hand == false && double_hand == false && double_hand_unlock)
+        if (left_hand == false && right_hand == true && firs_hand == false && double_hand == false )
         {
             Take_weapon_left();
         }
@@ -69,7 +67,7 @@ public class weaponinstantiate : MonoBehaviour
             firs_hand = true;
             craft_weapon_right();
         }
-        if (left_hand == false && right_hand == true && firs_hand == false && double_hand == false && double_hand_unlock)
+        if (left_hand == false && right_hand == true && firs_hand == false && double_hand == false )
         {
             craft_weapon_left();
         }
@@ -163,24 +161,20 @@ public class weaponinstantiate : MonoBehaviour
 
     void ui()
     {
-        if (zombie.GetComponent<tutorial>().tutoriel == false)
+        if (ui_screen)
         {
-            if (ui_screen)
-            {
-                feedback_take_weapon.text = "press E to pick up";
-            }
-            if (!ui_screen)
-            {
-                feedback_take_weapon.text = "";
-            }
-
-            if (Vector3.Distance(transform.position, axe.transform.position) > 5 && Vector3.Distance(transform.position, sickle.transform.position) > 5 && Vector3.Distance(transform.position, pitchfork.transform.position) > 5)
-            {
-
-                ui_screen = false;
-            }
+            feedback_take_weapon.text = "press E to pick up";
         }
-       
+        if (!ui_screen)
+        {
+            feedback_take_weapon.text = "";
+        }
+
+        if (Vector3.Distance(transform.position, axe.transform.position) > 5 && Vector3.Distance(transform.position, sickle.transform.position) > 5 && Vector3.Distance(transform.position, pitchfork.transform.position) > 5)
+        {
+
+            ui_screen = false;
+        }
     }
 
 
@@ -315,18 +309,15 @@ public class weaponinstantiate : MonoBehaviour
     //méthode pour lacher une arme qui a été prise 
     private void drop_weapon()
     {
-        if (touche_x_unclock)
+        if (Input.GetKeyDown(KeyCode.X) && (right_hand == true || right_hand == true && left_hand == true))
         {
-            if (Input.GetKeyDown(KeyCode.X) && (right_hand == true || right_hand == true && left_hand == true))
-            {
-                Destroy(hand_right);
-                Destroy(hand_left);
-                left_hand = false;
-                right_hand = false;
-                double_hand = false;
-                weapon_diff = 0;
-            }
-        } 
+            Destroy(hand_right);
+            Destroy(hand_left);
+            left_hand = false;
+            right_hand = false;
+            double_hand = false;
+            weapon_diff = 0;
+        }
     }
 
 

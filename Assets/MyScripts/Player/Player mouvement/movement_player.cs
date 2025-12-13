@@ -60,24 +60,8 @@ public class movement_player : MonoBehaviour
     {
         if(menu_pause.GetComponent<script_pause>().ecran_pause_actif == false)
         {
-            if (tutorial_move == 1)
-            {
-                movement_y = Input.GetAxis("Vertical");
-                can_move_forward = true;
-            }
-            if (tutorial_move == 2)
-            {
-                movement_x = Input.GetAxis("Horizontal");
-                can_move_right = true;
-            }
-            if (can_move_forward)
-            {
-                movement_y = Input.GetAxis("Vertical");
-            }
-            if (can_move_right)
-            {
-                movement_x = Input.GetAxis("Horizontal");
-            }
+            movement_y = Input.GetAxis("Vertical");
+            movement_x = Input.GetAxis("Horizontal");
             if (controller.velocity.y != 0)
             {
                 son_pas.enabled = true;
@@ -166,24 +150,22 @@ public class movement_player : MonoBehaviour
     //fonction pour déplacer la caméra
     void cam_movement()
     {
-        if (tutorial_cam)
+
+        if (craft_Inventory.craft_canva.enabled == false)
         {
-            if (craft_Inventory.craft_canva.enabled == false)
+            if (menu_pause.GetComponent<script_pause>().ecran_pause_actif == false)
             {
-                if (menu_pause.GetComponent<script_pause>().ecran_pause_actif == false)
-                {
-                    cam_x = Input.GetAxis("Mouse X");
-                    cam_y = Input.GetAxis("Mouse Y");
-                }
-                else
-                {
-                    cam_x = 0;
-                    cam_y = 0;
-                }
-               
+                cam_x = Input.GetAxis("Mouse X");
+                cam_y = Input.GetAxis("Mouse Y");
             }
-            
+            else
+            {
+                cam_x = 0;
+                cam_y = 0;
+            }
+
         }
+
         Vector3 cam_position_y = new Vector3(0, cam_x, 0) * speed_cam * Time.deltaTime;
         xRotation -= cam_y;
         player.transform.Rotate( cam_position_y);
