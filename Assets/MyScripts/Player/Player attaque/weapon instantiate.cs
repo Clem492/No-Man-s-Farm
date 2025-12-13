@@ -90,6 +90,7 @@ public class weaponinstantiate : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                can_take_axe = false;
                 hand_right = Instantiate(axe_prefab);
                 hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hache en enfant
                 hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
@@ -97,7 +98,6 @@ public class weaponinstantiate : MonoBehaviour
                 right_hand = true;
                 weapon_diff = 1; //axe
                 axe.SetActive(false);
-                can_take_axe = false;
                 ui_screen = false;
             }
         }
@@ -111,6 +111,7 @@ public class weaponinstantiate : MonoBehaviour
             ui_screen = true;
             if (Input.GetKeyDown(KeyCode.E))
             {
+                can_take_sickle = false;
                 hand_right = Instantiate(sickle_prefab);
                 hand_right.transform.SetParent(right_hand_position, false);//permet de mettre la hou en enfant
                 hand_right.transform.localPosition = new Vector3(0, 0.6f, 0);
@@ -118,7 +119,6 @@ public class weaponinstantiate : MonoBehaviour
                 right_hand = true;
                 weapon_diff = 2;//sickle
                 sickle.SetActive(false);
-                can_take_sickle = false;
                 ui_screen = false;
             }
         }
@@ -131,7 +131,7 @@ public class weaponinstantiate : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-
+                can_take_pitchfork = false;
                 // Instanciation de la fourche
                 hand_right = Instantiate(pitchfork_prefab);
 
@@ -149,7 +149,6 @@ public class weaponinstantiate : MonoBehaviour
                 weapon_diff = 3;//pitforck
                 weapon_hand = true;
                 pitchfork.SetActive(false);
-                can_take_pitchfork = false;
                 ui_screen = false;
             }
         }
@@ -185,7 +184,7 @@ public class weaponinstantiate : MonoBehaviour
     void Take_weapon_left()
     {
 
-        if (Vector3.Distance(transform.position, axe.transform.position) < 5)
+        if (Vector3.Distance(transform.position, axe.transform.position) < 5 && can_take_axe)
         {
     
             if (Input.GetKeyDown(KeyCode.E))
@@ -204,7 +203,7 @@ public class weaponinstantiate : MonoBehaviour
         }
         
 
-        if (Vector3.Distance(transform.position, sickle.transform.position) < 5)
+        if (Vector3.Distance(transform.position, sickle.transform.position) < 5 && can_take_sickle)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
