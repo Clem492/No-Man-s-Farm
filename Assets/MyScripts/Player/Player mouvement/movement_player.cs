@@ -56,6 +56,10 @@ public class movement_player : MonoBehaviour
     //déclaration d'un booléen pour savoir si le joueur sprint ou non
     public bool can_sprint;
     public bool rechargement_sprint;
+
+    //bruit de pas 
+    public bool is_moving;
+    public bool is_moving_up;
     // fonction pour pouvoir déplacer le joueur 
     void movement()
     {
@@ -64,7 +68,7 @@ public class movement_player : MonoBehaviour
             movement_y = Input.GetAxis("Vertical");
             movement_x = Input.GetAxis("Horizontal");
 
-            bool is_moving = (Mathf.Abs(movement_x) > 0.01f || Mathf.Abs(movement_y) > 0.01f ) && controller.isGrounded;
+            is_moving = (Mathf.Abs(movement_x) > 0.01f || Mathf.Abs(movement_y) > 0.01f && Touching_floor());
             // Active le son si le joueur bouge ET est au sol
             if (is_moving)
             {
@@ -99,6 +103,20 @@ public class movement_player : MonoBehaviour
         
         
     }
+
+    //verification que le joueur est en contacte avec le sol 
+    bool Touching_floor()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(gameObject.transform.position, (transform.up * 2) *-1, Color.green);
+        if (Physics.Raycast(transform.position, (transform.up) * -1, out hit, 2))
+        {
+            if (hit.transform.CompareTag("floor")) return true;
+
+        }
+        return false;
+    }
+
     //fonction pour le sprint 
     void apply_sprint()
     {
@@ -221,11 +239,9 @@ public class movement_player : MonoBehaviour
         apply_gravity();
         apply_jump();
         apply_sprint();
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
+        Touching_floor();
 
-        //}
-        
+
     }
     
 }
