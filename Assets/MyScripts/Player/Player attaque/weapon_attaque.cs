@@ -10,6 +10,7 @@ public class weapon_attaque : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI text_dura_gauche, text_dura_droite;
     //variable pour le raycast
     RaycastHit hit;
+    [SerializeField] AudioSource gun;
     [SerializeField] GameObject sang;
     [SerializeField] weaponinstantiate weapons_created;
     [SerializeField] weaponinstantiate hand_left;
@@ -186,7 +187,7 @@ public class weapon_attaque : MonoBehaviour
                 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    
+                    gun.Play();
                     can_attaque = false;
                     Debug.DrawRay(cam.transform.position, cam.transform.forward * 70, Color.red);
                     if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 70))
