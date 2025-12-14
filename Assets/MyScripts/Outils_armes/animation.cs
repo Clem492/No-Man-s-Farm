@@ -67,7 +67,7 @@ public class animation : MonoBehaviour
     IEnumerator pitforck_anim()
     {
         animator.SetTrigger("pitchfork_attack");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.3f);
         can_attaque1 = true;
     }
 
