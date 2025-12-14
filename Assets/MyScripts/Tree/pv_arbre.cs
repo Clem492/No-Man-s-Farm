@@ -9,16 +9,16 @@ public class pv_arbre : MonoBehaviour
     [SerializeField] GameObject branche;
     [SerializeField] GameObject effet_feuille;
     Animator animator;
-
+ 
     void Start()
     {
-        gameObject.GetComponent<AudioSource>().enabled = false;
+        
         effet_feuille.SetActive(false);
         nb_pv_arbre = 3;
         animator = GetComponentInChildren<Animator>();
         if (animator == null )  Debug.LogError("l'animator n'a pas été trouvé sur : " + gameObject.name);
         
-        gameObject.GetComponent<AudioSource>().enabled = false;
+       // gameObject.GetComponent<AudioSource>().enabled = false;
     }
 
     // Update is called once per frame
@@ -36,7 +36,8 @@ public class pv_arbre : MonoBehaviour
         }
         animator.SetTrigger("degat_arbre");
         StartCoroutine(effet_feuille_arbre());
-        StartCoroutine(audio_arbre());
+        gameObject.GetComponent<AudioSource>().Play();
+        //StartCoroutine(audio_arbre());
     }
     void destruction_arbre()
     {
@@ -65,10 +66,10 @@ public class pv_arbre : MonoBehaviour
         }
         Destroy(gameObject);
     }
-    IEnumerator audio_arbre()
+    /*IEnumerator audio_arbre()
     {
         gameObject.GetComponent<AudioSource>().enabled =true;
         yield return new WaitForSeconds(1);
         gameObject.GetComponent<AudioSource>().enabled = false;
-    }
+    }*/
 }
