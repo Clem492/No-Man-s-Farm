@@ -62,15 +62,26 @@ public class movement_player : MonoBehaviour
         {
             movement_y = Input.GetAxis("Vertical");
             movement_x = Input.GetAxis("Horizontal");
-            if (controller.velocity.y != 0)
+
+            bool is_moving = (Mathf.Abs(movement_x) > 0.1f || Mathf.Abs(movement_y) > 0.1f) && controller.isGrounded;
+            // Active le son si le joueur bouge ET est au sol
+            if (is_moving)
             {
-                son_pas.enabled = true;
+               
+                if (!son_pas.enabled)
+                {
+                    son_pas.enabled = true;
+                }
             }
-            
             else
             {
-                son_pas.enabled = false;
+               
+                if (son_pas.enabled)
+                {
+                    son_pas.enabled = false;
+                }
             }
+           
 
             Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
 

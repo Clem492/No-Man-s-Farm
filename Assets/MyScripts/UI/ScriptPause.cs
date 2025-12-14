@@ -91,4 +91,8 @@ public class script_pause : MonoBehaviour
             control_actif = false;
         }
     }
+    public void victoire() 
+    {
+        GameObject.FindWithTag("world").GetComponent<spawn_zombie>().win = true;
+    }
 }
