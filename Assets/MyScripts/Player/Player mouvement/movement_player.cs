@@ -43,6 +43,7 @@ public class movement_player : MonoBehaviour
    public float cam_x;
    public float cam_y;
 
+
     //récupération du canva de la table de craft pour bloquer les mouvement de caméras du joueur 
     [SerializeField] craft_inventory craft_Inventory;
 
@@ -63,7 +64,7 @@ public class movement_player : MonoBehaviour
             movement_y = Input.GetAxis("Vertical");
             movement_x = Input.GetAxis("Horizontal");
 
-            bool is_moving = (Mathf.Abs(movement_x) > 0.1f || Mathf.Abs(movement_y) > 0.1f) && controller.isGrounded;
+            bool is_moving = (Mathf.Abs(movement_x) > 0.01f || Mathf.Abs(movement_y) > 0.01f ) && controller.isGrounded;
             // Active le son si le joueur bouge ET est au sol
             if (is_moving)
             {
@@ -106,6 +107,7 @@ public class movement_player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
+               
                 sprint_slider.gameObject.SetActive(true);
                 sprint_slider.value -= Time.deltaTime;
                 Vector3 player_sprint = transform.forward * Time.deltaTime * sprint_speed;
@@ -200,7 +202,7 @@ public class movement_player : MonoBehaviour
 
     private void Start()
     {
-      
+       
         Cursor.lockState = CursorLockMode.Locked;
         tutorial_move = 0;
         can_move_forward = false;
