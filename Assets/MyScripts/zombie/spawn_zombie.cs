@@ -20,7 +20,7 @@ public class spawn_zombie : MonoBehaviour
     [SerializeField] Light jour_nuit_lumiere; 
     [SerializeField] GameObject girouette;
     [SerializeField] GameObject poule , poule_1,poule_2,poule_3;
-   
+    [SerializeField] GameObject warning;
     public int nombre_zombie_spawn = 7;
     public bool win;
     int numero_vague;
@@ -40,6 +40,7 @@ public class spawn_zombie : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        warning.SetActive(false);
         cycle_unlock = true;
         win = false;
         nb_cerf_spawn = 20;
@@ -254,6 +255,7 @@ public class spawn_zombie : MonoBehaviour
         }
         if (lumiere_valeur == 27)
         {
+            warning.SetActive(true);
             soleil.enabled = false;
             soleil_quart.enabled = false;
             soleil_demi.enabled = false;
@@ -262,6 +264,10 @@ public class spawn_zombie : MonoBehaviour
             lune_quart.enabled = false;
             lune_demi.enabled = false;
             lune_trois_quart.enabled = false;
+        }
+        if (lumiere_valeur == 24)
+        {
+            warning.SetActive(false);
         }
         if (lumiere_valeur == -104)
         {
