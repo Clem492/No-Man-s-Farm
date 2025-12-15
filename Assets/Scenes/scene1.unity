@@ -3423,7 +3423,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: e55c4e4fadfaf7243a06b6e26c4d094e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16143,6 +16143,10 @@ PrefabInstance:
       propertyPath: 'slot_images_craft.Array.data[19]'
       value: 
       objectReference: {fileID: 611184693}
+    - target: {fileID: 8607681536291623596, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8705199831326325108, guid: a6a464dba5719ce41a21fd8b8e4f5523, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
