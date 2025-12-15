@@ -60,48 +60,51 @@ public class movement_player : MonoBehaviour
     //bruit de pas 
     public bool is_moving;
     public bool is_moving_up;
+
+
     // fonction pour pouvoir déplacer le joueur 
     void movement()
     {
-        if(menu_pause.GetComponent<script_pause>().ecran_pause_actif == false)
+        if (craft_Inventory.craft_canva.enabled == false)
         {
-            movement_y = Input.GetAxis("Vertical");
-            movement_x = Input.GetAxis("Horizontal");
-
-            is_moving = (Mathf.Abs(movement_x) > 0.01f || Mathf.Abs(movement_y) > 0.01f && Touching_floor());
-            // Active le son si le joueur bouge ET est au sol
-            if (is_moving)
+            if (menu_pause.GetComponent<script_pause>().ecran_pause_actif == false)
             {
-               
-                if (!son_pas.enabled)
+                movement_y = Input.GetAxis("Vertical");
+                movement_x = Input.GetAxis("Horizontal");
+
+                is_moving = (Mathf.Abs(movement_x) > 0.01f || Mathf.Abs(movement_y) > 0.01f && Touching_floor());
+                // Active le son si le joueur bouge ET est au sol
+                if (is_moving)
                 {
-                    son_pas.enabled = true;
+
+                    if (!son_pas.enabled)
+                    {
+                        son_pas.enabled = true;
+                    }
                 }
+                else
+                {
+
+                    if (son_pas.enabled)
+                    {
+                        son_pas.enabled = false;
+                    }
+                }
+
+
+                Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
+
+
+
+                player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
+
+                controller.Move(player_movement);
             }
             else
             {
-               
-                if (son_pas.enabled)
-                {
-                    son_pas.enabled = false;
-                }
+                son_pas.enabled = false;
             }
-           
-
-            Vector3 player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
-
-
-
-            player_movement = transform.right * movement_x * Time.deltaTime * player_speed + transform.forward * movement_y * Time.deltaTime * player_speed;
-
-            controller.Move(player_movement);
-        }
-        else
-        {
-            son_pas.enabled = false;
-        }
-        
-        
+        }  
     }
 
     //verification que le joueur est en contacte avec le sol 
@@ -195,6 +198,11 @@ public class movement_player : MonoBehaviour
                 cam_y = 0;
             }
 
+        }
+        else
+        {
+            cam_x = 0;
+            cam_y = 0;
         }
 
         Vector3 cam_position_y = new Vector3(0, cam_x, 0) * speed_cam * Time.deltaTime;

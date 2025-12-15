@@ -3,6 +3,7 @@ using UnityEngine;
 public class tabledecraft : MonoBehaviour
 {
     public bool can_open_ui_craft;
+    [SerializeField] Canvas craft_canva;
     [SerializeField] TMPro.TextMeshProUGUI text;
 
     private void Start()
@@ -16,6 +17,7 @@ public class tabledecraft : MonoBehaviour
         if (other.gameObject.CompareTag("player"))
         {
             can_open_ui_craft = true;
+            
             text.text = "Press T to use";
         }
         
@@ -25,8 +27,10 @@ public class tabledecraft : MonoBehaviour
     {
         if (other.gameObject.CompareTag("player"))
         {
-            can_open_ui_craft = false;
             text.text = "";
+            can_open_ui_craft = false;
+            craft_canva.enabled = false;
+            
         }
            
     }

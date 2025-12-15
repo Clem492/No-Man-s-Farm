@@ -7,9 +7,15 @@ public class soin_feu_de_camp : MonoBehaviour
     bool anti_spam_soin;
     float pv;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Awake()
     {
         croix_vert.Stop();
+    }
+
+    void Start()
+    {
+        
         anti_spam_soin = true;
         player = GameObject.FindWithTag("player");
         pv = player.GetComponent<pv_player>().nb_pv_player;

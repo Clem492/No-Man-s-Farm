@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 
@@ -6,7 +7,7 @@ public class take_item : MonoBehaviour
     RaycastHit hit; //variable utiliser pour détecter les items dans le raycast
     [SerializeField] GameObject cam; //variable pour connaître l'origine et la direction du raycast
     [SerializeField] float ray_range; //variable pour déterminer la meilleur distance du raycast
-
+    [SerializeField] TextMeshProUGUI feedback_take_item;
     [SerializeField] Inventory inventory;//variable utilise pour récupérer la list de l'inventaire
     void pikup_item()
     {
@@ -18,7 +19,7 @@ public class take_item : MonoBehaviour
         {
             if (hit.transform.CompareTag("item") || hit.transform.CompareTag("arme"))
             {
-             
+                feedback_take_item.text = "Press E to pick up";
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (inventory.Inventory_Full())
@@ -31,6 +32,7 @@ public class take_item : MonoBehaviour
                     inventory.GetComponent<Inventory>().Refresh_content();
                 }
             }
+            else feedback_take_item.text = "";
         }
        
     }

@@ -10,9 +10,11 @@ public class craft_inventory : MonoBehaviour
     public List<Image> slot_images_craft = new List<Image>();
     List<Item_Data> content;
     [SerializeField] craft craft;
+    public bool can_move;
 
     private void Start()
     {
+        can_move = true;
         craft_canva.enabled = false;
         
     }
@@ -32,7 +34,7 @@ public class craft_inventory : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.T))
             {
 
-
+                can_move = !can_move;
                 craft_canva.enabled = !craft_canva.enabled;
                 craft.Wood();
                 craft.Nails();
